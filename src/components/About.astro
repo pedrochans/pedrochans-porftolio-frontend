@@ -159,7 +159,6 @@
     position: absolute;
     left: 50%;
     top: 0;
-    bottom: 0;
     width: 3px;
     background: rgba(139, 92, 246, 0.2);
     transform: translateX(-50%);
@@ -246,8 +245,8 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -295,8 +294,8 @@
   .logo-mini {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 6px;
-    padding: 2px 4px;
-    font-size: 0.5rem;
+    padding: 3px 6px;
+    font-size: 0.6rem;
     font-weight: 700;
     color: white;
     letter-spacing: 0.05em;
@@ -493,8 +492,8 @@
 
     .timeline-marker {
       left: 30px !important;
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       transform: translate(-50%, -50%) !important;
     }
 
@@ -509,9 +508,9 @@
     }
 
     .timeline-content {
-      width: calc(100% - 100px) !important;
+      width: calc(100% - 110px) !important;
       max-width: none !important;
-      margin-left: 80px !important;
+      margin-left: 90px !important;
       margin-right: 0 !important;
       text-align: left !important;
       padding: 1.5rem;
@@ -709,6 +708,30 @@
       }
     };
 
+    // Calcular la altura de las líneas para que terminen en el último círculo
+    const calculateTimelineHeight = () => {
+      const timeline = document.querySelector('.timeline') as HTMLElement;
+      const lastMarker = document.querySelector('.timeline-item:last-child .timeline-marker') as HTMLElement;
+      const timelineLineBase = document.querySelector('.timeline-line-base') as HTMLElement;
+      const timelineLineProgress = document.querySelector('.timeline-line-progress') as HTMLElement;
+      
+      if (timeline && lastMarker && timelineLineBase && timelineLineProgress) {
+        const timelineRect = timeline.getBoundingClientRect();
+        const lastMarkerRect = lastMarker.getBoundingClientRect();
+        
+        // Calcular la posición relativa del último marcador
+        const timelineTop = timeline.offsetTop;
+        const lastMarkerTop = lastMarker.offsetTop + (lastMarker.offsetHeight / 2);
+        const relativeHeight = lastMarkerTop - timelineTop;
+        
+        // Establecer la altura de las líneas
+        timelineLineBase.style.height = `${relativeHeight}px`;
+        timelineLineBase.style.bottom = 'auto';
+        
+        // La línea de progreso ya se maneja en updateTimelineProgress
+      }
+    };
+
     // Event listeners con throttling optimizado
     let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
     const throttledUpdate = () => {
@@ -725,12 +748,16 @@
       // Reset completo en resize
       currentActivePoint = -1;
       isAnimating = false;
-      setTimeout(updateTimelineProgress, 100);
+      setTimeout(() => {
+        calculateTimelineHeight();
+        updateTimelineProgress();
+      }, 100);
     });
     
     // Inicialización
     setTimeout(() => {
       updateTimelineProgress();
+      calculateTimelineHeight();
     }, 1000);
   });
 </script>
