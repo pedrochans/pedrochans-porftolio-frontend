@@ -229,9 +229,9 @@ const { variant = 'particles' } = Astro.props;
       const delay = Math.random() * 10;
       const duration = 10 + Math.random() * 20;
       
-      particle.style.left = `${left}%`;
-      particle.style.setProperty('--delay', `${delay}s`);
-      particle.style.setProperty('--duration', `${duration}s`);
+      (particle as HTMLElement).style.left = `${left}%`;
+      (particle as HTMLElement).style.setProperty('--delay', `${delay}s`);
+      (particle as HTMLElement).style.setProperty('--duration', `${duration}s`);
     });
 
     // Generar posiciones para las estrellas
@@ -242,9 +242,9 @@ const { variant = 'particles' } = Astro.props;
       const y = Math.random() * 100;
       const delay = Math.random() * 5;
       
-      star.style.setProperty('--x', `${x}%`);
-      star.style.setProperty('--y', `${y}%`);
-      star.style.setProperty('--delay', `${delay}s`);
+      (star as HTMLElement).style.setProperty('--x', `${x}%`);
+      (star as HTMLElement).style.setProperty('--y', `${y}%`);
+      (star as HTMLElement).style.setProperty('--delay', `${delay}s`);
     });
   });
 </script>
