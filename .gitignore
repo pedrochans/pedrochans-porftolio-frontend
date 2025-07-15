@@ -12,6 +12,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# media
+*.jpg
+*.jpeg
+*.png
+*.svg
+*.webp
 
 # environment variables
 .env

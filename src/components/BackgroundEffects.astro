@@ -1,0 +1,250 @@
+---
+// Componente de efectos de fondo animados
+export interface Props {
+  variant?: 'particles' | 'gradient' | 'stars';
+}
+
+const { variant = 'particles' } = Astro.props;
+---
+
+<div class={`background-effects ${variant}`}>
+  {variant === 'particles' && (
+    <div class="particles-container">
+      {Array.from({ length: 100 }).map((_, i) => (
+        <div 
+          class="particle" 
+          style={`
+            --delay: ${Math.random() * 10}s; 
+            --duration: ${10 + Math.random() * 20}s;
+            --size: ${1 + Math.random() * 3}px;
+          `}
+        ></div>
+      ))}
+    </div>
+  )}
+  
+  {variant === 'stars' && (
+    <div class="stars-container">
+      {Array.from({ length: 200 }).map((_, i) => (
+        <div 
+          class="star" 
+          style={`
+            --delay: ${Math.random() * 5}s;
+            --x: ${Math.random() * 100}%;
+            --y: ${Math.random() * 100}%;
+            --size: ${0.5 + Math.random() * 2}px;
+          `}
+        ></div>
+      ))}
+    </div>
+  )}
+  
+  <div class="gradient-overlay"></div>
+</div>
+
+<style>
+  .background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  /* Gradient Overlay */
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -20%, 
+      rgba(139, 92, 246, 0.15) 0%, 
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 80% 50%, 
+      rgba(59, 130, 246, 0.1) 0%, 
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 40% 80%, 
+      rgba(6, 182, 212, 0.08) 0%, 
+      transparent 50%
+    );
+    animation: gradientMove 20s ease-in-out infinite;
+  }
+
+  @keyframes gradientMove {
+    0%, 100% {
+      filter: hue-rotate(0deg);
+    }
+    50% {
+      filter: hue-rotate(45deg);
+    }
+  }
+
+  /* Particles Effect */
+  .particles-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .particle {
+    position: absolute;
+    width: var(--size, 2px);
+    height: var(--size, 2px);
+    background: linear-gradient(45deg, 
+      rgba(139, 92, 246, 0.8), 
+      rgba(59, 130, 246, 0.6), 
+      rgba(6, 182, 212, 0.4)
+    );
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+    animation: 
+      particleFloat var(--duration, 15s) var(--delay, 0s) infinite linear,
+      particleGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes particleFloat {
+    0% {
+      transform: translateY(100vh) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) translateX(200px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes particleGlow {
+    from {
+      box-shadow: 0 0 5px currentColor;
+    }
+    to {
+      box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+  }
+
+  /* Stars Effect */
+  .stars-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .star {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size, 1px);
+    height: var(--size, 1px);
+    background: white;
+    border-radius: 50%;
+    animation: 
+      starTwinkle 3s var(--delay, 0s) infinite ease-in-out,
+      starMove 20s linear infinite;
+  }
+
+  .star:nth-child(3n) {
+    background: rgba(139, 92, 246, 0.8);
+  }
+
+  .star:nth-child(4n) {
+    background: rgba(59, 130, 246, 0.8);
+  }
+
+  .star:nth-child(5n) {
+    background: rgba(6, 182, 212, 0.8);
+  }
+
+  @keyframes starTwinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes starMove {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-2000px);
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .particle {
+      --size: 1px !important;
+    }
+    
+    .particles-container .particle:nth-child(n+51) {
+      display: none;
+    }
+    
+    .stars-container .star:nth-child(n+101) {
+      display: none;
+    }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .particle,
+    .star,
+    .gradient-overlay {
+      animation: none;
+    }
+    
+    .particle,
+    .star {
+      opacity: 0.3;
+    }
+  }
+</style>
+
+<script>
+  // Generar posiciones aleatorias para las partículas
+  document.addEventListener('DOMContentLoaded', () => {
+    const particles = document.querySelectorAll('.particle');
+    
+    particles.forEach((particle, index) => {
+      const left = Math.random() * 100;
+      const delay = Math.random() * 10;
+      const duration = 10 + Math.random() * 20;
+      
+      particle.style.left = `${left}%`;
+      particle.style.setProperty('--delay', `${delay}s`);
+      particle.style.setProperty('--duration', `${duration}s`);
+    });
+
+    // Generar posiciones para las estrellas
+    const stars = document.querySelectorAll('.star');
+    
+    stars.forEach((star) => {
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const delay = Math.random() * 5;
+      
+      star.style.setProperty('--x', `${x}%`);
+      star.style.setProperty('--y', `${y}%`);
+      star.style.setProperty('--delay', `${delay}s`);
+    });
+  });
+</script>
