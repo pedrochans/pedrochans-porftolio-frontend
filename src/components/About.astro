@@ -1,0 +1,709 @@
+---
+// Componente About con línea temporal
+---
+
+<section id="about" class="about">
+  <div class="about-container">
+    <div class="about-header">
+      <h2 class="section-title">
+        <span class="text-gradient">My Journey</span>
+      </h2>
+      <p class="section-subtitle">
+        A timeline of my professional and academic experience
+      </p>
+    </div>
+
+    <div class="timeline">
+      <!-- Línea central base -->
+      <div class="timeline-line-base"></div>
+      <!-- Línea central que se rellena con scroll -->
+      <div class="timeline-line-progress"></div>
+
+      <!-- Educación - Izquierda -->
+      <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
+        <div class="timeline-marker education" data-marker="1">
+          <div class="marker-logos">
+            <div class="logo-mini">USC</div>
+            <div class="logo-mini">UL</div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">2017 - 2021</div>
+          <div class="timeline-institution">
+            <h3>Grado en Matemáticas</h3>
+            <p class="institution-names">Universidade de Santiago de Compostela • Lodz University</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Máster - Derecha -->
+      <div class="timeline-item right" data-aos="fade-left" data-aos-delay="200">
+        <div class="timeline-marker education" data-marker="2">
+          <div class="marker-logos">
+            <div class="logo-mini">UCM</div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">2021 - 2022</div>
+          <div class="timeline-institution">
+            <h3>Máster en Big Data & Data Science</h3>
+            <p class="institution-names">Universidad Complutense de Madrid</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Analyst - Izquierda -->
+      <div class="timeline-item left" data-aos="fade-right" data-aos-delay="300">
+        <div class="timeline-marker work" data-marker="3">
+          <div class="marker-logos">
+            <div class="logo-mini">IND</div>
+            <div class="logo-mini">MIN</div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">2021 - 2023</div>
+          <div class="timeline-institution">
+            <h3>Data Analyst</h3>
+            <p class="institution-names">Indra • Minsait</p>
+            <p class="role-description">Equipo de Reporting Financiero en contacto directo con Cliente</p>
+            <ul class="achievements">
+              <li>Desarrollo, elaboración y mantenimiento de Informes en PowerBI, SSRS, y consultas SQL</li>
+              <li>Migración de datos y procedimientos SQL en DB2, Oracle y Snowflake</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Consultant - Derecha -->
+      <div class="timeline-item right" data-aos="fade-left" data-aos-delay="400">
+        <div class="timeline-marker work current" data-marker="4">
+          <div class="marker-logos">
+            <div class="logo-mini">IND</div>
+            <div class="logo-mini">MIN</div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">2023 - Actualidad</div>
+          <div class="timeline-institution">
+            <h3>Data Consultant</h3>
+            <p class="institution-names">Indra • Minsait</p>
+            <p class="role-description">Proyecto MAGI-C: Cálculo del Margen Bruto y la Valoración del Stock de Inditex con diferentes visiones societarias</p>
+            <ul class="achievements">
+              <li>Desarrollo de procedimientos SQL en Snowflake. Cálculo, procesado del dato, planificación de tareas, procedimientos de control y validación</li>
+              <li>Elaboración de Power BI de contraste, KPIs de control</li>
+              <li>Comunicación y resolución de problemas en contacto directo con el cliente final</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    min-height: 100vh;
+    padding: 5rem 2rem;
+    position: relative;
+    background: linear-gradient(135deg, 
+      rgba(15, 15, 35, 0.95) 0%, 
+      rgba(25, 25, 55, 0.95) 50%, 
+      rgba(15, 15, 35, 0.95) 100%
+    );
+    backdrop-filter: blur(20px);
+  }
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .about-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .timeline-line-base {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: rgba(139, 92, 246, 0.2);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .timeline-line-progress {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 3px;
+    background: linear-gradient(180deg, 
+      var(--accent-primary) 0%, 
+      var(--accent-secondary) 50%, 
+      var(--accent-primary) 100%
+    );
+    transform: translateX(-50%);
+    z-index: 2;
+    height: 0%;
+    transition: height 0.5s ease-out;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin: 4rem 0;
+    opacity: 0;
+    transform: translateY(50px);
+    display: flex;
+    align-items: center;
+    min-height: 200px;
+    width: 100%;
+  }
+
+  .timeline-item[data-aos="fade-right"] {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+
+  .timeline-item[data-aos="fade-left"] {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+
+  /* Items a la izquierda */
+  .timeline-item.left {
+    justify-content: flex-start;
+  }
+
+  .timeline-item.left .timeline-content {
+    margin-right: 5rem;
+    text-align: right;
+    margin-left: auto;
+    width: calc(50% - 3rem);
+  }
+
+  .timeline-item.left .timeline-marker {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Items a la derecha */
+  .timeline-item.right {
+    justify-content: flex-end;
+  }
+
+  .timeline-item.right .timeline-content {
+    margin-left: 5rem;
+    text-align: left;
+    margin-right: auto;
+    width: calc(50% - 3rem);
+  }
+
+  .timeline-item.right .timeline-marker {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .timeline-marker.education {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    box-shadow: 0 0 30px rgba(79, 70, 229, 0.4);
+  }
+
+  .timeline-marker.work {
+    background: linear-gradient(135deg, #059669, #0d9488);
+    box-shadow: 0 0 30px rgba(5, 150, 105, 0.4);
+  }
+
+  .timeline-marker.current {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    animation: pulse 2s infinite;
+  }
+
+  .timeline-marker.activated {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    border-color: rgba(139, 92, 246, 0.5);
+  }
+
+  .timeline-marker.spark-effect {
+    animation: sparkBurst 0.8s ease-out;
+  }
+
+  .marker-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .logo-mini {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    padding: 2px 4px;
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .timeline-content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 500px;
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 150px;
+  }
+
+  .timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .timeline-content.highlighted {
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .timeline-date {
+    font-size: 0.9rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-institution h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .institution-names {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .role-description {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .achievements {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .achievements li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .achievements li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: bold;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 50px rgba(139, 92, 246, 0.8);
+    }
+  }
+
+  @keyframes markerActivated {
+    0% {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 50px rgba(139, 92, 246, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    }
+  }
+
+  @keyframes sparkBurst {
+    0% {
+      box-shadow: 
+        0 0 30px rgba(139, 92, 246, 0.4),
+        0 0 0 0 rgba(139, 92, 246, 0.7);
+    }
+    25% {
+      box-shadow: 
+        0 0 40px rgba(139, 92, 246, 0.6),
+        0 0 10px 5px rgba(139, 92, 246, 0.4);
+    }
+    50% {
+      box-shadow: 
+        0 0 50px rgba(139, 92, 246, 0.8),
+        0 0 20px 10px rgba(139, 92, 246, 0.2);
+    }
+    75% {
+      box-shadow: 
+        0 0 60px rgba(139, 92, 246, 0.6),
+        0 0 30px 15px rgba(139, 92, 246, 0.1);
+    }
+    100% {
+      box-shadow: 
+        0 0 40px rgba(139, 92, 246, 0.6),
+        0 0 0 0 rgba(139, 92, 246, 0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about {
+      padding: 3rem 1rem;
+    }
+
+    .timeline-line-base,
+    .timeline-line-progress {
+      left: 30px;
+    }
+
+    .timeline-marker {
+      left: 30px !important;
+      width: 60px;
+      height: 60px;
+      transform: translate(-50%, -50%) !important;
+    }
+
+    .logo-mini {
+      font-size: 0.4rem;
+      padding: 1px 3px;
+    }
+
+    .timeline-item {
+      justify-content: flex-start !important;
+      margin: 2rem 0;
+    }
+
+    .timeline-content {
+      width: calc(100% - 100px) !important;
+      max-width: none !important;
+      margin-left: 80px !important;
+      margin-right: 0 !important;
+      text-align: left !important;
+      padding: 1.5rem;
+    }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-item,
+    .section-title,
+    .section-subtitle {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .timeline-line {
+      animation: none;
+      opacity: 1;
+    }
+
+    .timeline-marker.current {
+      animation: none;
+    }
+
+    .timeline-content:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer para animaciones y efecto de línea temporal discreto
+  document.addEventListener('DOMContentLoaded', () => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineProgress = document.querySelector('.timeline-line-progress') as HTMLElement;
+    const timeline = document.querySelector('.timeline') as HTMLElement;
+    const markers = document.querySelectorAll('.timeline-marker');
+    
+    let currentActivePoint = -1;
+    let isAnimating = false;
+    
+    // Configurar animaciones de elementos
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target as HTMLElement;
+          const delay = element.getAttribute('data-aos-delay') || '0';
+          const animationType = element.getAttribute('data-aos') || 'fade-up';
+          
+          setTimeout(() => {
+            if (animationType === 'fade-right') {
+              element.style.animation = 'fadeInRight 0.8s ease-out forwards';
+            } else if (animationType === 'fade-left') {
+              element.style.animation = 'fadeInLeft 0.8s ease-out forwards';
+            } else {
+              element.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            }
+          }, parseInt(delay));
+          
+          observer.unobserve(element);
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    timelineItems.forEach((item) => {
+      observer.observe(item);
+    });
+
+    // Función para animar hasta un punto específico
+    const animateToPoint = (pointIndex: number) => {
+      if (isAnimating || pointIndex === currentActivePoint) return;
+      
+      isAnimating = true;
+      const targetItem = timelineItems[pointIndex];
+      const targetMarker = targetItem?.querySelector('.timeline-marker') as HTMLElement;
+      
+      if (!targetItem || !targetMarker || !timeline || !timelineProgress) {
+        isAnimating = false;
+        return;
+      }
+      
+      // Calcular posición del marcador específicamente
+      const timelineRect = timeline.getBoundingClientRect();
+      const timelineTop = timelineRect.top + window.scrollY;
+      const markerRect = targetMarker.getBoundingClientRect();
+      const markerTop = markerRect.top + window.scrollY;
+      const markerCenter = markerTop + (markerRect.height / 2);
+      
+      // Calcular progreso hasta el centro del marcador
+      const relativePosition = markerCenter - timelineTop;
+      const progressPercentage = Math.min(100, Math.max(0, (relativePosition / timelineRect.height) * 100));
+      
+      // Animar la línea hasta el marcador
+      timelineProgress.style.transition = 'height 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+      timelineProgress.style.height = `${progressPercentage}%`;
+      
+      // Actualizar marcadores
+      markers.forEach((marker, index) => {
+        const markerElement = marker as HTMLElement;
+        if (index <= pointIndex) {
+          markerElement.classList.add('activated');
+          // Efecto de chispas solo en el nuevo marcador
+          if (index === pointIndex && index > currentActivePoint) {
+            markerElement.classList.add('spark-effect');
+            setTimeout(() => {
+              markerElement.classList.remove('spark-effect');
+            }, 800);
+          }
+        } else {
+          markerElement.classList.remove('activated', 'spark-effect');
+        }
+      });
+      
+      // Actualizar contenidos
+      timelineItems.forEach((item, index) => {
+        const content = item.querySelector('.timeline-content') as HTMLElement;
+        if (content) {
+          if (index === pointIndex) {
+            content.classList.add('highlighted');
+          } else {
+            content.classList.remove('highlighted');
+          }
+        }
+      });
+      
+      currentActivePoint = pointIndex;
+      
+      setTimeout(() => {
+        isAnimating = false;
+      }, 800);
+    };
+
+    // Detectar qué punto debe estar activo basado en el scroll
+    const updateTimelineProgress = () => {
+      if (isAnimating || !timeline || timelineItems.length === 0) return;
+      
+      // Determinar qué marcador está más centrado en la pantalla
+      let targetPoint = -1;
+      let minDistance = Infinity;
+      
+      timelineItems.forEach((item, index) => {
+        const marker = item.querySelector('.timeline-marker') as HTMLElement;
+        if (!marker) return;
+        
+        const markerRect = marker.getBoundingClientRect();
+        const markerCenter = markerRect.top + markerRect.height / 2;
+        const screenCenter = window.innerHeight / 2;
+        const distance = Math.abs(markerCenter - screenCenter);
+        
+        // Solo considerar marcadores que están visibles
+        const isVisible = markerRect.top < window.innerHeight && markerRect.bottom > 0;
+        
+        if (isVisible && distance < minDistance) {
+          minDistance = distance;
+          // Solo activar si el marcador está suficientemente centrado
+          if (distance < window.innerHeight * 0.3) {
+            targetPoint = index;
+          }
+        }
+      });
+      
+      // Si estamos muy arriba de la timeline, no activar ningún punto
+      const timelineRect = timeline.getBoundingClientRect();
+      if (timelineRect.top > window.innerHeight * 0.6) {
+        targetPoint = -1;
+      }
+      
+      // Si hay un cambio de punto, animar
+      if (targetPoint !== currentActivePoint && targetPoint >= -1) {
+        if (targetPoint === -1) {
+          // Reset - volver al inicio
+          if (!isAnimating) {
+            isAnimating = true;
+            timelineProgress.style.transition = 'height 0.5s ease-out';
+            timelineProgress.style.height = '0%';
+            
+            markers.forEach((marker) => {
+              (marker as HTMLElement).classList.remove('activated', 'spark-effect');
+            });
+            
+            timelineItems.forEach((item) => {
+              const content = item.querySelector('.timeline-content') as HTMLElement;
+              if (content) content.classList.remove('highlighted');
+            });
+            
+            currentActivePoint = -1;
+            setTimeout(() => { isAnimating = false; }, 500);
+          }
+        } else {
+          animateToPoint(targetPoint);
+        }
+      }
+    };
+
+    // Event listeners con throttling optimizado
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+    const throttledUpdate = () => {
+      if (scrollTimeout) return;
+      
+      scrollTimeout = setTimeout(() => {
+        updateTimelineProgress();
+        scrollTimeout = null;
+      }, 16); // ~60fps
+    };
+
+    window.addEventListener('scroll', throttledUpdate);
+    window.addEventListener('resize', () => {
+      // Reset completo en resize
+      currentActivePoint = -1;
+      isAnimating = false;
+      setTimeout(updateTimelineProgress, 100);
+    });
+    
+    // Inicialización
+    setTimeout(() => {
+      updateTimelineProgress();
+    }, 1000);
+  });
+</script>
