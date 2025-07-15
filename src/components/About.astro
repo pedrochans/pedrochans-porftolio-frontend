@@ -22,10 +22,7 @@
       <!-- Educación - Izquierda -->
       <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
         <div class="timeline-marker education" data-marker="1">
-          <div class="marker-logos">
-            <div class="logo-mini">USC</div>
-            <div class="logo-mini">UL</div>
-          </div>
+          <img src="/img/USC-Logo.png" alt="USC Logo" class="logo-full">
         </div>
         <div class="timeline-content">
           <div class="timeline-date">2017 - 2021</div>
@@ -502,6 +499,12 @@
       padding: 1px 3px;
     }
 
+    .logo-full {
+      width: 90%;
+      height: 90%;
+      padding: 1px;
+    }
+
     .timeline-item {
       justify-content: flex-start !important;
       margin: 2rem 0;
@@ -539,6 +542,18 @@
     .timeline-content:hover {
       transform: none;
     }
+  }
+
+  .logo-full {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+    position: relative;
+    z-index: 12;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 </style>
 
