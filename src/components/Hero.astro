@@ -13,7 +13,7 @@
         </h1>
         
         <p class="hero-description">
-          A passionate full-stack developer creating beautiful and functional web experiences
+          Technology professional driving digital transformation through strategic data solutions.
         </p>
         
         <!-- Botones de acción -->
@@ -29,15 +29,15 @@
             <span>About Me</span>
           </a>
         </div>
+
+        <!-- Indicador de scroll -->
+        <div class="scroll-indicator">
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+          <span class="scroll-text">Scroll</span>
+        </div>
       </div>
-    </div>
-    
-    <!-- Indicador de scroll -->
-    <div class="scroll-indicator">
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
-      </div>
-      <span class="scroll-text">Scroll</span>
     </div>
   </div>
 </section>
@@ -58,14 +58,20 @@
     width: 100%;
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
   }
 
   .hero-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
     text-align: center;
+    flex: 1;
+    width: 100%;
   }
 
   .hero-text {
@@ -117,7 +123,7 @@
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out 1.2s forwards;
@@ -135,14 +141,12 @@
 
   /* Scroll Indicator */
   .scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    margin-top: 2rem;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 1.8s forwards;
   }
@@ -221,7 +225,11 @@
     }
 
     .hero-actions {
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .scroll-indicator {
+      margin-top: 1.5rem;
     }
   }
 
