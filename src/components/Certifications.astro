@@ -1,0 +1,851 @@
+---
+// Componente de Certificaciones con medallas interactivas
+---
+
+<section id="certifications" class="certifications">
+  <div class="certifications-container">
+    <div class="certifications-header">
+      <h2 class="section-title">
+        <span class="text-gradient">Certifications & Learning</span>
+      </h2>
+      <p class="section-subtitle">
+        Professional certifications and continuous learning journey
+      </p>
+    </div>
+
+    <!-- Sección de Certificaciones -->
+    <div class="certifications-section">
+      <h3 class="subsection-title">
+        <span class="certification-icon">🏆</span>
+        Professional Certifications
+      </h3>
+      
+      <!-- Medallas en línea horizontal -->
+      <div class="medals-row" data-aos="fade-up" data-aos-delay="200">
+        <div class="cert-container">
+          <div class="cert-image-wrapper" data-cert="snowpro">
+            <img src="/img/SnowProCore.png" alt="SnowPro Core Certification" class="cert-image">
+            <div class="metallic-shine"></div>
+          </div>
+        </div>
+
+        <div class="cert-container">
+          <div class="cert-image-wrapper" data-cert="azure">
+            <img src="/img/AZ-900.png" alt="Azure Fundamentals Certification" class="cert-image">
+            <div class="metallic-shine"></div>
+          </div>
+        </div>
+
+        <div class="cert-container">
+          <div class="cert-image-wrapper" data-cert="powerbi">
+            <img src="/img/PL-300.png" alt="Power BI Data Analyst Associate Certification" class="cert-image">
+            <div class="metallic-shine"></div>
+          </div>
+        </div>
+
+        <div class="cert-container">
+          <div class="cert-image-wrapper" data-cert="fabric">
+            <img src="/img/DP-600.png" alt="Microsoft Fabric Analytics Engineer Associate Certification" class="cert-image">
+            <div class="metallic-shine"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card de información dinámica -->
+      <div class="certification-info-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="cert-info-content active" id="cert-snowpro">
+          <h4>SnowPro Core Certification</h4>
+          <p class="cert-provider">Snowflake</p>
+          <p class="cert-description">Foundational knowledge of Snowflake's cloud data platform, architecture, and core features.</p>
+          <div class="cert-skills">
+            <span class="skill-tag">Data Warehousing</span>
+            <span class="skill-tag">Cloud Computing</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="cert-info-content" id="cert-azure">
+          <h4>Azure Fundamentals</h4>
+          <p class="cert-provider">Microsoft</p>
+          <p class="cert-description">Foundational knowledge of cloud services and Microsoft Azure platform fundamentals.</p>
+          <div class="cert-skills">
+            <span class="skill-tag">Azure Cloud</span>
+            <span class="skill-tag">Cloud Services</span>
+            <span class="skill-tag">Architecture</span>
+          </div>
+        </div>
+
+        <div class="cert-info-content" id="cert-powerbi">
+          <h4>Power BI Data Analyst Associate</h4>
+          <p class="cert-provider">Microsoft</p>
+          <p class="cert-description">Advanced skills in data analysis, visualization, and business intelligence using Power BI.</p>
+          <div class="cert-skills">
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Data Analysis</span>
+            <span class="skill-tag">DAX</span>
+          </div>
+        </div>
+
+        <div class="cert-info-content" id="cert-fabric">
+          <h4>Fabric Analytics Engineer Associate</h4>
+          <p class="cert-provider">Microsoft</p>
+          <p class="cert-description">Expertise in implementing and managing analytics solutions using Microsoft Fabric.</p>
+          <div class="cert-skills">
+            <span class="skill-tag">Microsoft Fabric</span>
+            <span class="skill-tag">Analytics</span>
+            <span class="skill-tag">Data Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Cursos -->
+    <div class="courses-section">
+      <h3 class="subsection-title">
+        <span class="course-icon">📚</span>
+        Additional Learning
+      </h3>
+      
+      <div class="courses-grid">
+        <div class="course-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="course-header">
+            <div class="course-icon-container">
+              <span class="course-emoji">🐍</span>
+            </div>
+            <h4>Advanced Python for Data Science</h4>
+          </div>
+          <p class="course-provider">DataCamp</p>
+          <p class="course-description">Advanced Python techniques for data manipulation, analysis, and machine learning.</p>
+        </div>
+
+        <div class="course-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="course-header">
+            <div class="course-icon-container">
+              <span class="course-emoji">🤖</span>
+            </div>
+            <h4>Machine Learning Specialization</h4>
+          </div>
+          <p class="course-provider">Coursera</p>
+          <p class="course-description">Comprehensive course covering supervised and unsupervised learning algorithms.</p>
+        </div>
+
+        <div class="course-card" data-aos="fade-up" data-aos-delay="700">
+          <div class="course-header">
+            <div class="course-icon-container">
+              <span class="course-emoji">☁️</span>
+            </div>
+            <h4>AWS Cloud Practitioner</h4>
+          </div>
+          <p class="course-provider">AWS Training</p>
+          <p class="course-description">Fundamentals of Amazon Web Services cloud computing platform and services.</p>
+        </div>
+
+        <div class="course-card" data-aos="fade-up" data-aos-delay="800">
+          <div class="course-header">
+            <div class="course-icon-container">
+              <span class="course-emoji">📊</span>
+            </div>
+            <h4>Advanced SQL and Database Design</h4>
+          </div>
+          <p class="course-provider">Udemy</p>
+          <p class="course-description">Complex SQL queries, optimization, and database design best practices.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .certifications {
+    min-height: 100vh;
+    padding: 5rem 2rem;
+    position: relative;
+  }
+
+  .certifications-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    background: linear-gradient(135deg, 
+      rgba(15, 15, 35, 0.95) 0%, 
+      rgba(25, 25, 55, 0.95) 50%, 
+      rgba(15, 15, 35, 0.95) 100%
+    );
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .certifications-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  }
+
+  .certifications-section,
+  .courses-section {
+    margin-bottom: 4rem;
+  }
+
+  .subsection-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .certification-icon,
+  .course-icon {
+    font-size: 2.5rem;
+  }
+
+  /* ===== NUEVA DISPOSICIÓN DE MEDALLAS ===== */
+  .medals-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 0;
+    gap: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .medals-row[data-aos="fade-up"] {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .medals-row .cert-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    perspective: 1500px;
+  }
+
+  .cert-image-wrapper {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .cert-image {
+    width: 200px;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Efecto de brillo metálico simple */
+  .metallic-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      rgba(255, 255, 255, 0.6) 50%, 
+      transparent 70%
+    );
+    opacity: 0;
+    transition: all 0.8s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Estados hover y active */
+  .cert-image-wrapper:hover {
+    transform: scale(1.1) translateY(-5px);
+  }
+
+  .cert-image-wrapper.active {
+    transform: scale(1.15) translateY(-8px);
+  }
+
+  .cert-image-wrapper:hover .cert-image {
+    filter: 
+      drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4))
+      brightness(1.2)
+      contrast(1.1);
+  }
+
+  .cert-image-wrapper:hover .metallic-shine {
+    opacity: 1;
+    left: 100%;
+  }
+
+  /* ===== CARD DE INFORMACIÓN DINÁMICA ===== */
+  .certification-info-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 3rem;
+    margin-top: 3rem;
+    height: 280px; /* Altura fija para evitar saltos */
+    position: relative;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    overflow: hidden;
+  }
+
+  .certification-info-card[data-aos="fade-up"] {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .cert-info-content {
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    right: 3rem;
+    bottom: 3rem;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+
+  .cert-info-content.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .cert-info-content h4 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .cert-info-content .cert-provider {
+    color: var(--accent-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .cert-info-content .cert-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cert-info-content .cert-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .cert-info-content .skill-tag {
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    color: var(--accent-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .cert-info-content .skill-tag:hover {
+    background: rgba(139, 92, 246, 0.25);
+    transform: translateY(-2px);
+  }
+
+  /* ===== MEDALLAS 3D ===== */
+  .medal-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    perspective: 1000px;
+  }
+
+  .medal {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .medal-face {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid;
+    background: radial-gradient(circle at 30% 30%, 
+      rgba(255, 255, 255, 0.4) 0%, 
+      rgba(255, 255, 255, 0.1) 50%, 
+      rgba(0, 0, 0, 0.1) 100%
+    );
+    overflow: hidden;
+  }
+
+  /* Colores específicos para cada certificación */
+  .medal.snowpro .medal-face {
+    background: linear-gradient(135deg, #29B5E8 0%, #1E90FF 50%, #0066CC 100%);
+    border-color: rgba(41, 181, 232, 0.8);
+    box-shadow: 0 0 30px rgba(41, 181, 232, 0.4);
+  }
+
+  .medal.azure .medal-face {
+    background: linear-gradient(135deg, #0078D4 0%, #106EBE 50%, #005A9F 100%);
+    border-color: rgba(0, 120, 212, 0.8);
+    box-shadow: 0 0 30px rgba(0, 120, 212, 0.4);
+  }
+
+  .medal.powerbi .medal-face {
+    background: linear-gradient(135deg, #F2C811 0%, #FFBF00 50%, #CC9900 100%);
+    border-color: rgba(242, 200, 17, 0.8);
+    box-shadow: 0 0 30px rgba(242, 200, 17, 0.4);
+  }
+
+  .medal.fabric .medal-face {
+    background: linear-gradient(135deg, #6264A7 0%, #464775 50%, #2F2F5F 100%);
+    border-color: rgba(98, 100, 167, 0.8);
+    box-shadow: 0 0 30px rgba(98, 100, 167, 0.4);
+  }
+
+  .medal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+    position: relative;
+  }
+
+  .medal-logo {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cert-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.2) contrast(1.1);
+  }
+
+  .medal-text {
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .cert-name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .cert-level {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  /* Efecto de brillo metálico */
+  .medal-shine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      rgba(255, 255, 255, 0.3) 50%, 
+      transparent 70%
+    );
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.6s ease;
+    pointer-events: none;
+  }
+
+  .medal:hover .medal-shine {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+
+  /* Efecto de seguimiento del ratón */
+  .medal:hover {
+    transform: scale(1.1);
+  }
+
+  /* ===== INFORMACIÓN DE CERTIFICACIÓN (LEGACY) ===== */
+  .certification-info h4 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .cert-provider {
+    color: var(--accent-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .cert-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .cert-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: var(--accent-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  /* ===== GRID DE CURSOS ===== */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .course-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .course-card[data-aos="fade-up"] {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+
+  .course-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .course-icon-container {
+    width: 50px;
+    height: 50px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .course-emoji {
+    font-size: 1.5rem;
+  }
+
+  .course-header h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .course-provider {
+    color: var(--accent-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .course-description {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+
+  /* ===== ANIMACIONES ===== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .certifications {
+      padding: 2rem 1rem;
+    }
+
+    .certifications-container {
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+    }
+
+    .medals-row {
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .cert-image {
+      width: 150px;
+      max-height: 150px;
+    }
+
+    .certification-info-card {
+      padding: 2rem;
+      margin-top: 2rem;
+      height: 240px; /* Altura fija ajustada para móvil */
+    }
+
+    .cert-info-content h4 {
+      font-size: 1.5rem;
+    }
+
+    .cert-info-content .cert-provider {
+      font-size: 1rem;
+    }
+
+    .cert-info-content .cert-description {
+      font-size: 1rem;
+    }
+
+    .courses-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .medal {
+      width: 100px;
+      height: 100px;
+    }
+
+    .medal-logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .cert-name {
+      font-size: 0.8rem;
+    }
+
+    .cert-level {
+      font-size: 0.6rem;
+    }
+
+    .subsection-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .certification-card,
+    .course-card,
+    .section-title,
+    .section-subtitle,
+    .medals-row,
+    .certification-info-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .medal {
+      transform: none;
+    }
+
+    .medal:hover {
+      transform: none;
+    }
+
+    .medal-shine {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Configurar animaciones de elementos
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target as HTMLElement;
+          const delay = element.getAttribute('data-aos-delay') || '0';
+          
+          setTimeout(() => {
+            element.style.animation = 'fadeInUp 0.8s ease-out forwards';
+          }, parseInt(delay));
+          
+          observer.unobserve(element);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    // Observar todos los elementos con animación
+    const animatedElements = document.querySelectorAll('[data-aos]');
+    animatedElements.forEach((element) => {
+      observer.observe(element);
+    });
+
+    // Sistema de cambio dinámico de información de certificaciones
+    const certWrappers = document.querySelectorAll('.cert-image-wrapper[data-cert]');
+    const certContents = document.querySelectorAll('.cert-info-content');
+    let currentActive = 'snowpro'; // Certificación activa por defecto
+
+    // Función para mostrar información de certificación
+    const showCertInfo = (certType: string) => {
+      if (currentActive === certType) return;
+      
+      // Ocultar contenido actual
+      certContents.forEach(content => {
+        const contentElement = content as HTMLElement;
+        contentElement.classList.remove('active');
+      });
+      
+      // Mostrar nuevo contenido
+      const targetContent = document.getElementById(`cert-${certType}`) as HTMLElement;
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+      
+      // Actualizar certificaciones activas
+      certWrappers.forEach(wrapper => {
+        (wrapper as HTMLElement).classList.remove('active');
+      });
+      
+      const activeWrapper = document.querySelector(`[data-cert="${certType}"]`) as HTMLElement;
+      if (activeWrapper) {
+        activeWrapper.classList.add('active');
+      }
+      
+      currentActive = certType;
+    };
+
+    // Inicializar primera certificación
+    showCertInfo('snowpro');
+
+    // Event listeners para las imágenes de certificación
+    certWrappers.forEach((wrapper) => {
+      const wrapperElement = wrapper as HTMLElement;
+      const certType = wrapperElement.getAttribute('data-cert');
+      
+      if (!certType) return;
+
+      // Hover para cambiar información
+      wrapperElement.addEventListener('mouseenter', () => {
+        showCertInfo(certType);
+      });
+      
+      // Efecto 3D de seguimiento del ratón
+      wrapperElement.addEventListener('mousemove', (e) => {
+        const rect = wrapperElement.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        // Calcular rotación basada en posición del ratón
+        const deltaX = (mouseX - centerX) / (rect.width / 2);
+        const deltaY = (mouseY - centerY) / (rect.height / 2);
+        
+        // Limitar rotación a ±8 grados
+        const maxRotation = 8;
+        const rotateX = Math.max(-maxRotation, Math.min(maxRotation, deltaY * maxRotation));
+        const rotateY = Math.max(-maxRotation, Math.min(maxRotation, -deltaX * maxRotation));
+        
+        // Aplicar transformación con perspectiva 3D
+        const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1.1;
+        const baseY = wrapperElement.classList.contains('active') ? -8 : -5;
+        
+        wrapperElement.style.transform = `
+          scale(${baseScale}) 
+          translateY(${baseY}px) 
+          perspective(1000px) 
+          rotateX(${rotateX}deg) 
+          rotateY(${rotateY}deg)
+        `;
+      });
+      
+      // Resetear transformación al salir
+      wrapperElement.addEventListener('mouseleave', () => {
+        const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1;
+        const baseY = wrapperElement.classList.contains('active') ? -8 : 0;
+        
+        wrapperElement.style.transform = `
+          scale(${baseScale}) 
+          translateY(${baseY}px) 
+          perspective(1000px) 
+          rotateX(0deg) 
+          rotateY(0deg)
+        `;
+      });
+    });
+  });
+</script>
