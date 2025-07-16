@@ -41,7 +41,7 @@
 
         <div class="cert-container">
           <div class="cert-image-wrapper" data-cert="fabric">
-            <img src="/img/DP-600.png" alt="Microsoft Fabric Analytics Engineer Associate Certification" class="cert-image">
+            <img src="/img/DP-600-2.png" alt="Microsoft Fabric Analytics Engineer Associate Certification" class="cert-image">
             <canvas class="shine-canvas"></canvas>
           </div>
         </div>
@@ -243,7 +243,7 @@
   .cert-image-wrapper {
     position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease-out; /* Transición más rápida para mejor respuesta */
     border-radius: 12px;
     overflow: hidden;
     display: inline-block;
@@ -268,7 +268,7 @@
     height: 100%;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.15s ease; /* Transición más rápida */
     z-index: 2;
   }
 
@@ -846,7 +846,7 @@
 
         // Animar el brillo
         function animateShine() {
-          shinePosition += 3;
+          shinePosition += 18;
           
           if (shinePosition < canvas.width + 100) {
             drawShine();
@@ -908,19 +908,19 @@
         const deltaX = (mouseX - centerX) / (rect.width / 2);
         const deltaY = (mouseY - centerY) / (rect.height / 2);
         
-        // Limitar rotación a ±8 grados
-        const maxRotation = 8;
+        // Limitar rotación a ±18 grados (más marcado que antes)
+        const maxRotation = 25;
         const rotateX = Math.max(-maxRotation, Math.min(maxRotation, deltaY * maxRotation));
         const rotateY = Math.max(-maxRotation, Math.min(maxRotation, -deltaX * maxRotation));
         
-        // Aplicar transformación con perspectiva 3D
+        // Aplicar transformación con perspectiva 3D más intensa
         const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1.1;
         const baseY = wrapperElement.classList.contains('active') ? -8 : -5;
         
         wrapperElement.style.transform = `
           scale(${baseScale}) 
           translateY(${baseY}px) 
-          perspective(1000px) 
+          perspective(800px) 
           rotateX(${rotateX}deg) 
           rotateY(${rotateY}deg)
         `;
