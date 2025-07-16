@@ -24,6 +24,12 @@
         <div class="timeline-marker education" data-marker="1">
           <img src="/img/USC_logo.png" alt="USC Logo" class="logo-full">
         </div>
+        <!-- Círculos adicionales para múltiples logos -->
+        <div class="additional-circles">
+          <div class="additional-circle circle-1 education">
+            <img src="/img/lodz_logo.png" alt="Lodz University Logo" class="logo-full">
+          </div>
+        </div>
         <div class="timeline-content">
           <div class="timeline-date">2017 - 2021</div>
           <div class="timeline-institution">
@@ -60,6 +66,15 @@
         <div class="timeline-marker work" data-marker="3">
           <img src="/img/minsait_logo.jpeg" alt="Minsait Logo" class="logo-full">
         </div>
+        <!-- Círculos adicionales para múltiples logos -->
+        <div class="additional-circles">
+          <div class="additional-circle circle-1 work">
+            <img src="/img/indra_logo.jpg" alt="Indra Logo" class="logo-full">
+          </div>
+          <div class="additional-circle circle-2 work">
+            <img src="/img/itx_logo.png" alt="Inditex Logo" class="logo-full">
+          </div>
+        </div>
         <div class="timeline-content">
           <div class="timeline-date">2021 - 2023</div>
           <div class="timeline-institution">
@@ -78,6 +93,15 @@
       <div class="timeline-item right" data-aos="fade-left" data-aos-delay="400">
         <div class="timeline-marker work current" data-marker="4">
           <img src="/img/minsait_logo.jpeg" alt="Minsait Logo" class="logo-full">
+        </div>
+        <!-- Círculos adicionales para múltiples logos -->
+        <div class="additional-circles">
+          <div class="additional-circle circle-1 work">
+            <img src="/img/indra_logo.jpg" alt="Indra Logo" class="logo-full">
+          </div>
+          <div class="additional-circle circle-2 current">
+            <img src="/img/itx_logo.png" alt="Inditex Logo" class="logo-full">
+          </div>
         </div>
         <div class="timeline-content">
           <div class="timeline-date">2023 - Actualidad</div>
@@ -276,6 +300,115 @@
 
   .timeline-marker.spark-effect {
     animation: sparkBurst 0.8s ease-out;
+  }
+
+  /* ===== CÍRCULOS ADICIONALES ===== */
+  .additional-circles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 97;
+    pointer-events: none;
+    width: 300px;
+    height: 100px;
+  }
+
+  .additional-circle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    scale: 0.3;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 98;
+  }
+
+  /* Estilos de círculos adicionales según tipo */
+  .additional-circle.education {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    box-shadow: 0 0 30px rgba(79, 70, 229, 0.4);
+  }
+
+  .additional-circle.work {
+    background: linear-gradient(135deg, #059669, #0d9488);
+    box-shadow: 0 0 30px rgba(5, 150, 105, 0.4);
+  }
+
+  .additional-circle.current {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  }
+
+  /* Posicionamiento inicial - comenzando desde el centro del timeline-marker */
+  .timeline-item.left .additional-circle.circle-1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-item.left .additional-circle.circle-2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Posicionamiento para items derechos */
+  .timeline-item.right .additional-circle.circle-1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-item.right .additional-circle.circle-2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Activación con animación hacia posiciones finales */
+  .timeline-item.left .timeline-marker.activated ~ .additional-circles .additional-circle.circle-1 {
+    opacity: 1;
+    scale: 1;
+    transform: translate(-145px, -50%);
+    animation: slideFromCenter 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+  }
+
+  .timeline-item.left .timeline-marker.activated ~ .additional-circles .additional-circle.circle-2 {
+    opacity: 1;
+    scale: 1;
+    transform: translate(-240px, -50%);
+    animation: slideFromCenter 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+  }
+
+  .timeline-item.right .timeline-marker.activated ~ .additional-circles .additional-circle.circle-1 {
+    opacity: 1;
+    scale: 1;
+    transform: translate(65px, -50%);
+    animation: slideFromCenter 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+  }
+
+  .timeline-item.right .timeline-marker.activated ~ .additional-circles .additional-circle.circle-2 {
+    opacity: 1;
+    scale: 1;
+    transform: translate(160px, -50%);
+    animation: slideFromCenter 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+  }
+
+  /* Logos dentro de círculos adicionales */
+  .additional-circle .logo-full {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
 
   .marker-logos {
@@ -493,6 +626,25 @@
     }
   }
 
+  @keyframes slideFromCenter {
+    0% {
+      opacity: 0;
+      scale: 0.3;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    50% {
+      opacity: 0.8;
+      scale: 0.9;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      opacity: 1;
+      scale: 1;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+
   /* Asegurar que el texto de los markers esté siempre visible */
   .timeline-marker * {
     position: relative;
@@ -550,6 +702,41 @@
       margin-right: 0 !important;
       text-align: left !important;
       padding: 1.5rem;
+    }
+
+    /* Círculos adicionales en móvil */
+    .additional-circles {
+      width: 200px;
+      height: 70px;
+    }
+
+    .additional-circle {
+      width: 50px;
+      height: 50px;
+      border-width: 1px;
+    }
+
+    .timeline-item.left .timeline-marker.activated ~ .additional-circles .additional-circle.circle-1 {
+      transform: translate(-70px, -50%);
+    }
+
+    .timeline-item.left .timeline-marker.activated ~ .additional-circles .additional-circle.circle-2 {
+      transform: translate(-140px, -50%);
+    }
+
+    .timeline-item.right .timeline-marker.activated ~ .additional-circles .additional-circle.circle-1 {
+      transform: translate(70px, -50%);
+    }
+
+    .timeline-item.right .timeline-marker.activated ~ .additional-circles .additional-circle.circle-2 {
+      transform: translate(140px, -50%);
+    }
+
+    /* Ocultar círculos adicionales en pantallas muy pequeñas */
+    @media (max-width: 480px) {
+      .additional-circles {
+        display: none;
+      }
     }
   }
 
