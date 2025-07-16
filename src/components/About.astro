@@ -704,39 +704,9 @@
       padding: 1.5rem;
     }
 
-    /* Círculos adicionales en móvil */
+    /* Ocultar círculos adicionales en móvil y tablet */
     .additional-circles {
-      width: 200px;
-      height: 70px;
-    }
-
-    .additional-circle {
-      width: 50px;
-      height: 50px;
-      border-width: 1px;
-    }
-
-    .timeline-item.left .timeline-marker.activated ~ .additional-circles .additional-circle.circle-1 {
-      transform: translate(-70px, -50%);
-    }
-
-    .timeline-item.left .timeline-marker.activated ~ .additional-circles .additional-circle.circle-2 {
-      transform: translate(-140px, -50%);
-    }
-
-    .timeline-item.right .timeline-marker.activated ~ .additional-circles .additional-circle.circle-1 {
-      transform: translate(70px, -50%);
-    }
-
-    .timeline-item.right .timeline-marker.activated ~ .additional-circles .additional-circle.circle-2 {
-      transform: translate(140px, -50%);
-    }
-
-    /* Ocultar círculos adicionales en pantallas muy pequeñas */
-    @media (max-width: 480px) {
-      .additional-circles {
-        display: none;
-      }
+      display: none !important;
     }
   }
 
