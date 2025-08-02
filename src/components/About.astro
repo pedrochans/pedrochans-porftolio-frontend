@@ -205,8 +205,8 @@
   .timeline-item {
     position: relative;
     margin: 4rem 0;
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 1;
+    transform: translateY(0);
     display: flex;
     align-items: center;
     min-height: 200px;
@@ -214,11 +214,11 @@
   }
 
   .timeline-item[data-aos="fade-right"] {
-    animation: fadeInRight 0.8s ease-out forwards;
+    /* Animación removida - las cards permanecen fijas */
   }
 
   .timeline-item[data-aos="fade-left"] {
-    animation: fadeInLeft 0.8s ease-out forwards;
+    /* Animación removida - las cards permanecen fijas */
   }
 
   /* Items a la izquierda */
@@ -556,22 +556,16 @@
   }
 
   @keyframes fadeInRight {
-    from {
-      opacity: 0;
-      transform: translateX(-50px);
-    }
-    to {
+    /* Animación deshabilitada para timeline-items */
+    from, to {
       opacity: 1;
       transform: translateX(0);
     }
   }
 
   @keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    to {
+    /* Animación deshabilitada para timeline-items */
+    from, to {
       opacity: 1;
       transform: translateX(0);
     }
@@ -712,7 +706,6 @@
 
   /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
-    .timeline-item,
     .section-title,
     .section-subtitle {
       animation: none;
@@ -758,33 +751,49 @@
     let currentActivePoint = -1;
     let isAnimating = false;
     
-    // Configurar animaciones de elementos
+    // Configurar animaciones de elementos (solo para headers, no para timeline-items)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const element = entry.target as HTMLElement;
-          const delay = element.getAttribute('data-aos-delay') || '0';
-          const animationType = element.getAttribute('data-aos') || 'fade-up';
           
-          setTimeout(() => {
-            if (animationType === 'fade-right') {
-              element.style.animation = 'fadeInRight 0.8s ease-out forwards';
-            } else if (animationType === 'fade-left') {
-              element.style.animation = 'fadeInLeft 0.8s ease-out forwards';
-            } else {
-              element.style.animation = 'fadeInUp 0.8s ease-out forwards';
-            }
-          }, parseInt(delay));
-          
-          observer.unobserve(element);
+          // Solo animar elementos que NO sean timeline-item
+          if (!element.classList.contains('timeline-item')) {
+            const delay = element.getAttribute('data-aos-delay') || '0';
+            const animationType = element.getAttribute('data-aos') || 'fade-up';
+            
+            setTimeout(() => {
+              if (animationType === 'fade-right') {
+                element.style.animation = 'fadeInRight 0.8s ease-out forwards';
+              } else if (animationType === 'fade-left') {
+                element.style.animation = 'fadeInLeft 0.8s ease-out forwards';
+              } else {
+                element.style.animation = 'fadeInUp 0.8s ease-out forwards';
+              }
+            }, parseInt(delay));
+            
+            observer.unobserve(element);
+          }
         }
       });
     }, {
       threshold: 0.3
     });
 
-    timelineItems.forEach((item) => {
-      observer.observe(item);
+    // Solo observar elementos que no sean timeline-item y eliminar atributos data-aos de timeline-items
+    document.querySelectorAll('[data-aos]').forEach((item) => {
+      if (item.classList.contains('timeline-item')) {
+        // Remover atributos de animación de timeline-items
+        item.removeAttribute('data-aos');
+        item.removeAttribute('data-aos-delay');
+        // Asegurar que estén completamente visibles y estáticos
+        const element = item as HTMLElement;
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+        element.style.animation = 'none';
+      } else {
+        observer.observe(item);
+      }
     });
 
     // Función para animar hasta un punto específico
