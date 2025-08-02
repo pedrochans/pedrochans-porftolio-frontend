@@ -34,8 +34,8 @@ const { title } = Astro.props;
     <link rel="manifest" href="/favicon/site.webmanifest" />
     
     <!-- Meta tags adicionales para PWA -->
-    <meta name="theme-color" content="#8b5cf6" />
-    <meta name="background-color" content="#0f0f23" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="background-color" content="#0c1427" />
     <meta name="display" content="standalone" />
     
     <!-- Open Graph para redes sociales -->
@@ -52,7 +52,7 @@ const { title } = Astro.props;
     <meta name="twitter:image" content="/favicon/web-app-manifest-512x512.png" />
     
     <!-- Microsoft Tiles para Windows -->
-    <meta name="msapplication-TileColor" content="#8b5cf6" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
     <meta name="msapplication-TileImage" content="/favicon/web-app-manifest-192x192.png" />
     <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
     
@@ -73,14 +73,14 @@ const { title } = Astro.props;
 <style is:global>
   :root {
     /* Colors */
-    --bg-primary: #0f0f23;
-    --bg-secondary: #1a1a2e;
-    --bg-tertiary: #16213e;
+    --bg-primary: #0c1427;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #1e40af;
     --text-primary: #ffffff;
-    --text-secondary: #a0a9c0;
-    --accent-primary: #8b5cf6;
-    --accent-secondary: #3b82f6;
-    --accent-tertiary: #06b6d4;
+    --text-secondary: #b0b9d0;
+    --accent-primary: #3b82f6;
+    --accent-secondary: #1d4ed8;
+    --accent-tertiary: #0ea5e9;
     --border-color: rgba(255, 255, 255, 0.1);
     
     /* Spacing */
@@ -161,12 +161,12 @@ const { title } = Astro.props;
   .btn-primary {
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     color: white;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
   }
 
   .btn-secondary {
@@ -181,7 +181,7 @@ const { title } = Astro.props;
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+    background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-primary), var(--accent-secondary));
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
