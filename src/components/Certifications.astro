@@ -350,7 +350,7 @@
 
   .cert-info-content {
     opacity: 0;
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: absolute;
     top: 0;
     left: 0;
@@ -362,12 +362,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    visibility: hidden;
   }
 
   .cert-info-content.active {
     opacity: 1;
     transform: translateY(0) scale(1);
     pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0.2s;
   }
 
   /* ===== ESTRUCTURA PRINCIPAL ===== */
@@ -948,21 +951,23 @@
     const certContents = document.querySelectorAll('.cert-info-content');
     let currentActive = 'snowpro'; // Certificación activa por defecto
 
-    // Función para mostrar información de certificación
+    // Función para mostrar información de certificación con transición mejorada
     const showCertInfo = (certType: string) => {
       if (currentActive === certType) return;
       
-      // Ocultar contenido actual
+      // Fase 1: Ocultar contenido actual inmediatamente
       certContents.forEach(content => {
         const contentElement = content as HTMLElement;
         contentElement.classList.remove('active');
       });
       
-      // Mostrar nuevo contenido
-      const targetContent = document.getElementById(`cert-${certType}`) as HTMLElement;
-      if (targetContent) {
-        targetContent.classList.add('active');
-      }
+      // Fase 2: Después de un breve retraso, mostrar nuevo contenido
+      setTimeout(() => {
+        const targetContent = document.getElementById(`cert-${certType}`) as HTMLElement;
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      }, 150); // Retraso de 150ms para evitar solapamiento
       
       // Actualizar certificaciones activas
       certWrappers.forEach(wrapper => {
