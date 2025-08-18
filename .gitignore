@@ -18,6 +18,7 @@ pnpm-debug.log*
 *.png
 *.svg
 *.webp
+*.pdf
 
 # environment variables
 .env
