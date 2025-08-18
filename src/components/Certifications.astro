@@ -19,28 +19,28 @@
       <!-- Medallas en línea horizontal -->
       <div class="medals-row" data-aos="fade-up" data-aos-delay="200">
         <div class="cert-container">
-          <div class="cert-image-wrapper" data-cert="snowpro">
+          <div class="cert-image-wrapper" data-cert="snowpro" data-url="https://achieve.snowflake.com/3567cd21-7bd0-4185-a8c4-93a74911df60">
             <img src="/img/SnowProCore.png" alt="SnowPro Core Certification" class="cert-image">
             <canvas class="shine-canvas"></canvas>
           </div>
         </div>
 
         <div class="cert-container">
-          <div class="cert-image-wrapper" data-cert="azure">
+          <div class="cert-image-wrapper" data-cert="azure" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/F44E777D5B6793A4?sharingId">
             <img src="/img/AZ-900.png" alt="Azure Fundamentals Certification" class="cert-image">
             <canvas class="shine-canvas"></canvas>
           </div>
         </div>
 
         <div class="cert-container">
-          <div class="cert-image-wrapper" data-cert="powerbi">
+          <div class="cert-image-wrapper" data-cert="powerbi" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/F44E777D5B6793A4?sharingId">
             <img src="/img/PL-300.png" alt="Power BI Data Analyst Associate Certification" class="cert-image">
             <canvas class="shine-canvas"></canvas>
           </div>
         </div>
 
         <div class="cert-container">
-          <div class="cert-image-wrapper" data-cert="fabric">
+          <div class="cert-image-wrapper" data-cert="fabric" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/230585922EFBFBA?sharingId">
             <img src="/img/DP-600-2.png" alt="Microsoft Fabric Analytics Engineer Associate Certification" class="cert-image">
             <canvas class="shine-canvas"></canvas>
           </div>
@@ -57,7 +57,7 @@
               </div>
               <div class="cert-title-section">
                 <h4 class="cert-title">SnowPro Core Certification</h4>
-                <p class="cert-description">Foundational knowledge of Snowflake's cloud data platform, architecture, and core features for data professionals.</p>
+                <p class="cert-description">Perform data loading and transformation. Monitor and optimize virtual warehouse performance and concurrencies. Execute DDL and DML queries. Use structured, semi-structured, and unstructured data.</p>
               </div>
             </div>
             <div class="cert-company">
@@ -271,6 +271,28 @@
     border-radius: 12px;
     overflow: hidden;
     display: inline-block;
+  }
+
+  /* ===== ESTILOS PARA MEDALLONES CLICKEABLES ===== */
+  .cert-image-wrapper[data-url] {
+    cursor: pointer !important;
+    user-select: none;
+    position: relative;
+    pointer-events: auto !important;
+    z-index: 999 !important;
+  }
+
+  .cert-image-wrapper[data-url] *:not(.cert-link-indicator) {
+    pointer-events: none !important;
+  }
+
+  .cert-image-wrapper[data-url]:hover {
+    cursor: pointer !important;
+    filter: brightness(1.15) !important;
+  }
+
+  .cert-image-wrapper[data-url]:active {
+    transform: scale(0.98) !important;
   }
 
   .cert-image {
@@ -1091,6 +1113,125 @@
 
     // Inicializar el efecto de brillo
     createShineEffect();
+
+    // ===== FUNCIONALIDAD DE CLICK EN MEDALLONES DE CERTIFICACIONES =====
+    const setupClickableCertifications = () => {
+      console.log('🔧 Configurando medallones clickeables...');
+      const clickableCerts = document.querySelectorAll('.cert-image-wrapper[data-url]');
+      console.log(`📍 Medallones encontrados: ${clickableCerts.length}`);
+      
+      if (clickableCerts.length === 0) {
+        console.warn('⚠️ No se encontraron medallones con data-url');
+        return;
+      }
+      
+      clickableCerts.forEach((element, index) => {
+        const htmlElement = element as HTMLElement;
+        const url = htmlElement.getAttribute('data-url');
+        const certType = htmlElement.getAttribute('data-cert');
+        console.log(`🏅 Medallón ${index + 1} (${certType}): URL = ${url}`);
+        
+        if (url) {
+          // Configuración de z-index y pointer events
+          htmlElement.style.zIndex = '999';
+          htmlElement.style.position = 'relative';
+          htmlElement.style.pointerEvents = 'auto';
+          htmlElement.style.cursor = 'pointer';
+          
+          // Asegurar que elementos hijos no interfieran
+          const childElements = htmlElement.querySelectorAll('*');
+          childElements.forEach(child => {
+            const childEl = child as HTMLElement;
+            childEl.style.pointerEvents = 'none';
+          });
+          
+          // Función de click
+          const clickHandler = (e: Event) => {
+            console.log(`🖱️ Click en medallón ${certType}: ${url}`);
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // Efecto visual de click
+            const originalTransform = htmlElement.style.transform;
+            htmlElement.style.transition = 'transform 0.1s ease';
+            htmlElement.style.transform = originalTransform + ' scale(0.95)';
+            
+            setTimeout(() => {
+              // Restaurar transformación
+              htmlElement.style.transform = originalTransform;
+              
+              // Abrir URL
+              try {
+                console.log(`🌐 Abriendo certificado: ${url}`);
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                
+                if (!newWindow || newWindow.closed) {
+                  console.warn('⚠️ window.open falló, intentando método alternativo...');
+                  
+                  // Método alternativo: crear enlace temporal
+                  const tempLink = document.createElement('a');
+                  tempLink.href = url;
+                  tempLink.target = '_blank';
+                  tempLink.rel = 'noopener noreferrer';
+                  document.body.appendChild(tempLink);
+                  tempLink.click();
+                  document.body.removeChild(tempLink);
+                  console.log('✅ Certificado abierto con enlace temporal');
+                } else {
+                  console.log('✅ Certificado abierto exitosamente');
+                }
+              } catch (error) {
+                console.error('❌ Error al abrir certificado:', error);
+                window.location.href = url;
+              }
+            }, 100);
+          };
+          
+          // Añadir event listeners
+          htmlElement.addEventListener('click', clickHandler, true);
+          htmlElement.addEventListener('click', clickHandler, false);
+          
+          // Efectos de hover mejorados
+          htmlElement.addEventListener('mouseenter', () => {
+            console.log(`🔍 Hover en medallón ${certType}`);
+            htmlElement.style.cursor = 'pointer';
+            htmlElement.style.filter = 'brightness(1.2) drop-shadow(0 0 15px rgba(59, 130, 246, 0.4))';
+          });
+
+          htmlElement.addEventListener('mouseleave', () => {
+            htmlElement.style.filter = '';
+          });
+          
+          console.log(`✅ Click listeners añadidos al medallón ${certType}`);
+        } else {
+          console.warn(`⚠️ Medallón ${index + 1} no tiene URL válida`);
+        }
+      });
+    };
+
+    // Ejecutar configuración de medallones clickeables
+    setupClickableCertifications();
+
+    // Verificación de medallones clickeables
+    setTimeout(() => {
+      console.log('🔍 Verificación de medallones clickeables...');
+      const finalCheck = document.querySelectorAll('.cert-image-wrapper[data-url]');
+      console.log(`📊 Total medallones clickeables: ${finalCheck.length}`);
+      
+      finalCheck.forEach((el, i) => {
+        const htmlEl = el as HTMLElement;
+        const url = htmlEl.getAttribute('data-url');
+        const certType = htmlEl.getAttribute('data-cert');
+        const isClickable = htmlEl.style.cursor === 'pointer';
+        
+        console.log(`📌 Medallón ${i + 1} (${certType}):`, {
+          url: url,
+          clickeable: isClickable,
+          hasAfterElement: window.getComputedStyle(htmlEl, '::after').content !== 'none'
+        });
+      });
+    }, 2000);
 
     // Event listeners para las imágenes de certificación
     certWrappers.forEach((wrapper) => {
