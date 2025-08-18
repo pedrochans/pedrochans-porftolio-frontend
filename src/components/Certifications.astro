@@ -126,49 +126,66 @@
         Additional Learning
       </h3>
       
-      <div class="courses-grid">
-        <div class="course-card" data-aos="fade-up" data-aos-delay="500">
-          <div class="course-header">
-            <div class="course-icon-container">
-              <span class="course-emoji">🐍</span>
+      <div class="additional-learning-grid">
+        <!-- Course on Machine Learning - Stanford -->
+        <div class="learning-card premium" data-aos="fade-up" data-aos-delay="500" data-url="https://www.coursera.org/account/accomplishments/verify/R55VSN2PEMW9">
+          <div class="learning-header">
+            <div class="learning-logo-container">
+              <img src="/img/stanford_logo.png" alt="Stanford University" class="learning-logo">
             </div>
-            <h4>Advanced Python for Data Science</h4>
+            <div class="learning-content">
+              <h4 class="learning-title">Course on Machine Learning</h4>
+              <p class="learning-provider">Stanford University</p>
+              <div class="learning-skills">
+                <span class="skill-tag">Machine Learning</span>
+              </div>
+            </div>
           </div>
-          <p class="course-provider">DataCamp</p>
-          <p class="course-description">Advanced Python techniques for data manipulation, analysis, and machine learning.</p>
         </div>
 
-        <div class="course-card" data-aos="fade-up" data-aos-delay="600">
-          <div class="course-header">
-            <div class="course-icon-container">
-              <span class="course-emoji">🤖</span>
+        <!-- LaTeX Course - USC -->
+        <div class="learning-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="learning-header">
+            <div class="learning-logo-container">
+              <img src="/img/USC_logo.png" alt="USC" class="learning-logo">
             </div>
-            <h4>Machine Learning Specialization</h4>
+            <div class="learning-content">
+              <h4 class="learning-title">LaTeX Text Composition and Editing Course</h4>
+              <p class="learning-provider">University of Santiago de Compostela</p>
+            </div>
           </div>
-          <p class="course-provider">Coursera</p>
-          <p class="course-description">Comprehensive course covering supervised and unsupervised learning algorithms.</p>
         </div>
 
-        <div class="course-card" data-aos="fade-up" data-aos-delay="700">
-          <div class="course-header">
-            <div class="course-icon-container">
-              <span class="course-emoji">☁️</span>
+        <!-- CELGA 4 - Xunta de Galicia -->
+        <div class="learning-card language" data-aos="fade-up" data-aos-delay="700">
+          <div class="learning-header">
+            <div class="learning-logo-container">
+              <img src="/img/xunta_galicia_logo.png" alt="Xunta de Galicia" class="learning-logo">
             </div>
-            <h4>AWS Cloud Practitioner</h4>
+            <div class="learning-content">
+              <h4 class="learning-title">CELGA 4</h4>
+              <p class="learning-provider">Government of Galicia</p>
+              <div class="learning-skills">
+                <span class="skill-tag language-tag">Galician</span>
+              </div>
+            </div>
           </div>
-          <p class="course-provider">AWS Training</p>
-          <p class="course-description">Fundamentals of Amazon Web Services cloud computing platform and services.</p>
         </div>
 
-        <div class="course-card" data-aos="fade-up" data-aos-delay="800">
-          <div class="course-header">
-            <div class="course-icon-container">
-              <span class="course-emoji">📊</span>
+        <!-- B2 First - Cambridge English -->
+        <div class="learning-card language" data-aos="fade-up" data-aos-delay="800">
+          <div class="learning-header">
+            <div class="learning-logo-container">
+              <img src="/img/cambridge_logo.png" alt="Cambridge English" class="learning-logo">
             </div>
-            <h4>Advanced SQL and Database Design</h4>
+            <div class="learning-content">
+              <h4 class="learning-title">B2 First</h4>
+              <p class="learning-provider">Cambridge English</p>
+              <div class="learning-skills">
+                <span class="skill-tag language-tag">English</span>
+              </div>
+            </div>
           </div>
-          <p class="course-provider">Udemy</p>
-          <p class="course-description">Complex SQL queries, optimization, and database design best practices.</p>
         </div>
       </div>
     </div>
@@ -731,74 +748,246 @@
     margin-bottom: 1.5rem;
   }
 
-  /* ===== GRID DE CURSOS ===== */
-  .courses-grid {
+  /* ===== GRID DE ADDITIONAL LEARNING ===== */
+  .additional-learning-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
+    margin-top: 2rem;
   }
 
-  .course-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
+  .learning-card {
+    background: linear-gradient(135deg, 
+      rgba(12, 20, 39, 0.8) 0%, 
+      rgba(30, 41, 59, 0.9) 50%, 
+      rgba(12, 20, 39, 0.8) 100%
+    );
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 1.5rem;
+    border-radius: 20px;
+    padding: 2rem;
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(30px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
 
-  .course-card[data-aos="fade-up"] {
+  .learning-card[data-url] {
+    cursor: pointer;
+  }
+
+  .learning-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+      var(--accent-primary) 0%, 
+      var(--accent-secondary) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .learning-card.premium::before {
+    background: linear-gradient(90deg, 
+      #f59e0b 0%, 
+      #d97706 50%, 
+      #92400e 100%
+    );
+  }
+
+  .learning-card.language::before {
+    background: linear-gradient(90deg, 
+      #10b981 0%, 
+      #059669 50%, 
+      #047857 100%
+    );
+  }
+
+  .learning-card[data-aos="fade-up"] {
     animation: fadeInUp 0.8s ease-out forwards;
   }
 
-  .course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    border-color: rgba(59, 130, 246, 0.2);
+  .learning-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.3);
   }
 
-  .course-header {
+  .learning-card:hover::before {
+    opacity: 1;
+  }
+
+  .learning-card[data-url]:hover {
+    cursor: pointer;
+    filter: brightness(1.05);
+  }
+
+  .learning-card[data-url]:active {
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  .learning-header {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
-  .course-icon-container {
-    width: 50px;
-    height: 50px;
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    border-radius: 12px;
+  .learning-logo-container {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
   }
 
-  .course-emoji {
-    font-size: 1.5rem;
+  .learning-card:hover .learning-logo-container {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(59, 130, 246, 0.2);
+    transform: scale(1.05);
   }
 
-  .course-header h4 {
-    font-size: 1.1rem;
+  .learning-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: brightness(1.1);
+    transition: all 0.3s ease;
+  }
+
+  .learning-card:hover .learning-logo {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+  }
+
+  .learning-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .learning-title {
+    font-size: 1.3rem;
     color: var(--text-primary);
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .learning-provider {
+    color: var(--accent-primary);
+    font-size: 1rem;
     font-weight: 600;
-    margin: 0;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0.01em;
   }
 
-  .course-provider {
-    color: var(--accent-secondary);
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-  }
-
-  .course-description {
+  .learning-date {
     color: var(--text-secondary);
-    line-height: 1.5;
     font-size: 0.9rem;
+    margin: 0 0 1rem 0;
+    opacity: 0.8;
+  }
+
+  .learning-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .skill-tag {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #93c5fd;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+  }
+
+  .skill-tag.language-tag {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #6ee7b7;
+  }
+
+  .learning-card:hover .skill-tag {
+    background: rgba(59, 130, 246, 0.25);
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .learning-card:hover .skill-tag.language-tag {
+    background: rgba(16, 185, 129, 0.25);
+    border-color: rgba(16, 185, 129, 0.5);
+  }
+
+  .learning-id {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Courier New', monospace;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.05em;
+  }
+
+  /* Efectos especiales para certificación premium */
+  .learning-card.premium {
+    position: relative;
+  }
+
+  .learning-card.premium::after {
+    content: '⭐';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  .learning-card.premium:hover::after {
+    opacity: 1;
+    transform: scale(1.2) rotate(15deg);
+  }
+
+  .learning-card.premium .learning-title {
+    background: linear-gradient(135deg, 
+      #f59e0b 0%, 
+      #d97706 50%, 
+      #92400e 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Efectos para certificaciones de idiomas */
+  .learning-card.language .learning-title {
+    background: linear-gradient(135deg, 
+      #10b981 0%, 
+      #059669 50%, 
+      #047857 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* ===== ANIMACIONES ===== */
@@ -890,6 +1079,54 @@
 
     .courses-grid {
       grid-template-columns: 1fr;
+    }
+
+    .additional-learning-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .learning-card {
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
+
+    .learning-header {
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .learning-logo-container {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+    }
+
+    .learning-logo {
+      width: 32px;
+      height: 32px;
+    }
+
+    .learning-title {
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    .learning-provider {
+      font-size: 0.9rem;
+    }
+
+    .learning-date {
+      font-size: 0.8rem;
+    }
+
+    .skill-tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+    }
+
+    .learning-id {
+      font-size: 0.7rem;
     }
 
     .medal {
@@ -1232,6 +1469,92 @@
         });
       });
     }, 2000);
+
+    // ===== FUNCIONALIDAD DE CLICK EN LEARNING CARDS =====
+    const setupClickableLearningCards = () => {
+      console.log('🔧 Configurando learning cards clickeables...');
+      const clickableLearning = document.querySelectorAll('.learning-card[data-url]');
+      console.log(`📚 Learning cards encontradas: ${clickableLearning.length}`);
+      
+      if (clickableLearning.length === 0) {
+        console.warn('⚠️ No se encontraron learning cards con data-url');
+        return;
+      }
+      
+      clickableLearning.forEach((element, index) => {
+        const htmlElement = element as HTMLElement;
+        const url = htmlElement.getAttribute('data-url');
+        const title = htmlElement.querySelector('.learning-title')?.textContent || 'Unknown';
+        console.log(`📖 Learning card ${index + 1} (${title}): URL = ${url}`);
+        
+        if (url) {
+          // Configuración de z-index y pointer events
+          htmlElement.style.zIndex = '999';
+          htmlElement.style.position = 'relative';
+          htmlElement.style.pointerEvents = 'auto';
+          htmlElement.style.cursor = 'pointer';
+          
+          // Función de click
+          const clickHandler = (e: Event) => {
+            console.log(`🖱️ Click en learning card "${title}": ${url}`);
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // Efecto visual de click
+            const originalTransform = htmlElement.style.transform;
+            htmlElement.style.transition = 'transform 0.1s ease';
+            htmlElement.style.transform = 'translateY(-6px) scale(0.98)';
+            
+            setTimeout(() => {
+              // Restaurar transformación
+              htmlElement.style.transform = originalTransform;
+              
+              // Abrir URL
+              try {
+                console.log(`🌐 Abriendo learning certificate: ${url}`);
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                
+                if (!newWindow || newWindow.closed) {
+                  console.warn('⚠️ window.open falló, intentando método alternativo...');
+                  
+                  // Método alternativo: crear enlace temporal
+                  const tempLink = document.createElement('a');
+                  tempLink.href = url;
+                  tempLink.target = '_blank';
+                  tempLink.rel = 'noopener noreferrer';
+                  document.body.appendChild(tempLink);
+                  tempLink.click();
+                  document.body.removeChild(tempLink);
+                  console.log('✅ Learning certificate abierto con enlace temporal');
+                } else {
+                  console.log('✅ Learning certificate abierto exitosamente');
+                }
+              } catch (error) {
+                console.error('❌ Error al abrir learning certificate:', error);
+                window.location.href = url;
+              }
+            }, 100);
+          };
+          
+          // Añadir event listeners
+          htmlElement.addEventListener('click', clickHandler, true);
+          htmlElement.addEventListener('click', clickHandler, false);
+          
+          // Efectos de hover
+          htmlElement.addEventListener('mouseenter', () => {
+            console.log(`🔍 Hover en learning card "${title}"`);
+          });
+          
+          console.log(`✅ Click listeners añadidos a learning card "${title}"`);
+        } else {
+          console.warn(`⚠️ Learning card ${index + 1} no tiene URL válida`);
+        }
+      });
+    };
+
+    // Ejecutar configuración de learning cards clickeables
+    setupClickableLearningCards();
 
     // Event listeners para las imágenes de certificación
     certWrappers.forEach((wrapper) => {
