@@ -21,6 +21,11 @@
 
       <!-- Educación - Izquierda -->
       <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
+        <!-- Imagen decorativa lado izquierdo del todo -->
+        <div class="timeline-image left-side">
+          <img src="/img/facultade_matematicas.jpg" alt="Education Image" class="timeline-img">
+        </div>
+        
         <div class="timeline-marker education" data-marker="1">
           <img src="/img/USC_logo.png" alt="USC Logo" class="logo-full">
         </div>
@@ -45,6 +50,11 @@
 
       <!-- Máster - Derecha -->
       <div class="timeline-item right" data-aos="fade-left" data-aos-delay="200">
+        <!-- Imagen decorativa lado derecho del todo -->
+        <div class="timeline-image right-side">
+          <img src="/img/placeholder-master.jpg" alt="Master Image" class="timeline-img">
+        </div>
+        
         <div class="timeline-marker education" data-marker="2">
           <img src="/img/UCM_logo.svg" alt="UCM Logo" class="logo-full">
         </div>
@@ -63,6 +73,11 @@
 
       <!-- Data Analyst - Izquierda -->
       <div class="timeline-item left" data-aos="fade-right" data-aos-delay="300">
+        <!-- Imagen decorativa lado izquierdo del todo -->
+        <div class="timeline-image left-side">
+          <img src="/img/placeholder-analyst.jpg" alt="Data Analyst Image" class="timeline-img">
+        </div>
+        
         <div class="timeline-marker work" data-marker="3">
           <img src="/img/minsait_logo.jpeg" alt="Minsait Logo" class="logo-full">
         </div>
@@ -91,6 +106,11 @@
 
       <!-- Data Consultant - Derecha -->
       <div class="timeline-item right" data-aos="fade-left" data-aos-delay="400">
+        <!-- Imagen decorativa lado derecho del todo -->
+        <div class="timeline-image right-side">
+          <img src="/img/placeholder-consultant.jpg" alt="Data Consultant Image" class="timeline-img">
+        </div>
+        
         <div class="timeline-marker work current" data-marker="4">
           <img src="/img/minsait_logo.jpeg" alt="Minsait Logo" class="logo-full">
         </div>
@@ -655,7 +675,109 @@
     z-index: -1 !important;
   }
 
+  /* ===== IMÁGENES RECTANGULARES EN TIMELINE ===== */
+  .timeline-image {
+    position: absolute;
+    width: 350px;
+    height: 220px;
+    z-index: 1;
+    opacity: 0.8;
+    pointer-events: none;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  /* Posicionamiento por lado - extremos para máximo aprovechamiento */
+  .timeline-image.left-side {
+    left: 8%;
+  }
+
+  .timeline-image.right-side {
+    right: 8%;
+  }
+
+  .timeline-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    filter: brightness(0.9) contrast(1.1);
+  }
+
+  /* Efectos hover en timeline items */
+  .timeline-item:hover .timeline-image {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+
+  .timeline-item:hover .timeline-img {
+    filter: brightness(1) contrast(1.2);
+  }
+
+  /* Estado highlighted para imágenes cuando la card está activa */
+  .timeline-content.highlighted ~ .timeline-image {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+    opacity: 1;
+  }
+
+  /* Overlay sutil para mejor integración */
+  .timeline-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(59, 130, 246, 0.1) 0%, 
+      rgba(59, 130, 246, 0.05) 50%, 
+      transparent 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
   /* Responsive */
+  @media (max-width: 1200px) {
+    .timeline-image {
+      width: 280px;
+      height: 180px;
+    }
+
+    .timeline-image.left-side {
+      left: 8%;
+    }
+
+    .timeline-image.right-side {
+      right: 8%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .timeline-image {
+      width: 240px;
+      height: 150px;
+      opacity: 0.7;
+    }
+
+    .timeline-image.left-side {
+      left: 8%;
+    }
+
+    .timeline-image.right-side {
+      right: 8%;
+    }
+  }
+
   @media (max-width: 768px) {
     .about {
       padding: 2rem 1rem;
@@ -664,6 +786,11 @@
     .about-container {
       padding: 2rem 1.5rem;
       border-radius: 16px;
+    }
+
+    /* Ocultar imágenes en mobile */
+    .timeline-image {
+      display: none !important;
     }
 
     .timeline-line-base,
