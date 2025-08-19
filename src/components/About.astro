@@ -21,8 +21,8 @@
 
       <!-- Educación - Izquierda -->
       <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
-        <!-- Imagen decorativa lado izquierdo del todo -->
-        <div class="timeline-image left-side">
+        <!-- Imagen única centrada para cards 1-2 -->
+        <div class="timeline-single-image left-side">
           <img src="/img/facultade_matematicas.jpg" alt="Education Image" class="timeline-img">
         </div>
         
@@ -50,9 +50,9 @@
 
       <!-- Máster - Derecha -->
       <div class="timeline-item right" data-aos="fade-left" data-aos-delay="200">
-        <!-- Imagen decorativa lado derecho del todo -->
-        <div class="timeline-image right-side">
-          <img src="/img/placeholder-master.jpg" alt="Master Image" class="timeline-img">
+        <!-- Imagen única centrada para cards 1-2 -->
+        <div class="timeline-single-image right-side">
+          <img src="/img/ucm.jpg" alt="Master Image" class="timeline-img">
         </div>
         
         <div class="timeline-marker education" data-marker="2">
@@ -73,9 +73,14 @@
 
       <!-- Data Analyst - Izquierda -->
       <div class="timeline-item left" data-aos="fade-right" data-aos-delay="300">
-        <!-- Imagen decorativa lado izquierdo del todo -->
-        <div class="timeline-image left-side">
-          <img src="/img/placeholder-analyst.jpg" alt="Data Analyst Image" class="timeline-img">
+        <!-- Grupo de imágenes para cards 3-4 -->
+        <div class="timeline-image-group left-side">
+          <div class="timeline-group-image first">
+            <img src="/img/indra_office.jpg" alt="Data Analyst Image" class="timeline-img">
+          </div>
+          <div class="timeline-group-image second">
+            <img src="/img/itx_office_2.jpg" alt="Snowflake Technology" class="timeline-img">
+          </div>
         </div>
         
         <div class="timeline-marker work" data-marker="3">
@@ -106,9 +111,14 @@
 
       <!-- Data Consultant - Derecha -->
       <div class="timeline-item right" data-aos="fade-left" data-aos-delay="400">
-        <!-- Imagen decorativa lado derecho del todo -->
-        <div class="timeline-image right-side">
-          <img src="/img/placeholder-consultant.jpg" alt="Data Consultant Image" class="timeline-img">
+        <!-- Grupo de imágenes para cards 3-4 -->
+        <div class="timeline-image-group right-side">
+          <div class="timeline-group-image first">
+            <img src="/img/itx_office.jpg" alt="Data Consultant Image" class="timeline-img">
+          </div>
+          <div class="timeline-group-image second">
+            <img src="/img/indra_group.jpg" alt="Microsoft Technology" class="timeline-img">
+          </div>
         </div>
         
         <div class="timeline-marker work current" data-marker="4">
@@ -675,57 +685,169 @@
     z-index: -1 !important;
   }
 
-  /* ===== IMÁGENES RECTANGULARES EN TIMELINE ===== */
-  .timeline-image {
+  /* ===== SISTEMA DE IMÁGENES PARA TIMELINE ===== */
+  
+  /* 1. IMÁGENES ÚNICAS (Cards 1-2) - Centradas verticalmente */
+  .timeline-single-image {
     position: absolute;
     width: 350px;
-    height: 220px;
+    height: 180px;
     z-index: 1;
-    opacity: 0.8;
+    opacity: 0;
     pointer-events: none;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 50%; /* Centrada verticalmente */
+    transform: translateY(-50%) rotate(-2deg) scale(0.8);
     border-radius: 16px;
     overflow: hidden;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(59, 130, 246, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Posicionamiento por lado - extremos para máximo aprovechamiento */
-  .timeline-image.left-side {
+  /* Estado visible para imágenes únicas */
+  .timeline-single-image.visible {
+    opacity: 0.8;
+    transform: translateY(-50%) rotate(0deg) scale(1);
+  }
+
+  /* Alternancia de rotación para imágenes únicas */
+  .timeline-item:nth-child(even) .timeline-single-image {
+    transform: translateY(-50%) rotate(2deg) scale(0.8);
+  }
+
+  .timeline-item:nth-child(even) .timeline-single-image.visible {
+    transform: translateY(-50%) rotate(0deg) scale(1);
+  }
+
+  /* Posicionamiento por lado para imágenes únicas */
+  .timeline-single-image.left-side {
     left: 8%;
   }
 
-  .timeline-image.right-side {
+  .timeline-single-image.right-side {
     right: 8%;
+  }
+
+  /* 2. GRUPOS DE IMÁGENES (Cards 3-4) - Contenedor centrado con imágenes apiladas */
+  .timeline-image-group {
+    position: absolute;
+    width: 350px;
+    height: 400px; /* Altura suficiente para dos imágenes */
+    z-index: 1;
+    top: 50%; /* Contenedor centrado */
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Estado visible para grupos de imágenes */
+  .timeline-image-group.visible {
+    opacity: 1;
+  }
+
+  /* Posicionamiento por lado para grupos */
+  .timeline-image-group.left-side {
+    left: 8%;
+  }
+
+  .timeline-image-group.right-side {
+    right: 8%;
+  }
+
+  /* Imágenes individuales dentro del grupo */
+  .timeline-group-image {
+    position: absolute;
+    width: 100%;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Primera imagen del grupo */
+  .timeline-group-image.first {
+    top: 0;
+    transform: rotate(-2deg) scale(0.8);
+  }
+
+  /* Segunda imagen del grupo */
+  .timeline-group-image.second {
+    top: 200px; /* Separada de la primera */
+    transform: rotate(0deg) scale(0.8); /* Sin rotación inicial */
+  }
+
+  /* Estados visibles para imágenes del grupo */
+  .timeline-image-group.visible .timeline-group-image.first {
+    opacity: 0.8;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .timeline-image-group.visible .timeline-group-image.second {
+    opacity: 0.8;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Alternancia para grupos en elementos pares */
+  .timeline-item:nth-child(even) .timeline-group-image.first {
+    transform: rotate(2deg) scale(0.8);
+  }
+
+  /* Estado visible para primera imagen en elementos pares */
+  .timeline-item:nth-child(even) .timeline-image-group.visible .timeline-group-image.first {
+    opacity: 0.8;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Estilos comunes para todas las imágenes */
+  .timeline-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(1.1);
+  }
+
+  /* RESPONSIVE PARA NUEVO SISTEMA */
+  @media (max-width: 768px) {
+    /* Imágenes únicas en tablets */
+    .timeline-single-image {
+      width: 250px;
+      height: 160px;
+    }
+
+    /* Grupos de imágenes en tablets */
+    .timeline-image-group {
+      width: 250px;
+      height: 340px;
+    }
+
+    .timeline-group-image {
+      height: 150px;
+    }
+
+    .timeline-group-image.second {
+      top: 170px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    /* Ocultar todas las imágenes en móviles */
+    .timeline-single-image,
+    .timeline-image-group {
+      display: none !important;
+    }
   }
 
   .timeline-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.3s ease;
     filter: brightness(0.9) contrast(1.1);
   }
-
-  /* Efectos hover en timeline items */
-  .timeline-item:hover .timeline-image {
-    opacity: 1;
-    transform: translateY(-50%) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    border-color: rgba(59, 130, 246, 0.5);
-  }
-
-  .timeline-item:hover .timeline-img {
-    filter: brightness(1) contrast(1.2);
-  }
-
-  /* Estado highlighted para imágenes cuando la card está activa */
-  .timeline-content.highlighted ~ .timeline-image {
-    border-color: rgba(59, 130, 246, 0.5);
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
     opacity: 1;
   }
 
@@ -751,6 +873,27 @@
     .timeline-image {
       width: 280px;
       height: 180px;
+      transform: translateY(-50%) rotate(-1.5deg) scale(0.8);
+    }
+
+    .timeline-image.visible {
+      transform: translateY(-50%) rotate(-0.8deg) scale(1);
+    }
+
+    .timeline-item:nth-child(even) .timeline-image {
+      transform: translateY(-50%) rotate(1.5deg) scale(0.8);
+    }
+
+    .timeline-item:nth-child(even) .timeline-image.visible {
+      transform: translateY(-50%) rotate(0.8deg) scale(1);
+    }
+
+    .timeline-item:nth-child(odd):hover .timeline-image.visible {
+      transform: translateY(-50%) rotate(-0.8deg) scale(1.02);
+    }
+
+    .timeline-item:nth-child(even):hover .timeline-image.visible {
+      transform: translateY(-50%) rotate(0.8deg) scale(1.02);
     }
 
     .timeline-image.left-side {
@@ -766,7 +909,21 @@
     .timeline-image {
       width: 240px;
       height: 150px;
+      opacity: 0;
+      transform: translateY(-50%) rotate(-1deg) scale(0.8);
+    }
+
+    .timeline-image.visible {
       opacity: 0.7;
+      transform: translateY(-50%) rotate(-0.5deg) scale(1);
+    }
+
+    .timeline-item:nth-child(even) .timeline-image {
+      transform: translateY(-50%) rotate(1deg) scale(0.8);
+    }
+
+    .timeline-item:nth-child(even) .timeline-image.visible {
+      transform: translateY(-50%) rotate(0.5deg) scale(1);
     }
 
     .timeline-image.left-side {
@@ -788,7 +945,40 @@
       border-radius: 16px;
     }
 
-    /* Ocultar imágenes en mobile */
+    /* Ocultar imágenes en mobile pero mostrar con rotación mayor para tablets */
+    .timeline-image {
+      width: 250px;
+      height: 160px;
+      transform: translateY(-50%) rotate(-3deg) scale(0.8);
+    }
+
+    .timeline-image.visible {
+      transform: translateY(-50%) rotate(0deg) scale(1);
+    }
+
+    .timeline-item:nth-child(even) .timeline-image {
+      transform: translateY(-50%) rotate(3deg) scale(0.8);
+    }
+
+    .timeline-item:nth-child(even) .timeline-image.visible {
+      transform: translateY(-50%) rotate(0deg) scale(1);
+    }
+
+    /* Segundas imágenes en tablets - siempre derechas */
+    .timeline-image.second-image {
+      width: 250px; /* Mismo tamaño que la primera en tablets */
+      height: 160px; /* Mismo tamaño que la primera en tablets */
+      top: 65%; /* Mantener menor margen */
+      transform: translateY(-50%) rotate(0deg) scale(0.8);
+    }
+
+    .timeline-image.second-image.visible {
+      transform: translateY(-50%) rotate(0deg) scale(1);
+    }
+  }
+
+  @media (max-width: 600px) {
+    /* Ocultar completamente en pantallas muy pequeñas */
     .timeline-image {
       display: none !important;
     }
@@ -997,14 +1187,41 @@
         }
       });
       
-      // Actualizar contenidos
+      // Actualizar contenidos e imágenes
       timelineItems.forEach((item, index) => {
         const content = item.querySelector('.timeline-content') as HTMLElement;
+        const singleImage = item.querySelector('.timeline-single-image') as HTMLElement;
+        const imageGroup = item.querySelector('.timeline-image-group') as HTMLElement;
+        
         if (content) {
           if (index === pointIndex) {
             content.classList.add('highlighted');
           } else {
             content.classList.remove('highlighted');
+          }
+        }
+        
+        // Animar aparición de imágenes únicas (cards 1-2)
+        if (singleImage) {
+          if (index <= pointIndex) {
+            const imageDelay = (index - Math.max(0, currentActivePoint)) * 200;
+            setTimeout(() => {
+              singleImage.classList.add('visible');
+            }, Math.max(0, imageDelay));
+          } else {
+            singleImage.classList.remove('visible');
+          }
+        }
+        
+        // Animar aparición de grupos de imágenes (cards 3-4)
+        if (imageGroup) {
+          if (index <= pointIndex) {
+            const imageDelay = (index - Math.max(0, currentActivePoint)) * 200;
+            setTimeout(() => {
+              imageGroup.classList.add('visible');
+            }, Math.max(0, imageDelay));
+          } else {
+            imageGroup.classList.remove('visible');
           }
         }
       });
@@ -1066,7 +1283,12 @@
             
             timelineItems.forEach((item) => {
               const content = item.querySelector('.timeline-content') as HTMLElement;
+              const singleImage = item.querySelector('.timeline-single-image') as HTMLElement;
+              const imageGroup = item.querySelector('.timeline-image-group') as HTMLElement;
+              
               if (content) content.classList.remove('highlighted');
+              if (singleImage) singleImage.classList.remove('visible');
+              if (imageGroup) imageGroup.classList.remove('visible');
             });
             
             currentActivePoint = -1;
