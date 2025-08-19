@@ -1204,7 +1204,7 @@
         // Animar aparición de imágenes únicas (cards 1-2)
         if (singleImage) {
           if (index <= pointIndex) {
-            const imageDelay = (index - Math.max(0, currentActivePoint)) * 200;
+            const imageDelay = (index - Math.max(0, currentActivePoint)) * 150; // Reducido de 200 a 150ms
             setTimeout(() => {
               singleImage.classList.add('visible');
             }, Math.max(0, imageDelay));
@@ -1216,7 +1216,7 @@
         // Animar aparición de grupos de imágenes (cards 3-4)
         if (imageGroup) {
           if (index <= pointIndex) {
-            const imageDelay = (index - Math.max(0, currentActivePoint)) * 200;
+            const imageDelay = (index - Math.max(0, currentActivePoint)) * 150; // Reducido de 200 a 150ms
             setTimeout(() => {
               imageGroup.classList.add('visible');
             }, Math.max(0, imageDelay));
@@ -1230,7 +1230,7 @@
       
       setTimeout(() => {
         isAnimating = false;
-      }, 800);
+      }, 600); // Reducido de 800 a 600ms para mayor responsividad
     };
 
     // Detectar qué punto debe estar activo basado en el scroll
@@ -1247,7 +1247,8 @@
         
         const markerRect = marker.getBoundingClientRect();
         const markerCenter = markerRect.top + markerRect.height / 2;
-        const screenCenter = window.innerHeight / 2;
+        // Ajustar el centro de referencia más arriba para activación anticipada
+        const screenCenter = window.innerHeight * 0.4; // Cambiado de 0.5 a 0.4 para que active antes
         const distance = Math.abs(markerCenter - screenCenter);
         
         // Solo considerar marcadores que están visibles
@@ -1255,16 +1256,16 @@
         
         if (isVisible && distance < minDistance) {
           minDistance = distance;
-          // Solo activar si el marcador está suficientemente centrado
-          if (distance < window.innerHeight * 0.3) {
+          // Solo activar si el marcador está suficientemente centrado - UMBRAL REDUCIDO para activación más temprana
+          if (distance < window.innerHeight * 0.45) { // Cambiado de 0.3 a 0.45 para que active antes
             targetPoint = index;
           }
         }
       });
       
-      // Si estamos muy arriba de la timeline, no activar ningún punto
+      // Si estamos muy arriba de la timeline, no activar ningún punto - UMBRAL REDUCIDO para inicio más temprano
       const timelineRect = timeline.getBoundingClientRect();
-      if (timelineRect.top > window.innerHeight * 0.6) {
+      if (timelineRect.top > window.innerHeight * 0.75) { // Cambiado de 0.6 a 0.75 para que comience antes
         targetPoint = -1;
       }
       
@@ -1332,7 +1333,7 @@
       scrollTimeout = setTimeout(() => {
         updateTimelineProgress();
         scrollTimeout = null;
-      }, 16); // ~60fps
+      }, 8); // Reducido de 16 a 8ms para mayor responsividad (~120fps)
     };
 
     window.addEventListener('scroll', throttledUpdate);
