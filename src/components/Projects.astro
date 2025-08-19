@@ -4,13 +4,13 @@
 
 <section id="projects" class="projects-section">
   <div class="container">
-    <div class="section-header" data-aos="fade-up">
+    <div class="section-header">
       <h2 class="section-title">Projects</h2>
       <p class="section-subtitle">Explore all my work and projects</p>
     </div>
 
     <!-- Featured Project - MAGI-C -->
-    <div class="featured-project" data-aos="fade-up" data-aos-delay="200">
+    <div class="featured-project">
       <div class="project-badge">Featured Project</div>
       <div class="featured-content">
         <div class="featured-info">
@@ -53,7 +53,7 @@
     </div>
 
     <!-- Other Projects Grid -->
-    <div class="projects-grid" data-aos="fade-up" data-aos-delay="400">
+    <div class="projects-grid">
       
       <!-- Hackathon Inditex Project -->
       <div class="project-card" data-project="hackathon-inditex">
@@ -204,6 +204,9 @@
   .section-header {
     text-align: center;
     margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
   }
 
   .section-title {
@@ -238,6 +241,9 @@
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out 0.6s forwards;
   }
 
   .featured-project::before {
@@ -407,11 +413,37 @@
     50% { opacity: 0.9; }
   }
 
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Accessibility: Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .section-header,
+    .featured-project,
+    .projects-grid,
+    .project-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   /* Projects Grid */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 1.2s forwards;
   }
 
   .project-card {
@@ -424,7 +456,15 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
   }
+
+  .project-card:nth-child(1) { animation-delay: 1.4s; }
+  .project-card:nth-child(2) { animation-delay: 1.6s; }
+  .project-card:nth-child(3) { animation-delay: 1.8s; }
+  .project-card:nth-child(4) { animation-delay: 2.0s; }
 
   .project-card:hover {
     transform: translateY(-8px);
