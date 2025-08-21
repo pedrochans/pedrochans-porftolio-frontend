@@ -1,5 +1,7 @@
 ---
 // Header component con navegación principal
+import { Image } from 'astro:assets';
+import profileImage from '../assets/img/profile.jpg';
 ---
 
 <header class="header">
@@ -10,7 +12,16 @@
         <div class="profile-section">
           <!-- Foto de perfil -->
           <div class="profile-photo">
-            <img src="./img/profile.jpg" alt="Pedro Chans" class="profile-image" />
+            <Image 
+              src={profileImage}
+              alt="Pedro Chans" 
+              class="profile-image"
+              width={45}
+              height={45}
+              format="webp"
+              quality={85}
+              loading="eager"
+            />
           </div>
           
           <!-- Iconos sociales -->

@@ -1,5 +1,9 @@
 ---
 // Projects.astro - Showcase de proyectos profesionales y académicos
+import { Image } from 'astro:assets';
+
+// Importar imagen de proyecto
+import inditexProject from '../assets/img/inditex_2.jpg';
 ---
 
 <section id="projects" class="projects-section">
@@ -45,7 +49,7 @@
         </div>
         <div class="featured-visual">
           <div class="project-card-visual magi-c">
-            <img src="/img/inditex_2.jpg" alt="MAGI-C Project Logo" class="project-main-image" />
+            <Image src={inditexProject} alt="MAGI-C Project Logo" class="project-main-image" width={500} height={300} format="webp" quality={85} loading="lazy" />
             <div class="connection-lines"></div>
           </div>
         </div>

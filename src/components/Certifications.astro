@@ -1,5 +1,20 @@
 ---
 // Componente de Certificaciones con medallas interactivas
+import { Image } from 'astro:assets';
+
+// Importar imágenes de certificaciones
+import snowProCore from '../assets/img/SnowProCore.png';
+import az900 from '../assets/img/AZ-900.png';
+import pl300 from '../assets/img/PL-300.png';
+import dp600 from '../assets/img/DP-600-2.png';
+import snowflakeLogo from '../assets/img/snowflake_logo.png';
+import microsoftLogo from '../assets/img/microsoft_logo.png';
+
+// Importar logos de aprendizaje
+import stanfordLogo from '../assets/img/stanford_logo.png';
+import uscLogo from '../assets/img/USC_logo.png';
+import xuntaLogo from '../assets/img/xunta_galicia_logo.png';
+import cambridgeLogo from '../assets/img/cambridge_logo.png';
 ---
 
 <section id="certifications" class="certifications">
@@ -20,28 +35,28 @@
       <div class="medals-row" data-aos="fade-up" data-aos-delay="200">
         <div class="cert-container">
           <div class="cert-image-wrapper" data-cert="snowpro" data-url="https://achieve.snowflake.com/3567cd21-7bd0-4185-a8c4-93a74911df60">
-            <img src="/img/SnowProCore.png" alt="SnowPro Core Certification" class="cert-image">
+            <Image src={snowProCore} alt="SnowPro Core Certification" class="cert-image" width={120} height={120} format="webp" quality={90} loading="lazy" />
             <canvas class="shine-canvas"></canvas>
           </div>
         </div>
 
         <div class="cert-container">
           <div class="cert-image-wrapper" data-cert="azure" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/F44E777D5B6793A4?sharingId">
-            <img src="/img/AZ-900.png" alt="Azure Fundamentals Certification" class="cert-image">
+            <Image src={az900} alt="Azure Fundamentals Certification" class="cert-image" width={120} height={120} format="webp" quality={90} loading="lazy" />
             <canvas class="shine-canvas"></canvas>
           </div>
         </div>
 
         <div class="cert-container">
           <div class="cert-image-wrapper" data-cert="powerbi" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/F44E777D5B6793A4?sharingId">
-            <img src="/img/PL-300.png" alt="Power BI Data Analyst Associate Certification" class="cert-image">
+            <Image src={pl300} alt="Power BI Data Analyst Associate Certification" class="cert-image" width={120} height={120} format="webp" quality={90} loading="lazy" />
             <canvas class="shine-canvas"></canvas>
           </div>
         </div>
 
         <div class="cert-container">
           <div class="cert-image-wrapper" data-cert="fabric" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/230585922EFBFBA?sharingId">
-            <img src="/img/DP-600-2.png" alt="Microsoft Fabric Analytics Engineer Associate Certification" class="cert-image">
+            <Image src={dp600} alt="Microsoft Fabric Analytics Engineer Associate Certification" class="cert-image" width={120} height={120} format="webp" quality={90} loading="lazy" />
             <canvas class="shine-canvas"></canvas>
           </div>
         </div>
@@ -61,7 +76,7 @@
               </div>
             </div>
             <div class="cert-company">
-              <img src="/img/snowflake_logo.png" alt="Snowflake" class="company-logo">
+              <Image src={snowflakeLogo} alt="Snowflake" class="company-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
             </div>
           </div>
         </div>
@@ -78,7 +93,7 @@
               </div>
             </div>
             <div class="cert-company">
-              <img src="/img/microsoft_logo.png" alt="Microsoft" class="company-logo">
+              <Image src={microsoftLogo} alt="Microsoft" class="company-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
             </div>
           </div>
         </div>
@@ -95,7 +110,7 @@
               </div>
             </div>
             <div class="cert-company">
-              <img src="/img/microsoft_logo.png" alt="Microsoft" class="company-logo">
+              <Image src={microsoftLogo} alt="Microsoft" class="company-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
             </div>
           </div>
         </div>
@@ -112,7 +127,7 @@
               </div>
             </div>
             <div class="cert-company">
-              <img src="/img/microsoft_logo.png" alt="Microsoft" class="company-logo">
+              <Image src={microsoftLogo} alt="Microsoft" class="company-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
             </div>
           </div>
         </div>
@@ -130,7 +145,7 @@
         <div class="learning-card premium" data-aos="fade-up" data-aos-delay="500" data-url="https://www.coursera.org/account/accomplishments/verify/R55VSN2PEMW9">
           <div class="learning-header">
             <div class="learning-logo-container">
-              <img src="/img/stanford_logo.png" alt="Stanford University" class="learning-logo">
+              <Image src={stanfordLogo} alt="Stanford University" class="learning-logo" width={60} height={60} format="webp" quality={90} loading="lazy" />
             </div>
             <div class="learning-content">
               <h4 class="learning-title">Course on Machine Learning</h4>
@@ -146,7 +161,7 @@
         <div class="learning-card" data-aos="fade-up" data-aos-delay="600">
           <div class="learning-header">
             <div class="learning-logo-container">
-              <img src="/img/USC_logo.png" alt="USC" class="learning-logo">
+              <Image src={uscLogo} alt="USC" class="learning-logo" width={60} height={60} format="webp" quality={90} loading="lazy" />
             </div>
             <div class="learning-content">
               <h4 class="learning-title">LaTeX Text Composition and Editing Course</h4>
@@ -159,7 +174,7 @@
         <div class="learning-card language" data-aos="fade-up" data-aos-delay="700">
           <div class="learning-header">
             <div class="learning-logo-container">
-              <img src="/img/xunta_galicia_logo.png" alt="Xunta de Galicia" class="learning-logo">
+              <Image src={xuntaLogo} alt="Xunta de Galicia" class="learning-logo" width={60} height={60} format="webp" quality={90} loading="lazy" />
             </div>
             <div class="learning-content">
               <h4 class="learning-title">CELGA 4</h4>
@@ -175,7 +190,7 @@
         <div class="learning-card language" data-aos="fade-up" data-aos-delay="800">
           <div class="learning-header">
             <div class="learning-logo-container">
-              <img src="/img/cambridge_logo.png" alt="Cambridge English" class="learning-logo">
+              <Image src={cambridgeLogo} alt="Cambridge English" class="learning-logo" width={60} height={60} format="webp" quality={90} loading="lazy" />
             </div>
             <div class="learning-content">
               <h4 class="learning-title">B2 First</h4>

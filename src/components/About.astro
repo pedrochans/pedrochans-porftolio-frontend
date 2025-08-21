@@ -1,5 +1,20 @@
 ---
 // Componente About con línea temporal
+import { Image } from 'astro:assets';
+
+// Importar todas las imágenes del timeline
+import facultadeMatematicas from '../assets/img/facultade_matematicas.jpg';
+import uscLogo from '../assets/img/USC_logo.png';
+import lodzLogo from '../assets/img/lodz_logo.png';
+import ucmImage from '../assets/img/ucm.jpg';
+import ucmLogo from '../assets/img/UCM_logo.svg';
+import indraOffice from '../assets/img/indra_office.jpg';
+import itxOffice2 from '../assets/img/itx_office_2.jpg';
+import minsaitLogo from '../assets/img/minsait_logo.jpeg';
+import indraLogo from '../assets/img/indra_logo.jpg';
+import itxLogo from '../assets/img/itx_logo.png';
+import itxOffice from '../assets/img/itx_office.jpg';
+import indraGroup from '../assets/img/indra_group.jpg';
 ---
 
 <section id="about" class="about">
@@ -23,16 +38,16 @@
       <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
         <!-- Imagen única centrada para cards 1-2 -->
         <div class="timeline-single-image left-side">
-          <img src="/img/facultade_matematicas.jpg" alt="Education Image" class="timeline-img">
+          <Image src={facultadeMatematicas} alt="Education Image" class="timeline-img" width={350} height={180} format="webp" quality={80} loading="lazy" />
         </div>
         
         <div class="timeline-marker education" data-marker="1">
-          <img src="/img/USC_logo.png" alt="USC Logo" class="logo-full">
+          <Image src={uscLogo} alt="USC Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
         </div>
         <!-- Círculos adicionales para múltiples logos -->
         <div class="additional-circles">
           <div class="additional-circle circle-1 education">
-            <img src="/img/lodz_logo.png" alt="Lodz University Logo" class="logo-full">
+            <Image src={lodzLogo} alt="Lodz University Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
           </div>
         </div>
         <div class="timeline-content">
@@ -52,11 +67,11 @@
       <div class="timeline-item right" data-aos="fade-left" data-aos-delay="200">
         <!-- Imagen única centrada para cards 1-2 -->
         <div class="timeline-single-image right-side">
-          <img src="/img/ucm.jpg" alt="Master Image" class="timeline-img">
+          <Image src={ucmImage} alt="Master Image" class="timeline-img" width={350} height={180} format="webp" quality={80} loading="lazy" />
         </div>
         
         <div class="timeline-marker education" data-marker="2">
-          <img src="/img/UCM_logo.svg" alt="UCM Logo" class="logo-full">
+          <Image src={ucmLogo} alt="UCM Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
         </div>
         <div class="timeline-content">
           <div class="timeline-date">2021 - 2022</div>
@@ -76,23 +91,23 @@
         <!-- Grupo de imágenes para cards 3-4 -->
         <div class="timeline-image-group left-side">
           <div class="timeline-group-image first">
-            <img src="/img/indra_office.jpg" alt="Data Analyst Image" class="timeline-img">
+            <Image src={indraOffice} alt="Data Analyst Image" class="timeline-img" width={350} height={180} format="webp" quality={80} loading="lazy" />
           </div>
           <div class="timeline-group-image second">
-            <img src="/img/itx_office_2.jpg" alt="Snowflake Technology" class="timeline-img">
+            <Image src={itxOffice2} alt="Snowflake Technology" class="timeline-img" width={350} height={180} format="webp" quality={80} loading="lazy" />
           </div>
         </div>
         
         <div class="timeline-marker work" data-marker="3">
-          <img src="/img/minsait_logo.jpeg" alt="Minsait Logo" class="logo-full">
+          <Image src={minsaitLogo} alt="Minsait Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
         </div>
         <!-- Círculos adicionales para múltiples logos -->
         <div class="additional-circles">
           <div class="additional-circle circle-1 work">
-            <img src="/img/indra_logo.jpg" alt="Indra Logo" class="logo-full">
+            <Image src={indraLogo} alt="Indra Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
           </div>
           <div class="additional-circle circle-2 work">
-            <img src="/img/itx_logo.png" alt="Inditex Logo" class="logo-full">
+            <Image src={itxLogo} alt="Inditex Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
           </div>
         </div>
         <div class="timeline-content">
@@ -114,23 +129,23 @@
         <!-- Grupo de imágenes para cards 3-4 -->
         <div class="timeline-image-group right-side">
           <div class="timeline-group-image first">
-            <img src="/img/itx_office.jpg" alt="Data Consultant Image" class="timeline-img">
+            <Image src={itxOffice} alt="Data Consultant Image" class="timeline-img" width={350} height={180} format="webp" quality={80} loading="lazy" />
           </div>
           <div class="timeline-group-image second">
-            <img src="/img/indra_group.jpg" alt="Microsoft Technology" class="timeline-img">
+            <Image src={indraGroup} alt="Microsoft Technology" class="timeline-img" width={350} height={180} format="webp" quality={80} loading="lazy" />
           </div>
         </div>
         
         <div class="timeline-marker work current" data-marker="4">
-          <img src="/img/minsait_logo.jpeg" alt="Minsait Logo" class="logo-full">
+          <Image src={minsaitLogo} alt="Minsait Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
         </div>
         <!-- Círculos adicionales para múltiples logos -->
         <div class="additional-circles">
           <div class="additional-circle circle-1 work">
-            <img src="/img/indra_logo.jpg" alt="Indra Logo" class="logo-full">
+            <Image src={indraLogo} alt="Indra Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
           </div>
           <div class="additional-circle circle-2 current">
-            <img src="/img/itx_logo.png" alt="Inditex Logo" class="logo-full">
+            <Image src={itxLogo} alt="Inditex Logo" class="logo-full" width={90} height={90} format="webp" quality={90} loading="lazy" />
           </div>
         </div>
         <div class="timeline-content">
@@ -320,7 +335,6 @@
   .timeline-marker.current {
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-    animation: pulse 2s infinite;
   }
 
   .timeline-marker.activated {
@@ -606,14 +620,7 @@
     }
   }
 
-  @keyframes pulse {
-    0%, 100% {
-      box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-    }
-    50% {
-      box-shadow: 0 0 50px rgba(59, 130, 246, 0.8);
-    }
-  }
+
 
   @keyframes markerActivated {
     0% {
