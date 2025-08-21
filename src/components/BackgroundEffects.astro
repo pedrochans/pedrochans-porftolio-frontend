@@ -10,13 +10,15 @@ const { variant = 'particles' } = Astro.props;
 <div class={`background-effects ${variant}`}>
   {variant === 'particles' && (
     <div class="particles-container">
-      {Array.from({ length: 100 }).map((_, i) => (
+      {/* Reduce particles from 100 to 30 for better performance */}
+      {Array.from({ length: 30 }).map((_, i) => (
         <div 
           class="particle" 
           style={`
-            --delay: ${Math.random() * 10}s; 
-            --duration: ${10 + Math.random() * 20}s;
-            --size: ${1 + Math.random() * 3}px;
+            --delay: ${(i * 2) % 10}s; 
+            --duration: ${15 + (i % 10)}s;
+            --size: ${1 + (i % 3)}px;
+            --x: ${(i * 13) % 100}%;
           `}
         ></div>
       ))}
@@ -25,14 +27,15 @@ const { variant = 'particles' } = Astro.props;
   
   {variant === 'stars' && (
     <div class="stars-container">
-      {Array.from({ length: 200 }).map((_, i) => (
+      {/* Reduce stars from 200 to 60 for better performance */}
+      {Array.from({ length: 60 }).map((_, i) => (
         <div 
           class="star" 
           style={`
-            --delay: ${Math.random() * 5}s;
-            --x: ${Math.random() * 100}%;
-            --y: ${Math.random() * 100}%;
-            --size: ${0.5 + Math.random() * 2}px;
+            --delay: ${(i * 0.5) % 5}s;
+            --x: ${(i * 7) % 100}%;
+            --y: ${(i * 11) % 100}%;
+            --size: ${0.5 + (i % 3) * 0.5}px;
           `}
         ></div>
       ))}
@@ -52,9 +55,12 @@ const { variant = 'particles' } = Astro.props;
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
+    /* Enable hardware acceleration */
+    will-change: transform;
+    transform: translateZ(0);
   }
 
-  /* Gradient Overlay */
+  /* Gradient Overlay - Simplified animation */
   .gradient-overlay {
     position: absolute;
     top: 0;
@@ -63,85 +69,78 @@ const { variant = 'particles' } = Astro.props;
     height: 100%;
     background: radial-gradient(
       ellipse 80% 50% at 50% -20%, 
-      rgba(59, 130, 246, 0.15) 0%, 
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse 60% 50% at 80% 50%, 
       rgba(59, 130, 246, 0.1) 0%, 
       transparent 50%
     ),
     radial-gradient(
-      ellipse 60% 50% at 40% 80%, 
-      rgba(6, 182, 212, 0.08) 0%, 
+      ellipse 60% 50% at 80% 50%, 
+      rgba(59, 130, 246, 0.08) 0%, 
       transparent 50%
     );
-    animation: gradientMove 20s ease-in-out infinite;
+    /* Simplified animation - less intensive */
+    animation: gradientMove 30s ease-in-out infinite;
   }
 
   @keyframes gradientMove {
     0%, 100% {
-      filter: hue-rotate(0deg);
+      opacity: 0.8;
     }
     50% {
-      filter: hue-rotate(45deg);
+      opacity: 1;
     }
   }
 
-  /* Particles Effect */
+  /* Particles Effect - Optimized */
   .particles-container {
     position: relative;
     width: 100%;
     height: 100%;
+    /* Enable hardware acceleration for container */
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .particle {
     position: absolute;
+    left: var(--x);
     width: var(--size, 2px);
     height: var(--size, 2px);
-    background: linear-gradient(45deg, 
-      rgba(59, 130, 246, 0.8), 
-      rgba(59, 130, 246, 0.6), 
-      rgba(6, 182, 212, 0.4)
-    );
+    background: rgba(59, 130, 246, 0.6);
     border-radius: 50%;
-    box-shadow: 0 0 10px currentColor;
-    animation: 
-      particleFloat var(--duration, 15s) var(--delay, 0s) infinite linear,
-      particleGlow 2s ease-in-out infinite alternate;
+    /* Simplified animation - single transform-based animation */
+    animation: particleFloat var(--duration, 20s) var(--delay, 0s) infinite linear;
+    /* Enable hardware acceleration */
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   @keyframes particleFloat {
     0% {
-      transform: translateY(100vh) translateX(0) rotate(0deg);
+      transform: translate3d(0, 100vh, 0) scale(0);
       opacity: 0;
     }
     10% {
-      opacity: 1;
+      opacity: 0.8;
+      transform: translate3d(0, 90vh, 0) scale(1);
     }
     90% {
-      opacity: 1;
+      opacity: 0.8;
+      transform: translate3d(100px, 10vh, 0) scale(1);
     }
     100% {
-      transform: translateY(-100px) translateX(200px) rotate(360deg);
+      transform: translate3d(200px, -10vh, 0) scale(0);
       opacity: 0;
     }
   }
 
-  @keyframes particleGlow {
-    from {
-      box-shadow: 0 0 5px currentColor;
-    }
-    to {
-      box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
-    }
-  }
-
-  /* Stars Effect */
+  /* Stars Effect - Optimized */
   .stars-container {
     position: relative;
     width: 100%;
     height: 100%;
+    /* Enable hardware acceleration */
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .star {
@@ -150,61 +149,66 @@ const { variant = 'particles' } = Astro.props;
     top: var(--y);
     width: var(--size, 1px);
     height: var(--size, 1px);
-    background: white;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
-    animation: 
-      starTwinkle 3s var(--delay, 0s) infinite ease-in-out,
-      starMove 20s linear infinite;
+    /* Simplified single animation */
+    animation: starTwinkle 4s var(--delay, 0s) infinite ease-in-out;
+    /* Enable hardware acceleration */
+    will-change: opacity;
+    backface-visibility: hidden;
   }
 
   .star:nth-child(3n) {
-    background: rgba(59, 130, 246, 0.8);
-  }
-
-  .star:nth-child(4n) {
-    background: rgba(59, 130, 246, 0.8);
+    background: rgba(59, 130, 246, 0.6);
   }
 
   .star:nth-child(5n) {
-    background: rgba(6, 182, 212, 0.8);
+    background: rgba(6, 182, 212, 0.6);
   }
 
   @keyframes starTwinkle {
     0%, 100% {
       opacity: 0.3;
-      transform: scale(1);
     }
     50% {
       opacity: 1;
-      transform: scale(1.2);
     }
   }
 
-  @keyframes starMove {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-2000px);
-    }
-  }
-
-  /* Responsive adjustments */
+  /* Responsive adjustments - More aggressive optimization */
   @media (max-width: 768px) {
     .particle {
       --size: 1px !important;
     }
     
-    .particles-container .particle:nth-child(n+51) {
+    /* Hide every other particle on mobile */
+    .particles-container .particle:nth-child(even) {
       display: none;
     }
     
-    .stars-container .star:nth-child(n+101) {
+    /* Hide every other star on mobile */
+    .stars-container .star:nth-child(even) {
+      display: none;
+    }
+    
+    /* Disable gradient animation on mobile */
+    .gradient-overlay {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Further reduce particles on small screens */
+    .particles-container .particle:nth-child(n+11) {
+      display: none;
+    }
+    
+    .stars-container .star:nth-child(n+21) {
       display: none;
     }
   }
 
-  /* Reduce motion for accessibility */
+  /* Reduce motion for accessibility and performance */
   @media (prefers-reduced-motion: reduce) {
     .particle,
     .star,
@@ -212,39 +216,50 @@ const { variant = 'particles' } = Astro.props;
       animation: none;
     }
     
-    .particle,
-    .star {
+    .particle {
       opacity: 0.3;
+      transform: translate3d(0, 50vh, 0);
+    }
+    
+    .star {
+      opacity: 0.5;
+    }
+  }
+
+  /* Performance optimization for low-end devices */
+  @media (max-width: 768px) and (max-height: 600px) {
+    .particles-container,
+    .stars-container {
+      display: none;
     }
   }
 </style>
 
 <script>
-  // Generar posiciones aleatorias para las partículas
+  // Optimized script - avoid random calculations during runtime
   document.addEventListener('DOMContentLoaded', () => {
-    const particles = document.querySelectorAll('.particle');
-    
-    particles.forEach((particle, index) => {
-      const left = Math.random() * 100;
-      const delay = Math.random() * 10;
-      const duration = 10 + Math.random() * 20;
+    // Use requestAnimationFrame for better performance
+    requestAnimationFrame(() => {
+      const particles = document.querySelectorAll('.particle');
       
-      (particle as HTMLElement).style.left = `${left}%`;
-      (particle as HTMLElement).style.setProperty('--delay', `${delay}s`);
-      (particle as HTMLElement).style.setProperty('--duration', `${duration}s`);
-    });
+      // Pre-calculate positions to avoid runtime calculations
+      particles.forEach((particle, index) => {
+        // Use deterministic positioning based on index
+        const left = (index * 17) % 100; // Pseudo-random but deterministic
+        
+        (particle as HTMLElement).style.left = `${left}%`;
+      });
 
-    // Generar posiciones para las estrellas
-    const stars = document.querySelectorAll('.star');
-    
-    stars.forEach((star) => {
-      const x = Math.random() * 100;
-      const y = Math.random() * 100;
-      const delay = Math.random() * 5;
+      const stars = document.querySelectorAll('.star');
       
-      (star as HTMLElement).style.setProperty('--x', `${x}%`);
-      (star as HTMLElement).style.setProperty('--y', `${y}%`);
-      (star as HTMLElement).style.setProperty('--delay', `${delay}s`);
+      stars.forEach((star, index) => {
+        // Use deterministic positioning
+        const x = (index * 13) % 100;
+        const y = (index * 23) % 100;
+        
+        (star as HTMLElement).style.setProperty('--x', `${x}%`);
+        (star as HTMLElement).style.setProperty('--y', `${y}%`);
+      });
     });
   });
 </script>
