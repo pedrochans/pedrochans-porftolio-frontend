@@ -49,6 +49,7 @@
     justify-content: center;
     position: relative;
     padding: 0 1rem;
+    padding-top: 80px;
     overflow: hidden;
   }
 
@@ -197,9 +198,16 @@
   }
 
   /* Responsive */
+  @media (max-width: 1024px) {
+    .hero {
+      padding-top: 120px;
+    }
+  }
+
   @media (max-width: 768px) {
     .hero {
       padding: 0 1rem;
+      padding-top: 140px;
     }
 
     .hero-actions {
@@ -215,6 +223,10 @@
   }
 
   @media (max-width: 480px) {
+    .hero {
+      padding-top: 160px;
+    }
+
     .hero-title {
       gap: 0.25rem;
     }
@@ -229,6 +241,12 @@
 
     .scroll-indicator {
       margin-top: 1.5rem;
+    }
+  }
+
+  @media (max-height: 600px) {
+    .hero {
+      padding-top: 100px;
     }
   }
 
