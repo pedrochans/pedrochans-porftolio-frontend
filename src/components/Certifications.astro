@@ -169,7 +169,16 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
+    <!-- Nueva Sección de Idiomas -->
+    <div class="languages-section">
+      <h3 class="subsection-title">
+        <span class="text-gradient">Languages</span>
+      </h3>
+      
+      <div class="languages-grid">
         <!-- CELGA 4 - Xunta de Galicia -->
         <div class="learning-card language" data-aos="fade-up" data-aos-delay="700">
           <div class="learning-header">
@@ -259,6 +268,11 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
   }
 
   .courses-section {
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+  }
+
+  .languages-section {
     margin-bottom: 1rem;
   }
 
@@ -781,7 +795,17 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
   .additional-learning-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== GRID DE LANGUAGES ===== */
+  .languages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin-top: 2rem;
     max-width: 1200px;
@@ -827,24 +851,14 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     transition: opacity 0.3s ease;
   }
 
-  .learning-card.premium::before {
-    background: linear-gradient(90deg, 
-      #f59e0b 0%, 
-      #d97706 50%, 
-      #92400e 100%
-    );
-  }
-
+  /* Cambiar todos los efectos a azul */
+  .learning-card.premium::before,
   .learning-card.language::before {
     background: linear-gradient(90deg, 
-      #10b981 0%, 
-      #059669 50%, 
-      #047857 100%
+      #3b82f6 0%, 
+      #1d4ed8 50%, 
+      #1e40af 100%
     );
-  }
-
-  .learning-card[data-aos="fade-up"] {
-    animation: fadeInUp 0.8s ease-out forwards;
   }
 
   .learning-card:hover {
@@ -954,10 +968,11 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     transition: all 0.3s ease;
   }
 
+  /* Cambiar language-tag a azul también */
   .skill-tag.language-tag {
-    background: rgba(16, 185, 129, 0.15);
-    border-color: rgba(16, 185, 129, 0.3);
-    color: #6ee7b7;
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #93c5fd;
   }
 
   .learning-card:hover .skill-tag {
@@ -966,43 +981,30 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     transform: translateY(-1px);
   }
 
+  /* Cambiar hover de language-tag a azul */
   .learning-card:hover .skill-tag.language-tag {
-    background: rgba(16, 185, 129, 0.25);
-    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(59, 130, 246, 0.25);
+    border-color: rgba(59, 130, 246, 0.5);
   }
 
-  .learning-id {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
-    font-family: 'Courier New', monospace;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    letter-spacing: 0.05em;
-  }
-
-  /* Efectos especiales para certificación premium */
-  .learning-card.premium {
-    position: relative;
-  }
-
+  /* Efectos especiales para certificación premium - cambiar a azul */
   .learning-card.premium .learning-title {
     background: linear-gradient(135deg, 
-      #f59e0b 0%, 
-      #d97706 50%, 
-      #92400e 100%
+      #3b82f6 0%, 
+      #1d4ed8 50%, 
+      #1e40af 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Efectos para certificaciones de idiomas */
+  /* Efectos para certificaciones de idiomas - cambiar a azul */
   .learning-card.language .learning-title {
     background: linear-gradient(135deg, 
-      #10b981 0%, 
-      #059669 50%, 
-      #047857 100%
+      #3b82f6 0%, 
+      #1d4ed8 50%, 
+      #1e40af 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1048,7 +1050,7 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
       height: 320px;
     }
 
-    .cert-info-content {
+    .cert_info-content {
       padding: 2rem 1.5rem;
       gap: 1.5rem;
     }
@@ -1100,7 +1102,8 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
       grid-template-columns: 1fr;
     }
 
-    .additional-learning-grid {
+    .additional-learning-grid,
+    .languages-grid {
       grid-template-columns: 1fr;
       grid-template-rows: auto;
       gap: 1.5rem;
