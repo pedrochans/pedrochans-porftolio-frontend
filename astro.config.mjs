@@ -25,8 +25,18 @@ export default defineConfig({
     })
   ],
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always', // Inline CSS crítico para evitar blocking
     assets: '_astro'
   },
-  compressHTML: true
+  compressHTML: true,
+  vite: {
+    build: {
+      cssCodeSplit: false, // Evitar múltiples requests CSS
+      rollupOptions: {
+        output: {
+          manualChunks: undefined // Optimizar chunks para reducir requests
+        }
+      }
+    }
+  }
 });
