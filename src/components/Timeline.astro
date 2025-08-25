@@ -1,0 +1,1074 @@
+---
+// Componente Timeline con línea vertical izquierda y anime.js
+import { Image } from 'astro:assets';
+
+// Importar todas las imágenes del timeline
+import facultadeMatematicas from '../assets/img/facultade_matematicas.jpg';
+import uscLogo from '../assets/img/USC_logo.png';
+import lodzLogo from '../assets/img/lodz_logo.png';
+import ucmImage from '../assets/img/ucm.jpg';
+import ucmLogo from '../assets/img/UCM_logo.svg';
+import indraOffice from '../assets/img/indra_office.jpg';
+import itxOffice from '../assets/img/itx_office.jpg';
+import minsaitLogo from '../assets/img/minsait_logo.jpeg';
+import indraLogo from '../assets/img/indra_logo.jpg';
+import itxLogo from '../assets/img/itx_logo.png';
+import indraGroup from '../assets/img/indra_group.jpg';
+---
+
+<section id="timeline" class="timeline-section">
+  <div class="timeline-container">
+    <!-- Header de la sección -->
+    <div class="timeline-header">
+      <h2 class="section-title">
+        <span class="text-gradient">My Journey</span>
+      </h2>
+      <p class="section-subtitle">
+        Professional and academic milestones that shaped my career
+      </p>
+    </div>
+
+    <!-- Timeline Layout -->
+    <div class="timeline-layout">
+      
+      <!-- Timeline Line (Lado Izquierdo) -->
+      <div class="timeline-line-container">
+        <div class="timeline-line-base"></div>
+        <div class="timeline-line-progress"></div>
+        
+        <!-- Timeline Dots/Markers -->
+        <div class="timeline-dot" data-step="0" data-year="2017-2021">
+          <div class="dot-inner education">
+            <Image src={uscLogo} alt="USC Logo" class="dot-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
+          </div>
+        </div>
+        
+        <div class="timeline-dot" data-step="1" data-year="2021-2022">
+          <div class="dot-inner education">
+            <Image src={ucmLogo} alt="UCM Logo" class="dot-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
+          </div>
+        </div>
+        
+        <div class="timeline-dot" data-step="2" data-year="2021-2023">
+          <div class="dot-inner work">
+            <Image src={minsaitLogo} alt="Minsait Logo" class="dot-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
+          </div>
+        </div>
+        
+        <div class="timeline-dot" data-step="3" data-year="2023-Today">
+          <div class="dot-inner work current">
+            <Image src={minsaitLogo} alt="Minsait Logo" class="dot-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Area (Lado Derecho) -->
+      <div class="timeline-content-area">
+        
+        <!-- Step 0: Grado en Matemáticas -->
+        <div class="timeline-step" data-step="0">
+          <div class="step-card">
+            <div class="card-header">
+              <div class="date-badge">2017 - 2021</div>
+              <div class="institution-logos">
+                <Image src={uscLogo} alt="USC Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+                <Image src={lodzLogo} alt="Lodz University Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="card-content">
+              <h3 class="step-title">Grado en Matemáticas</h3>
+              <p class="step-institution">Universidade de Santiago de Compostela • Lodz University</p>
+              
+              <div class="step-image">
+                <Image src={facultadeMatematicas} alt="Facultad de Matemáticas" class="content-image" width={500} height={300} format="webp" quality={85} loading="lazy" />
+              </div>
+              
+              <div class="step-achievements">
+                <div class="achievement">
+                  <span class="achievement-label">Average Grade:</span>
+                  <span class="achievement-value">8.4</span>
+                </div>
+                <div class="achievement">
+                  <span class="achievement-label">Final Project:</span>
+                  <span class="achievement-value">Computational Geometry</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1: Máster Big Data -->
+        <div class="timeline-step" data-step="1">
+          <div class="step-card">
+            <div class="card-header">
+              <div class="date-badge">2021 - 2022</div>
+              <div class="institution-logos">
+                <Image src={ucmLogo} alt="UCM Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="card-content">
+              <h3 class="step-title">Máster en Big Data & Data Science</h3>
+              <p class="step-institution">Universidad Complutense de Madrid</p>
+              
+              <div class="step-image">
+                <Image src={ucmImage} alt="UCM Campus" class="content-image" width={500} height={300} format="webp" quality={85} loading="lazy" />
+              </div>
+              
+              <div class="step-achievements">
+                <div class="achievement">
+                  <span class="achievement-label">Average Grade:</span>
+                  <span class="achievement-value">8.2</span>
+                </div>
+                <div class="achievement">
+                  <span class="achievement-label">Master Thesis:</span>
+                  <span class="achievement-value">KKBox Music Recommendation Challenge</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Data Analyst -->
+        <div class="timeline-step" data-step="2">
+          <div class="step-card">
+            <div class="card-header">
+              <div class="date-badge">2021 - 2023</div>
+              <div class="institution-logos">
+                <Image src={minsaitLogo} alt="Minsait Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+                <Image src={indraLogo} alt="Indra Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+                <Image src={itxLogo} alt="Inditex Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="card-content">
+              <h3 class="step-title">Data Analyst</h3>
+              <p class="step-institution">Indra • Minsait</p>
+              <p class="step-description">Business Intelligence and financial reporting</p>
+              
+              <div class="step-image">
+                <Image src={indraOffice} alt="Indra Office" class="content-image" width={500} height={300} format="webp" quality={85} loading="lazy" />
+              </div>
+              
+              <div class="step-achievements">
+                <div class="achievement">
+                  <span class="achievement-label">Key Skills:</span>
+                  <span class="achievement-value">PowerBI, SSRS, SQL</span>
+                </div>
+                <div class="achievement">
+                  <span class="achievement-label">Technologies:</span>
+                  <span class="achievement-value">DB2, Oracle, Snowflake</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Data Consultant -->
+        <div class="timeline-step" data-step="3">
+          <div class="step-card">
+            <div class="card-header">
+              <div class="date-badge">2023 - Today</div>
+              <div class="institution-logos">
+                <Image src={minsaitLogo} alt="Minsait Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+                <Image src={indraLogo} alt="Indra Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+                <Image src={itxLogo} alt="Inditex Logo" class="institution-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="card-content">
+              <h3 class="step-title">Data Consultant</h3>
+              <p class="step-institution">Indra • Minsait</p>
+              <p class="step-description">MAGI-C Project: Calculation of Gross Margin and Valuation of Inditex's Stock with different corporate perspectives</p>
+              
+              <div class="step-image">
+                <Image src={itxOffice} alt="Inditex Office" class="content-image" width={500} height={300} format="webp" quality={85} loading="lazy" />
+              </div>
+              
+              <div class="step-achievements">
+                <div class="achievement">
+                  <span class="achievement-label">Current Focus:</span>
+                  <span class="achievement-value">Snowflake SQL, Power BI</span>
+                </div>
+                <div class="achievement">
+                  <span class="achievement-label">Project Scale:</span>
+                  <span class="achievement-value">Enterprise-level data processing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+    /* Sin fondo - mantener el fondo original con estrellas */
+  }
+
+  .timeline-container {
+    max-width: 1400px;
+    height: 80vh;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    gap: 3rem;
+  }
+
+  /* ===== HEADER ===== */
+  .timeline-header {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 100;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  .section-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  /* ===== LAYOUT PRINCIPAL ===== */
+  .timeline-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 3rem;
+    margin-top: 8rem; /* Más espacio para evitar solapamiento */
+  }
+
+  /* ===== TIMELINE SIDE (IZQUIERDA 20%) ===== */
+  .timeline-line-container {
+    width: 20%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 1rem;
+    
+    /* Estilo de card como las demás */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* LÍNEA VERTICAL SIMPLE */
+  .timeline-line-base {
+    position: absolute;
+    left: 50%;
+    top: calc(3rem + 50px);  /* Padding + radio del primer círculo = centro del primer círculo */
+    width: 4px;
+    height: calc(100% - 6rem - 100px);  /* Altura total - padding - diámetro completo de círculos */
+    background: rgba(79, 172, 254, 0.2);
+    transform: translateX(-50%);
+    z-index: 1;
+    border-radius: 2px;
+  }
+
+  .timeline-line-progress {
+    position: absolute;
+    left: 50%;
+    top: calc(3rem + 50px);  /* Igual que la línea base */
+    width: 4px;
+    height: 0%;
+    background: linear-gradient(180deg, 
+      #4facfe 0%, 
+      #00f2fe 50%, 
+      #4facfe 100%
+    );
+    transform: translateX(-50%);
+    z-index: 2;
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+  }
+
+  /* CÍRCULOS DISTRIBUIDOS UNIFORMEMENTE */
+  .timeline-dot {
+    position: relative;
+    z-index: 10;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+  }
+
+  /* Eliminar posicionamiento absoluto - usar flexbox natural */
+  .timeline-dot[data-step="0"],
+  .timeline-dot[data-step="1"],
+  .timeline-dot[data-step="2"],
+  .timeline-dot[data-step="3"] {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+
+  .dot-inner {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .dot-inner.education {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+  }
+
+  .dot-inner.work {
+    background: linear-gradient(135deg, #059669, #047857);
+    box-shadow: 0 0 20px rgba(5, 150, 105, 0.3);
+  }
+
+  .dot-inner.current {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    box-shadow: 0 0 25px rgba(79, 172, 254, 0.4);
+  }
+
+  .timeline-dot.active .dot-inner {
+    transform: scale(1.2);
+    box-shadow: 0 0 40px rgba(79, 172, 254, 0.8);
+    border-color: rgba(79, 172, 254, 1);
+  }
+
+  .dot-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+  }
+
+  /* ===== CONTENT AREA (DERECHA 80%) ===== */
+  .timeline-content-area {
+    width: 80%;
+    height: 100%;
+    position: relative;
+    
+    /* Estilo de card como las demás */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    
+    /* Scroll controlado */
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    
+    /* Scrollbar personalizada */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(79, 172, 254, 0.5) transparent;
+  }
+
+  .timeline-content-area::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .timeline-content-area::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .timeline-content-area::-webkit-scrollbar-thumb {
+    background: rgba(79, 172, 254, 0.5);
+    border-radius: 4px;
+  }
+
+  .timeline-content-area::-webkit-scrollbar-thumb:hover {
+    background: rgba(79, 172, 254, 0.8);
+  }
+
+  .timeline-step {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    scroll-snap-align: start;
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .timeline-step.active {
+    opacity: 1;
+  }
+
+  /* ===== STEP CARDS (SIMPLIFICADAS) ===== */
+  .step-card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .step-card::before {
+    display: none;
+  }
+
+  /* ===== CARD HEADER ===== */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+  }
+
+  .date-badge {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #000;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .institution-logos {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .institution-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .institution-logo:hover {
+    transform: scale(1.1);
+  }
+
+  /* ===== CARD HEADER ===== */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+    flex-shrink: 0;
+  }
+
+  .date-badge {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .institution-logos {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .institution-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .institution-logo:hover {
+    transform: scale(1.1);
+  }
+
+  /* ===== CARD CONTENT (SIMPLIFICADO) ===== */
+  .card-content {
+    padding: 0 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
+  }
+
+  .step-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .step-institution {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: #4facfe;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .step-description {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .step-image {
+    margin: 1rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    max-height: 250px;
+  }
+
+  .content-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .step-card:hover .content-image {
+    transform: scale(1.05);
+  }
+
+  /* ===== ACHIEVEMENTS (SIMPLIFICADAS) ===== */
+  .step-achievements {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-shrink: 0;
+  }
+
+  .achievement {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: all 0.3s ease;
+  }
+
+  .achievement:hover {
+    background: rgba(79, 172, 254, 0.08);
+    border-color: rgba(79, 172, 254, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .achievement-label {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .achievement-value {
+    display: block;
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .timeline-container {
+      padding: 1.5rem;
+      height: 75vh;
+    }
+
+    .timeline-layout {
+      gap: 2rem;
+      margin-top: 5rem;
+    }
+
+    .timeline-line-container {
+      width: 25%;
+    }
+
+    .timeline-content-area {
+      width: 75%;
+    }
+
+    .dot-inner {
+      width: 80px;
+      height: 80px;
+    }
+
+    .dot-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .step-title {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .timeline-section {
+      padding: 3rem 1rem;
+    }
+
+    .timeline-container {
+      height: 70vh;
+      padding: 1rem;
+    }
+
+    .timeline-layout {
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .timeline-line-container {
+      width: 100%;
+      height: 25%;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+    }
+
+    .timeline-line-base {
+      position: absolute;
+      top: 50%;
+      left: calc(3rem + 30px);  /* Padding + radio del primer círculo en móvil */
+      width: calc(100% - 6rem - 60px);  /* Ancho total - padding - diámetro de círculos móvil */
+      height: 4px;
+      transform: translateY(-50%);
+    }
+
+    .timeline-line-progress {
+      position: absolute;
+      top: 50%;
+      left: calc(3rem + 30px);  /* Igual que la línea base */
+      width: 0%;
+      height: 4px;
+      transform: translateY(-50%);
+    }
+
+    .timeline-dot {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .timeline-content-area {
+      width: 100%;
+      height: 75%;
+    }
+
+    .dot-inner {
+      width: 60px;
+      height: 60px;
+    }
+
+    .dot-logo {
+      width: 35px;
+      height: 35px;
+    }
+
+    .step-card {
+      padding: 1.2rem;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .card-header {
+      flex-direction: column;
+      gap: 0.8rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .date-badge {
+      font-size: 0.8rem;
+      padding: 0.6rem 1.2rem;
+    }
+
+    .institution-logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .step-title {
+      font-size: clamp(1.3rem, 4vw, 1.6rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-institution {
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-description {
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      margin-bottom: 1rem;
+    }
+
+    .content-image {
+      height: 120px;
+    }
+
+    .step-image {
+      margin: 0.8rem 0;
+      max-height: 120px;
+    }
+
+    .step-achievements {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .achievement {
+      padding: 0.8rem;
+    }
+
+    .achievement-label {
+      font-size: 0.7rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .achievement-value {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .timeline-section {
+      padding: 2rem 0.5rem;
+    }
+
+    .timeline-container {
+      height: 65vh;
+      padding: 0.5rem;
+    }
+
+    .timeline-layout {
+      margin-top: 3rem;
+    }
+
+    .dot-inner {
+      width: 50px;
+      height: 50px;
+    }
+
+    .dot-logo {
+      width: 30px;
+      height: 30px;
+    }
+
+    .step-card {
+      padding: 1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Declaraciones de tipos para anime.js
+  interface AnimeInstance {
+    (params: any): any;
+    timeline: (params: any) => any;
+    stagger: (value: number, options?: any) => any;
+  }
+
+  declare const anime: AnimeInstance;
+
+  // Importar anime.js desde CDN
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js';
+  script.onload = initializeTimeline;
+  document.head.appendChild(script);
+
+  function initializeTimeline(): void {
+    // Verificar que anime esté disponible
+    if (typeof anime === 'undefined') {
+      console.error('anime.js no está cargado');
+      return;
+    }
+
+    const timelineSteps = document.querySelectorAll('.timeline-step');
+    const timelineDots = document.querySelectorAll('.timeline-dot');
+    const timelineProgress = document.querySelector('.timeline-line-progress') as HTMLElement;
+    const contentArea = document.querySelector('.timeline-content-area') as HTMLElement;
+    const sectionTitle = document.querySelector('.timeline-section .section-title') as HTMLElement;
+    const sectionSubtitle = document.querySelector('.timeline-section .section-subtitle') as HTMLElement;
+    
+    let currentActiveStep = 0;
+    const totalSteps = timelineSteps.length;
+
+    // Animación inicial del header
+    anime.timeline({
+      easing: 'easeOutExpo',
+      duration: 1000
+    })
+    .add({
+      targets: sectionTitle,
+      opacity: [0, 1],
+      translateY: [50, 0],
+      delay: 200
+    })
+    .add({
+      targets: sectionSubtitle,
+      opacity: [0, 1],
+      translateY: [30, 0],
+      delay: 100
+    }, '-=800');
+
+    // Animación inicial de los dots
+    anime({
+      targets: '.timeline-dot',
+      opacity: [0, 1],
+      scale: [0.5, 1],
+      duration: 800,
+      delay: 800,
+      easing: 'easeOutElastic(1, .8)'
+    });
+
+    // Función para activar un step específico
+    function activateStep(stepIndex: number): void {
+      if (stepIndex === currentActiveStep) return;
+
+      // Desactivar step anterior
+      const prevStep = timelineSteps[currentActiveStep];
+      const prevDot = timelineDots[currentActiveStep];
+      if (prevStep) prevStep.classList.remove('active');
+      if (prevDot) prevDot.classList.remove('active');
+
+      // Activar nuevo step
+      currentActiveStep = stepIndex;
+      const currentStep = timelineSteps[stepIndex];
+      const currentDot = timelineDots[stepIndex];
+
+      if (currentStep) currentStep.classList.add('active');
+      if (currentDot) {
+        currentDot.classList.add('active');
+        
+        // Animar el dot
+        const dotInner = currentDot.querySelector('.dot-inner') as HTMLElement;
+        if (dotInner) {
+          anime({
+            targets: dotInner,
+            scale: [1, 1.3, 1.2],
+            duration: 600,
+            easing: 'easeOutElastic(1, .6)'
+          });
+        }
+      }
+
+      // Animar la línea de progreso basada en flexbox
+      const progressHeight = ((stepIndex + 1) / totalSteps) * 100; // Porcentaje de la altura total disponible
+      anime({
+        targets: timelineProgress,
+        height: `${progressHeight}%`,
+        duration: 800,
+        easing: 'easeOutCubic'
+      });
+    }
+
+    // Función para determinar qué step está visible
+    function updateActiveStep(): void {
+      if (!contentArea) return;
+
+      const scrollTop = contentArea.scrollTop;
+      const containerHeight = contentArea.clientHeight;
+      
+      // Calcular qué step está más visible (más simple y controlado)
+      const stepIndex = Math.round(scrollTop / containerHeight);
+      const clampedIndex = Math.max(0, Math.min(totalSteps - 1, stepIndex));
+      
+      activateStep(clampedIndex);
+    }
+
+    // Event listener para scroll en el área de contenido (más controlado)
+    if (contentArea) {
+      let scrollTimeout: number | null = null;
+      let isScrolling = false;
+      
+      contentArea.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+        
+        isScrolling = true;
+        
+        scrollTimeout = window.setTimeout(() => {
+          updateActiveStep();
+          isScrolling = false;
+        }, 50); // Reducir debounce para mejor respuesta
+      });
+
+      // Scroll controlado con rueda del ratón (más suave y sin bloqueos)
+      contentArea.addEventListener('wheel', (e) => {
+        // Solo prevenir si no estamos en scroll libre
+        if (!isScrolling) {
+          e.preventDefault();
+          
+          const delta = e.deltaY;
+          const scrollAmount = contentArea.clientHeight;
+          
+          // Reducir threshold para mejor respuesta
+          if (Math.abs(delta) > 50) {
+            if (delta > 0 && currentActiveStep < totalSteps - 1) {
+              // Scroll hacia abajo
+              contentArea.scrollTo({
+                top: (currentActiveStep + 1) * scrollAmount,
+                behavior: 'smooth'
+              });
+            } else if (delta < 0 && currentActiveStep > 0) {
+              // Scroll hacia arriba
+              contentArea.scrollTo({
+                top: (currentActiveStep - 1) * scrollAmount,
+                behavior: 'smooth'
+              });
+            }
+          }
+        }
+      }, { passive: false });
+
+      // Permitir scroll libre con teclas
+      contentArea.addEventListener('keydown', (e) => {
+        const scrollAmount = contentArea.clientHeight;
+        
+        switch(e.key) {
+          case 'ArrowDown':
+          case 'PageDown':
+            e.preventDefault();
+            if (currentActiveStep < totalSteps - 1) {
+              contentArea.scrollTo({
+                top: (currentActiveStep + 1) * scrollAmount,
+                behavior: 'smooth'
+              });
+            }
+            break;
+          case 'ArrowUp':
+          case 'PageUp':
+            e.preventDefault();
+            if (currentActiveStep > 0) {
+              contentArea.scrollTo({
+                top: (currentActiveStep - 1) * scrollAmount,
+                behavior: 'smooth'
+              });
+            }
+            break;
+          case 'Home':
+            e.preventDefault();
+            contentArea.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+            break;
+          case 'End':
+            e.preventDefault();
+            contentArea.scrollTo({
+              top: (totalSteps - 1) * scrollAmount,
+              behavior: 'smooth'
+            });
+            break;
+        }
+      });
+
+      // Hacer el área focusable para el teclado
+      contentArea.setAttribute('tabindex', '0');
+    }
+
+    // Inicialización
+    setTimeout(() => {
+      // Activar el primer step
+      activateStep(0);
+      
+      // Asegurar que todas las steps sean visibles inicialmente
+      timelineSteps.forEach(step => {
+        (step as HTMLElement).style.opacity = '1';
+      });
+
+      // Asegurar que empezamos desde el principio
+      if (contentArea) {
+        contentArea.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    }, 1500);
+
+    // Navigation con teclado (solo cuando el área de contenido está en foco)
+    // Ya incluido en el event listener principal arriba
+  }
+</script>
