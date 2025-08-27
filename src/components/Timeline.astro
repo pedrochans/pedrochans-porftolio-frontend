@@ -209,36 +209,35 @@ import indraGroup from '../assets/img/indra_group.jpg';
     padding: 2rem 1rem;
     position: relative;
     overflow: hidden;
+    /* VOLVER AL SISTEMA SIMPLE - sin flexbox complejo */
     /* Sin fondo - mantener el fondo original con estrellas */
   }
 
   .timeline-container {
     max-width: 1400px;
-    height: calc(100vh - 12rem);
-    margin: 0 auto;
+    height: calc(100vh - 200px); /* ALTURA FIJA SIMPLE */
+    margin: 0 auto; /* CENTRADO HORIZONTAL */
     padding: 1rem;
     position: relative;
     display: flex;
     gap: 2rem;
   }
 
-  /* ===== HEADER ===== */
+  /* ===== HEADER INDEPENDIENTE ===== */
   .timeline-header {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative; /* MANTENER relative */
     text-align: center;
     z-index: 100;
     width: 100%;
-    margin-bottom: 2rem;
-    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto 3rem auto; /* MANTENER margen inferior */
+    padding: 2rem 1rem;
   }
 
   .section-title {
     font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 800;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem; /* Margen fijo */
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -251,7 +250,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     color: rgba(255, 255, 255, 0.8);
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto; /* SIN margen inferior - el header tiene altura fija */
     line-height: 1.4;
     opacity: 0;
     transform: translateY(30px);
@@ -261,9 +260,9 @@ import indraGroup from '../assets/img/indra_group.jpg';
   .timeline-layout {
     display: flex;
     width: 100%;
-    height: 100%;
-    gap: 3rem;
-    margin-top: 8rem; /* Aumentado para asegurar que no se corte nada */
+    height: 100%; /* USA TODA LA ALTURA DEL CONTENEDOR */
+    gap: 2rem;
+    position: relative;
   }
 
   /* ===== TIMELINE SIDE (IZQUIERDA 20%) ===== */
@@ -424,17 +423,17 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .timeline-step {
-    height: 100%;
+    height: 100%; /* USA TODA LA ALTURA DEL CONTENEDOR */
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 1rem;
+    padding: 2vh; /* 2% de la altura del viewport - PROPORCIONAL */
     scroll-snap-align: start;
     opacity: 0.6;
     transition: opacity 0.5s ease;
-    overflow-y: hidden; /* Sin scroll interno */
+    overflow-y: hidden;
     box-sizing: border-box;
   }
 
@@ -442,13 +441,12 @@ import indraGroup from '../assets/img/indra_group.jpg';
     opacity: 1;
   }
 
-  /* ===== STEP CARDS (SIMPLIFICADAS) ===== */
+  /* ===== STEP CARDS - PROPORCIONALES AL CONTENEDOR ===== */
   .step-card {
     width: 100%;
-    max-width: none;
-    height: 100%;
+    height: 100%; /* USA TODA LA ALTURA DISPONIBLE */
     margin: 0;
-    padding: 0;
+    padding: 1.5vh; /* PROPORCIONAL - 1.5% de altura viewport */
     background: none;
     border: none;
     border-radius: 0;
@@ -456,31 +454,33 @@ import indraGroup from '../assets/img/indra_group.jpg';
     backdrop-filter: none;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* DISTRIBUIR UNIFORMEMENTE */
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   .step-card::before {
     display: none;
   }
 
-  /* ===== CARD HEADER ===== */
+  /* ===== CARD HEADER - PROPORCIONAL ===== */
   .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.8rem;
-    padding: 0 0.5rem;
+    margin-bottom: 1vh; /* PROPORCIONAL - 1% de altura viewport */
+    padding: 0 1vw; /* PROPORCIONAL - 1% de ancho viewport */
     flex-shrink: 0;
     width: 100%;
+    height: 6vh; /* REDUCIDO de 8vh a 6vh para mejor ajuste */
   }
 
   .date-badge {
     background: linear-gradient(135deg, #4facfe, #00f2fe);
     color: #000;
-    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+    font-size: 1.8vh; /* PROPORCIONAL - 1.8% de altura viewport */
     font-weight: 700;
-    padding: 0.6rem 1rem;
+    padding: 1vh 2vw; /* PROPORCIONAL */
     border-radius: 14px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -488,12 +488,12 @@ import indraGroup from '../assets/img/indra_group.jpg';
 
   .institution-logos {
     display: flex;
-    gap: 0.5rem;
+    gap: 1vw; /* PROPORCIONAL */
   }
 
   .institution-logo {
-    width: clamp(32px, 3.5vw, 40px);
-    height: clamp(32px, 3.5vw, 40px);
+    width: 5vh; /* PROPORCIONAL - 5% de altura viewport */
+    height: 5vh; /* PROPORCIONAL - 5% de altura viewport */
     object-fit: contain;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.9);
@@ -505,55 +505,56 @@ import indraGroup from '../assets/img/indra_group.jpg';
     transform: scale(1.1);
   }
 
-  /* ===== CARD CONTENT (SIMPLIFICADO) ===== */
+  /* ===== CARD CONTENT - TOTALMENTE PROPORCIONAL ===== */
   .card-content {
-    padding: 0 0.5rem;
-    flex: 1;
+    padding: 0 1vw; /* PROPORCIONAL */
+    flex: 1; /* TOMA TODO EL ESPACIO DISPONIBLE */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* DISTRIBUIR UNIFORMEMENTE */
     min-height: 0;
     width: 100%;
+    gap: 1vh; /* PROPORCIONAL - 1% de altura viewport */
     overflow: hidden;
   }
 
   .step-title {
-    font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+    font-size: 3.5vh; /* PROPORCIONAL - 3.5% de altura viewport */
     font-weight: 800;
     color: #ffffff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5vh; /* PROPORCIONAL */
     line-height: 1.1;
     flex-shrink: 0;
   }
 
   .step-institution {
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    font-size: 2.2vh; /* PROPORCIONAL - 2.2% de altura viewport */
     color: #4facfe;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5vh; /* PROPORCIONAL */
     flex-shrink: 0;
   }
 
   .step-description {
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    font-size: 1.8vh; /* PROPORCIONAL - 1.8% de altura viewport */
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.3;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1vh; /* PROPORCIONAL */
     flex-shrink: 0;
   }
 
   .step-image {
-    margin: 0.6rem 0;
+    margin: 1vh 0; /* PROPORCIONAL */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
-    max-height: clamp(100px, 12vh, 130px);
+    height: 18vh; /* REDUCIDO de 20vh a 18vh para mejor ajuste */
   }
 
   .content-image {
     width: 100%;
-    height: clamp(100px, 12vh, 130px);
+    height: 100%; /* USA TODA LA ALTURA DEL CONTENEDOR */
     object-fit: cover;
     transition: transform 0.4s ease;
   }
@@ -562,21 +563,25 @@ import indraGroup from '../assets/img/indra_group.jpg';
     transform: scale(1.05);
   }
 
-  /* ===== ACHIEVEMENTS (SIMPLIFICADAS) ===== */
+  /* ===== ACHIEVEMENTS - PROPORCIONALES ===== */
   .step-achievements {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0.6rem;
-    margin-top: 0.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr)); /* PROPORCIONAL */
+    gap: 1vh; /* PROPORCIONAL - 1% de altura viewport */
+    margin-top: 1vh; /* PROPORCIONAL */
     flex-shrink: 0;
+    height: 10vh; /* REDUCIDO de 12vh a 10vh para mejor ajuste */
   }
 
   .achievement {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 0.8rem;
+    padding: 1vh 1.5vw; /* PROPORCIONAL */
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .achievement:hover {
@@ -587,117 +592,42 @@ import indraGroup from '../assets/img/indra_group.jpg';
 
   .achievement-label {
     display: block;
-    font-size: 0.7rem;
+    font-size: 1.4vh; /* PROPORCIONAL - 1.4% de altura viewport */
     color: rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5vh; /* PROPORCIONAL */
   }
 
   .achievement-value {
     display: block;
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    font-size: 1.8vh; /* PROPORCIONAL - 1.8% de altura viewport */
     color: #ffffff;
     font-weight: 600;
     line-height: 1.2;
   }
 
-  /* ===== RESPONSIVE ===== */
+  /* ===== RESPONSIVE - SISTEMA SIMPLIFICADO ===== */
   @media (max-width: 1200px) {
-    .timeline-section {
-      padding: 1.5rem 0.8rem;
-    }
-
-    .timeline-container {
-      padding: 0.8rem;
-      height: calc(100vh - 10rem);
-    }
-
-    .timeline-layout {
-      gap: 1.5rem;
-      margin-top: 6.5rem;
-    }
-
-    .timeline-line-container {
-      width: 22%;
-      padding: 1.5rem 0.6rem;
-    }
-
-    .timeline-content-area {
-      width: 78%;
-    }
-
-    .dot-inner {
-      width: 70px;
-      height: 70px;
-    }
-
-    .dot-logo {
-      width: 42px;
-      height: 42px;
-    }
-
-    .step-title {
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-    }
-
-    .step-image {
-      max-height: 120px;
-    }
-
-    .content-image {
-      height: 120px;
+    .timeline-header {
+      margin-bottom: 2.5rem; /* Reducir ligeramente el espacio */
+      padding: 1.5rem 1rem;
     }
   }
 
   @media (max-width: 1024px) {
-    .timeline-section {
-      padding: 1.2rem 0.6rem;
+    .timeline-header {
+      margin-bottom: 2rem; /* Más compacto en laptops */
+      padding: 1.5rem 0.8rem;
     }
-
-    .timeline-container {
-      padding: 0.8rem;
-      height: calc(100vh - 8rem);
-    }
-
-    .timeline-layout {
-      gap: 1.2rem;
-      margin-top: 6rem;
-    }
-
-    .timeline-line-container {
-      width: 25%;
-      padding: 1.2rem 0.5rem;
-    }
-
-    .timeline-content-area {
-      width: 75%;
-    }
-
-    .dot-inner {
-      width: 65px;
-      height: 65px;
-    }
-
-    .dot-logo {
-      width: 38px;
-      height: 38px;
-    }
-
-    .step-title {
-      font-size: clamp(1.1rem, 2.3vw, 1.4rem);
-    }
-
+    
+    /* Ajustar elementos para laptops */
     .step-image {
-      max-height: 110px;
+      height: 16vh;
     }
-
-    .content-image {
-      height: 110px;
-    }
-
-    .achievement {
-      padding: 0.7rem;
+    
+    .step-achievements {
+      height: 9vh;
     }
   }
 
@@ -705,230 +635,41 @@ import indraGroup from '../assets/img/indra_group.jpg';
     .timeline-section {
       padding: 1.5rem 0.8rem;
     }
-
-    .timeline-container {
-      padding: 0.6rem;
-      height: calc(100vh - 6rem);
-    }
-
-    .timeline-layout {
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 5rem;
-    }
-
+    
     .timeline-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .timeline-line-container {
-      width: 100%;
-      height: auto;
-      min-height: 80px;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0.8rem 2rem;
-    }
-
-    .timeline-line-base {
-      position: absolute;
-      top: 50%;
-      left: calc(2rem + 25px);
-      width: calc(100% - 4rem - 50px);
-      height: 4px;
-      transform: translateY(-50%);
-    }
-
-    .timeline-line-progress {
-      position: absolute;
-      top: 50%;
-      left: calc(2rem + 25px);
-      width: 0%;
-      height: 4px;
-      transform: translateY(-50%);
-    }
-
-    .timeline-dot {
-      position: relative;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-    }
-
-    .timeline-content-area {
-      width: 100%;
-      height: calc(100vh - 250px);
-      flex: 1;
-    }
-
-    .dot-inner {
-      width: 50px;
-      height: 50px;
-    }
-
-    .dot-logo {
-      width: 30px;
-      height: 30px;
-    }
-
-    .step-card {
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .step-step {
-      padding: 0.8rem;
-    }
-
-    .card-header {
-      flex-direction: column;
-      gap: 0.6rem;
-      text-align: center;
-      margin-bottom: 0.6rem;
-    }
-
-    .date-badge {
-      font-size: 0.65rem;
-      padding: 0.4rem 0.8rem;
-    }
-
-    .institution-logo {
-      width: 28px;
-      height: 28px;
-    }
-
-    .step-title {
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      margin-bottom: 0.4rem;
-    }
-
-    .step-institution {
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      margin-bottom: 0.4rem;
-    }
-
-    .step-description {
-      font-size: clamp(0.7rem, 1.6vw, 0.8rem);
-      margin-bottom: 0.6rem;
-    }
-
-    .content-image {
-      height: 90px;
-    }
-
-    .step-image {
-      margin: 0.5rem 0;
-      max-height: 90px;
-    }
-
-    .step-achievements {
-      grid-template-columns: 1fr;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
-    }
-
-    .achievement {
-      padding: 0.5rem;
-    }
-
-    .achievement-label {
-      font-size: 0.6rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .achievement-value {
-      font-size: 0.75rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .timeline-section {
+      margin-bottom: 1.5rem; /* Más compacto en tablets */
       padding: 1rem 0.5rem;
     }
-
+    
     .timeline-container {
-      padding: 0.4rem;
-      height: calc(100vh - 4rem);
-    }
-
-    .timeline-layout {
+      flex-direction: column;
       gap: 1rem;
-      margin-top: 4rem;
     }
-
-    .timeline-header {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
+    
+    .timeline-layout {
+      flex-direction: column;
+      gap: 1rem;
     }
-
+    
     .timeline-line-container {
-      padding: 0.6rem 1.5rem;
-      min-height: 70px;
+      width: 100%;
+      height: 80px;
+      flex-direction: row;
+      justify-content: space-between;
     }
-
+    
     .timeline-content-area {
-      height: calc(100vh - 200px);
+      width: 100%;
+      flex: 1;
     }
-
-    .dot-inner {
-      width: 45px;
-      height: 45px;
-    }
-
-    .dot-logo {
-      width: 26px;
-      height: 26px;
-    }
-
-    .step-card {
-      padding: 0;
-    }
-
-    .step-step {
-      padding: 0.6rem;
-    }
-
-    .section-title {
-      font-size: 1.4rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.8rem;
-    }
-
-    .step-title {
-      font-size: clamp(0.9rem, 2.8vw, 1.1rem);
-    }
-
-    .step-institution {
-      font-size: clamp(0.7rem, 1.8vw, 0.75rem);
-    }
-
-    .step-description {
-      font-size: clamp(0.65rem, 1.4vw, 0.7rem);
-    }
-
-    .content-image {
-      height: 70px;
-    }
-
+    
+    /* Elementos optimizados para móvil */
     .step-image {
-      max-height: 70px;
+      height: 14vh;
     }
-
-    .achievement {
-      padding: 0.4rem;
-    }
-
-    .achievement-label {
-      font-size: 0.55rem;
-    }
-
-    .achievement-value {
-      font-size: 0.7rem;
+    
+    .step-achievements {
+      height: 8vh;
     }
   }
 </style>
