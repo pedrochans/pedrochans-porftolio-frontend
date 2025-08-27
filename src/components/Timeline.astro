@@ -145,7 +145,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
             <div class="card-content">
               <h3 class="step-title">Data Analyst</h3>
               <p class="step-institution">Indra • Minsait</p>
-              <p class="step-description">Business Intelligence and financial reporting</p>
               
               <div class="step-image">
                 <Image src={indraOffice} alt="Indra Office" class="content-image" width={500} height={300} format="webp" quality={85} loading="lazy" />
@@ -180,7 +179,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
             <div class="card-content">
               <h3 class="step-title">Data Consultant</h3>
               <p class="step-institution">Indra • Minsait</p>
-              <p class="step-description">MAGI-C Project: Calculation of Gross Margin and Valuation of Inditex's Stock with different corporate perspectives</p>
               
               <div class="step-image">
                 <Image src={itxOffice} alt="Inditex Office" class="content-image" width={500} height={300} format="webp" quality={85} loading="lazy" />
@@ -208,7 +206,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
 <style>
   .timeline-section {
     min-height: 100vh;
-    padding: 4rem 2rem;
+    padding: 2rem 1rem;
     position: relative;
     overflow: hidden;
     /* Sin fondo - mantener el fondo original con estrellas */
@@ -216,12 +214,12 @@ import indraGroup from '../assets/img/indra_group.jpg';
 
   .timeline-container {
     max-width: 1400px;
-    height: 80vh;
+    height: calc(100vh - 12rem);
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
     position: relative;
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   /* ===== HEADER ===== */
@@ -234,12 +232,13 @@ import indraGroup from '../assets/img/indra_group.jpg';
     z-index: 100;
     width: 100%;
     margin-bottom: 2rem;
+    padding: 1rem;
   }
 
   .section-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -249,11 +248,11 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .section-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     color: rgba(255, 255, 255, 0.8);
     max-width: 600px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.4;
     opacity: 0;
     transform: translateY(30px);
   }
@@ -264,7 +263,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
     width: 100%;
     height: 100%;
     gap: 3rem;
-    margin-top: 8rem; /* Más espacio para evitar solapamiento */
+    margin-top: 8rem; /* Aumentado para asegurar que no se corte nada */
   }
 
   /* ===== TIMELINE SIDE (IZQUIERDA 20%) ===== */
@@ -276,13 +275,13 @@ import indraGroup from '../assets/img/indra_group.jpg';
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 3rem 1rem;
+    padding: 2rem 0.8rem;
     
     /* Estilo de card como las demás */
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
+    border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 
@@ -290,9 +289,9 @@ import indraGroup from '../assets/img/indra_group.jpg';
   .timeline-line-base {
     position: absolute;
     left: 50%;
-    top: calc(3rem + 50px);  /* Padding + radio del primer círculo = centro del primer círculo */
+    top: calc(2rem + 40px);  /* Padding + radio del primer círculo = centro del primer círculo */
     width: 4px;
-    height: calc(100% - 6rem - 100px);  /* Altura total - padding - diámetro completo de círculos */
+    height: calc(100% - 4rem - 80px);  /* Altura total - padding - diámetro completo de círculos */
     background: rgba(79, 172, 254, 0.2);
     transform: translateX(-50%);
     z-index: 1;
@@ -302,7 +301,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
   .timeline-line-progress {
     position: absolute;
     left: 50%;
-    top: calc(3rem + 50px);  /* Igual que la línea base */
+    top: calc(2rem + 40px);  /* Igual que la línea base */
     width: 4px;
     height: 0%;
     background: linear-gradient(180deg, 
@@ -340,13 +339,13 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .dot-inner {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 4px solid rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -375,12 +374,12 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .dot-logo {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
     border-radius: 50%;
     background: white;
-    padding: 4px;
+    padding: 3px;
   }
 
   /* ===== CONTENT AREA (DERECHA 80%) ===== */
@@ -393,7 +392,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
+    border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     
     /* Scroll controlado */
@@ -431,11 +430,11 @@ import indraGroup from '../assets/img/indra_group.jpg';
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2rem;
+    padding: 1rem;
     scroll-snap-align: start;
     opacity: 0.6;
     transition: opacity 0.5s ease;
-    overflow-y: auto;
+    overflow-y: hidden; /* Sin scroll interno */
     box-sizing: border-box;
   }
 
@@ -447,6 +446,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
   .step-card {
     width: 100%;
     max-width: none;
+    height: 100%;
     margin: 0;
     padding: 0;
     background: none;
@@ -454,10 +454,10 @@ import indraGroup from '../assets/img/indra_group.jpg';
     border-radius: 0;
     box-shadow: none;
     backdrop-filter: none;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
   }
 
   .step-card::before {
@@ -469,73 +469,35 @@ import indraGroup from '../assets/img/indra_group.jpg';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding: 0 2rem;
-  }
-
-  .date-badge {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    color: #000;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .institution-logos {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .institution-logo {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    transition: transform 0.3s ease;
-  }
-
-  .institution-logo:hover {
-    transform: scale(1.1);
-  }
-
-  /* ===== CARD HEADER ===== */
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 0 1rem;
+    margin-bottom: 0.8rem;
+    padding: 0 0.5rem;
     flex-shrink: 0;
+    width: 100%;
   }
 
   .date-badge {
     background: linear-gradient(135deg, #4facfe, #00f2fe);
     color: #000;
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
     font-weight: 700;
-    padding: 0.8rem 1.5rem;
-    border-radius: 20px;
+    padding: 0.6rem 1rem;
+    border-radius: 14px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
   }
 
   .institution-logos {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.5rem;
   }
 
   .institution-logo {
-    width: 50px;
-    height: 50px;
+    width: clamp(32px, 3.5vw, 40px);
+    height: clamp(32px, 3.5vw, 40px);
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.9);
-    padding: 8px;
+    padding: 4px;
     transition: transform 0.3s ease;
   }
 
@@ -545,51 +507,53 @@ import indraGroup from '../assets/img/indra_group.jpg';
 
   /* ===== CARD CONTENT (SIMPLIFICADO) ===== */
   .card-content {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .step-title {
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(1.3rem, 2.8vw, 1.8rem);
     font-weight: 800;
     color: #ffffff;
-    margin-bottom: 0.8rem;
-    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
     flex-shrink: 0;
   }
 
   .step-institution {
-    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
     color: #4facfe;
     font-weight: 600;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
     flex-shrink: 0;
   }
 
   .step-description {
-    font-size: clamp(1rem, 2vw, 1.1rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     color: rgba(255, 255, 255, 0.8);
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
     flex-shrink: 0;
   }
 
   .step-image {
-    margin: 1rem 0;
-    border-radius: 16px;
+    margin: 0.6rem 0;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
-    max-height: 250px;
+    max-height: clamp(100px, 12vh, 130px);
   }
 
   .content-image {
     width: 100%;
-    height: 250px;
+    height: clamp(100px, 12vh, 130px);
     object-fit: cover;
     transition: transform 0.4s ease;
   }
@@ -601,57 +565,109 @@ import indraGroup from '../assets/img/indra_group.jpg';
   /* ===== ACHIEVEMENTS (SIMPLIFICADAS) ===== */
   .step-achievements {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.6rem;
+    margin-top: 0.6rem;
     flex-shrink: 0;
   }
 
   .achievement {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1.2rem;
+    border-radius: 8px;
+    padding: 0.8rem;
     transition: all 0.3s ease;
   }
 
   .achievement:hover {
     background: rgba(79, 172, 254, 0.08);
     border-color: rgba(79, 172, 254, 0.3);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
 
   .achievement-label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
   }
 
   .achievement-value {
     display: block;
-    font-size: 1.1rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     color: #ffffff;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.2;
   }
 
   /* ===== RESPONSIVE ===== */
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
+    .timeline-section {
+      padding: 1.5rem 0.8rem;
+    }
+
     .timeline-container {
-      padding: 1.5rem;
-      height: 75vh;
+      padding: 0.8rem;
+      height: calc(100vh - 10rem);
     }
 
     .timeline-layout {
-      gap: 2rem;
-      margin-top: 5rem;
+      gap: 1.5rem;
+      margin-top: 6.5rem;
+    }
+
+    .timeline-line-container {
+      width: 22%;
+      padding: 1.5rem 0.6rem;
+    }
+
+    .timeline-content-area {
+      width: 78%;
+    }
+
+    .dot-inner {
+      width: 70px;
+      height: 70px;
+    }
+
+    .dot-logo {
+      width: 42px;
+      height: 42px;
+    }
+
+    .step-title {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    }
+
+    .step-image {
+      max-height: 120px;
+    }
+
+    .content-image {
+      height: 120px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .timeline-section {
+      padding: 1.2rem 0.6rem;
+    }
+
+    .timeline-container {
+      padding: 0.8rem;
+      height: calc(100vh - 8rem);
+    }
+
+    .timeline-layout {
+      gap: 1.2rem;
+      margin-top: 6rem;
     }
 
     .timeline-line-container {
       width: 25%;
+      padding: 1.2rem 0.5rem;
     }
 
     .timeline-content-area {
@@ -659,49 +675,66 @@ import indraGroup from '../assets/img/indra_group.jpg';
     }
 
     .dot-inner {
-      width: 80px;
-      height: 80px;
+      width: 65px;
+      height: 65px;
     }
 
     .dot-logo {
-      width: 50px;
-      height: 50px;
+      width: 38px;
+      height: 38px;
     }
 
     .step-title {
-      font-size: 2.5rem;
+      font-size: clamp(1.1rem, 2.3vw, 1.4rem);
+    }
+
+    .step-image {
+      max-height: 110px;
+    }
+
+    .content-image {
+      height: 110px;
+    }
+
+    .achievement {
+      padding: 0.7rem;
     }
   }
 
   @media (max-width: 768px) {
     .timeline-section {
-      padding: 3rem 1rem;
+      padding: 1.5rem 0.8rem;
     }
 
     .timeline-container {
-      height: 70vh;
-      padding: 1rem;
+      padding: 0.6rem;
+      height: calc(100vh - 6rem);
     }
 
     .timeline-layout {
       flex-direction: column;
-      gap: 2rem;
-      margin-top: 4rem;
+      gap: 1.5rem;
+      margin-top: 5rem;
+    }
+
+    .timeline-header {
+      margin-bottom: 1.5rem;
     }
 
     .timeline-line-container {
       width: 100%;
-      height: 25%;
+      height: auto;
+      min-height: 80px;
       flex-direction: row;
       justify-content: space-between;
-      padding: 1rem 3rem;
+      padding: 0.8rem 2rem;
     }
 
     .timeline-line-base {
       position: absolute;
       top: 50%;
-      left: calc(3rem + 30px);  /* Padding + radio del primer círculo en móvil */
-      width: calc(100% - 6rem - 60px);  /* Ancho total - padding - diámetro de círculos móvil */
+      left: calc(2rem + 25px);
+      width: calc(100% - 4rem - 50px);
       height: 4px;
       transform: translateY(-50%);
     }
@@ -709,7 +742,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
     .timeline-line-progress {
       position: absolute;
       top: 50%;
-      left: calc(3rem + 30px);  /* Igual que la línea base */
+      left: calc(2rem + 25px);
       width: 0%;
       height: 4px;
       transform: translateY(-50%);
@@ -726,98 +759,8 @@ import indraGroup from '../assets/img/indra_group.jpg';
 
     .timeline-content-area {
       width: 100%;
-      height: 75%;
-    }
-
-    .dot-inner {
-      width: 60px;
-      height: 60px;
-    }
-
-    .dot-logo {
-      width: 35px;
-      height: 35px;
-    }
-
-    .step-card {
-      padding: 1.2rem;
-      height: 100%;
-      overflow-y: auto;
-    }
-
-    .card-header {
-      flex-direction: column;
-      gap: 0.8rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .date-badge {
-      font-size: 0.8rem;
-      padding: 0.6rem 1.2rem;
-    }
-
-    .institution-logo {
-      width: 40px;
-      height: 40px;
-    }
-
-    .step-title {
-      font-size: clamp(1.3rem, 4vw, 1.6rem);
-      margin-bottom: 0.6rem;
-    }
-
-    .step-institution {
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      margin-bottom: 0.6rem;
-    }
-
-    .step-description {
-      font-size: clamp(0.8rem, 2vw, 0.9rem);
-      margin-bottom: 1rem;
-    }
-
-    .content-image {
-      height: 120px;
-    }
-
-    .step-image {
-      margin: 0.8rem 0;
-      max-height: 120px;
-    }
-
-    .step-achievements {
-      grid-template-columns: 1fr;
-      gap: 0.6rem;
-      margin-top: 0.8rem;
-    }
-
-    .achievement {
-      padding: 0.8rem;
-    }
-
-    .achievement-label {
-      font-size: 0.7rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .achievement-value {
-      font-size: 0.9rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .timeline-section {
-      padding: 2rem 0.5rem;
-    }
-
-    .timeline-container {
-      height: 65vh;
-      padding: 0.5rem;
-    }
-
-    .timeline-layout {
-      margin-top: 3rem;
+      height: calc(100vh - 250px);
+      flex: 1;
     }
 
     .dot-inner {
@@ -831,15 +774,161 @@ import indraGroup from '../assets/img/indra_group.jpg';
     }
 
     .step-card {
-      padding: 1rem;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .step-step {
+      padding: 0.8rem;
+    }
+
+    .card-header {
+      flex-direction: column;
+      gap: 0.6rem;
+      text-align: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .date-badge {
+      font-size: 0.65rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+    .institution-logo {
+      width: 28px;
+      height: 28px;
+    }
+
+    .step-title {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-institution {
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-description {
+      font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .content-image {
+      height: 90px;
+    }
+
+    .step-image {
+      margin: 0.5rem 0;
+      max-height: 90px;
+    }
+
+    .step-achievements {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .achievement {
+      padding: 0.5rem;
+    }
+
+    .achievement-label {
+      font-size: 0.6rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .achievement-value {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .timeline-section {
+      padding: 1rem 0.5rem;
+    }
+
+    .timeline-container {
+      padding: 0.4rem;
+      height: calc(100vh - 4rem);
+    }
+
+    .timeline-layout {
+      gap: 1rem;
+      margin-top: 4rem;
+    }
+
+    .timeline-header {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+    }
+
+    .timeline-line-container {
+      padding: 0.6rem 1.5rem;
+      min-height: 70px;
+    }
+
+    .timeline-content-area {
+      height: calc(100vh - 200px);
+    }
+
+    .dot-inner {
+      width: 45px;
+      height: 45px;
+    }
+
+    .dot-logo {
+      width: 26px;
+      height: 26px;
+    }
+
+    .step-card {
+      padding: 0;
+    }
+
+    .step-step {
+      padding: 0.6rem;
     }
 
     .section-title {
-      font-size: 2rem;
+      font-size: 1.4rem;
     }
 
     .section-subtitle {
-      font-size: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .step-title {
+      font-size: clamp(0.9rem, 2.8vw, 1.1rem);
+    }
+
+    .step-institution {
+      font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+    }
+
+    .step-description {
+      font-size: clamp(0.65rem, 1.4vw, 0.7rem);
+    }
+
+    .content-image {
+      height: 70px;
+    }
+
+    .step-image {
+      max-height: 70px;
+    }
+
+    .achievement {
+      padding: 0.4rem;
+    }
+
+    .achievement-label {
+      font-size: 0.55rem;
+    }
+
+    .achievement-value {
+      font-size: 0.7rem;
     }
   }
 </style>
