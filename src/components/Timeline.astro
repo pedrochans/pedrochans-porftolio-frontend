@@ -948,6 +948,8 @@ import indraGroup from '../assets/img/indra_group.jpg';
     // Sistema SIMPLE: cada scroll = máximo 1 posición
     if (contentArea) {
       let isMoving = false; // Prevenir movimientos múltiples
+      let scrollAccumulator = 0; // NUEVO: Acumulador para controlar sensibilidad
+      const scrollThreshold = 150; // NUEVO: Umbral mínimo para cambiar de step (aumentado)
       
       // Función simple para cambiar posición
       const goToStep = (stepIndex: number) => {
@@ -957,6 +959,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
         if (targetStep === currentActiveStep) return; // Ya estamos ahí
         
         isMoving = true;
+        scrollAccumulator = 0; // Reset del acumulador
         const scrollAmount = contentArea.clientHeight;
         
         contentArea.scrollTo({
@@ -966,27 +969,41 @@ import indraGroup from '../assets/img/indra_group.jpg';
         
         activateStep(targetStep);
         
-        // Desbloquear después de 500ms
+        // Desbloquear después de 800ms (aumentado para menos sensibilidad)
         setTimeout(() => {
           isMoving = false;
-        }, 500);
+        }, 800);
       };
       
-      // Manejo SIMPLE de wheel - sin acumuladores
+      // Manejo MEJORADO de wheel - con acumulador para controlar sensibilidad
       const handleWheel = (e: WheelEvent) => {
         e.preventDefault();
         
         // Si ya se está moviendo, ignorar
         if (isMoving) return;
         
-        // Determinación simple: arriba o abajo
-        if (e.deltaY > 0) {
-          // Scroll hacia abajo = siguiente posición
-          goToStep(currentActiveStep + 1);
-        } else if (e.deltaY < 0) {
-          // Scroll hacia arriba = posición anterior
-          goToStep(currentActiveStep - 1);
+        // Acumular el deltaY
+        scrollAccumulator += Math.abs(e.deltaY);
+        
+        // Solo cambiar si se supera el umbral
+        if (scrollAccumulator >= scrollThreshold) {
+          // Determinación de dirección
+          if (e.deltaY > 0) {
+            // Scroll hacia abajo = siguiente posición
+            goToStep(currentActiveStep + 1);
+          } else if (e.deltaY < 0) {
+            // Scroll hacia arriba = posición anterior
+            goToStep(currentActiveStep - 1);
+          }
+          scrollAccumulator = 0; // Reset después de cambiar
         }
+        
+        // Reset del acumulador después de 300ms sin scroll
+        setTimeout(() => {
+          if (!isMoving) {
+            scrollAccumulator = 0;
+          }
+        }, 300);
       };
       
       // Event listeners simples
