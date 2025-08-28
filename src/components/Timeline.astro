@@ -1,8 +1,6 @@
 ---
-// Componente Timeline con línea vertical izquierda y anime.js
 import { Image } from 'astro:assets';
 
-// Importar todas las imágenes del timeline
 import facultadeMatematicas from '../assets/img/facultade_matematicas.jpg';
 import uscLogo from '../assets/img/USC_logo.png';
 import lodzLogo from '../assets/img/lodz_logo.png';
@@ -13,11 +11,9 @@ import itxOffice from '../assets/img/itx_office.jpg';
 import minsaitLogo from '../assets/img/minsait_logo.jpeg';
 import indraLogo from '../assets/img/indra_logo.jpg';
 import itxLogo from '../assets/img/itx_logo.png';
-import indraGroup from '../assets/img/indra_group.jpg';
 ---
 
 <section id="timeline" class="timeline-section">
-  <!-- Header de la sección FUERA del contenedor flexbox -->
   <div class="timeline-header">
     <h2 class="section-title">
       <span class="text-gradient">My Journey</span>
@@ -27,17 +23,12 @@ import indraGroup from '../assets/img/indra_group.jpg';
     </p>
   </div>
 
-  <!-- Container del contenido DEBAJO del header -->
   <div class="timeline-container">
-    <!-- Timeline Layout -->
     <div class="timeline-layout">
-      
-      <!-- Timeline Line (Lado Izquierdo) -->
       <div class="timeline-line-container">
         <div class="timeline-line-base"></div>
         <div class="timeline-line-progress"></div>
         
-        <!-- Timeline Dots/Markers -->
         <div class="timeline-dot" data-step="0" data-year="2017-2021">
           <div class="dot-inner education">
             <Image src={uscLogo} alt="USC Logo" class="dot-logo" width={40} height={40} format="webp" quality={90} loading="lazy" />
@@ -63,10 +54,8 @@ import indraGroup from '../assets/img/indra_group.jpg';
         </div>
       </div>
 
-      <!-- Content Area (Lado Derecho) -->
       <div class="timeline-content-area">
         
-        <!-- Step 0: Grado en Matemáticas -->
         <div class="timeline-step" data-step="0">
           <div class="step-card">
             <div class="card-header">
@@ -104,7 +93,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
           </div>
         </div>
 
-        <!-- Step 1: Máster Big Data -->
         <div class="timeline-step" data-step="1">
           <div class="step-card">
             <div class="card-header">
@@ -141,7 +129,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
           </div>
         </div>
 
-        <!-- Step 2: Data Analyst -->
         <div class="timeline-step" data-step="2">
           <div class="step-card">
             <div class="card-header">
@@ -180,7 +167,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
           </div>
         </div>
 
-        <!-- Step 3: Data Consultant -->
         <div class="timeline-step" data-step="3">
           <div class="step-card">
             <div class="card-header">
@@ -230,35 +216,32 @@ import indraGroup from '../assets/img/indra_group.jpg';
     padding: 2rem 1rem;
     position: relative;
     overflow: hidden;
-    /* Optimizaciones para touchpad */
-    touch-action: pan-y; /* Solo permite scroll vertical */
-    -webkit-font-smoothing: antialiased; /* Mejor renderizado durante scroll */
+    touch-action: pan-y;
+    -webkit-font-smoothing: antialiased;
   }
 
   .timeline-container {
     max-width: 1400px;
-    height: calc(100vh - 120px); /* AUMENTADO: de 160px a 120px para MÁS altura */
+    height: calc(100vh - 120px);
     margin: 0 auto;
     padding: 1rem;
     position: relative;
-    /* Removido display: flex y gap que causaban el problema */
   }
 
-  /* ===== HEADER INDEPENDIENTE ===== */
   .timeline-header {
-    position: relative; /* MANTENER relative */
+    position: relative;
     text-align: center;
     z-index: 100;
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto 2rem auto; /* REDUCIDO: de 3rem a 2rem para más altura en contenedores */
+    margin: 0 auto 2rem auto;
     padding: 2rem 1rem;
   }
 
   .section-title {
     font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 800;
-    margin-bottom: 0.5rem; /* Margen fijo */
+    margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -271,24 +254,22 @@ import indraGroup from '../assets/img/indra_group.jpg';
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     color: rgba(255, 255, 255, 0.8);
     max-width: 600px;
-    margin: 0 auto; /* SIN margen inferior - el header tiene altura fija */
+    margin: 0 auto;
     line-height: 1.4;
     opacity: 0;
     transform: translateY(30px);
   }
 
-  /* ===== LAYOUT PRINCIPAL ===== */
   .timeline-layout {
     display: flex;
     width: 100%;
-    height: 100%; /* USA TODA LA ALTURA DEL CONTENEDOR */
-    gap: 1.5rem; /* REDUCIDO de 2rem a 1.5rem para dar más espacio a los contenedores */
+    height: 100%;
+    gap: 1.5rem;
     position: relative;
   }
 
-  /* ===== TIMELINE SIDE (IZQUIERDA 16%) ===== */
   .timeline-line-container {
-    width: 16%; /* REDUCIDO de 18% a 16% */
+    width: 16%;
     height: 100%;
     position: relative;
     display: flex;
@@ -296,8 +277,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
     align-items: center;
     justify-content: space-between;
     padding: 2rem 0.8rem;
-    
-    /* Estilo de card como las demás */
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -305,13 +284,12 @@ import indraGroup from '../assets/img/indra_group.jpg';
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 
-  /* LÍNEA VERTICAL SIMPLE */
   .timeline-line-base {
     position: absolute;
     left: 50%;
-    top: calc(2rem + 4vh);  /* Padding + radio del primer círculo (4vh) */
-    width: 3px; /* Reducido de 4px a 3px para mejor proporción */
-    height: calc(100% - 4rem - 8vh);  /* Altura total - padding - diámetro completo de círculos (8vh) */
+    top: calc(2rem + 4vh);
+    width: 3px;
+    height: calc(100% - 4rem - 8vh);
     background: rgba(79, 172, 254, 0.2);
     transform: translateX(-50%);
     z-index: 1;
@@ -321,21 +299,16 @@ import indraGroup from '../assets/img/indra_group.jpg';
   .timeline-line-progress {
     position: absolute;
     left: 50%;
-    top: calc(2rem + 4vh);  /* Igual que la línea base */
-    width: 3px; /* Reducido de 4px a 3px para mejor proporción */
+    top: calc(2rem + 4vh);
+    width: 3px;
     height: 0%;
-    background: linear-gradient(180deg, 
-      #4facfe 0%, 
-      #00f2fe 50%, 
-      #4facfe 100%
-    );
+    background: linear-gradient(180deg, #4facfe 0%, #00f2fe 50%, #4facfe 100%);
     transform: translateX(-50%);
     z-index: 2;
     transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 1.5px;
   }
 
-  /* CÍRCULOS DISTRIBUIDOS UNIFORMEMENTE */
   .timeline-dot {
     position: relative;
     z-index: 10;
@@ -347,20 +320,9 @@ import indraGroup from '../assets/img/indra_group.jpg';
     opacity: 1;
   }
 
-  /* Eliminar posicionamiento absoluto - usar flexbox natural */
-  .timeline-dot[data-step="0"],
-  .timeline-dot[data-step="1"],
-  .timeline-dot[data-step="2"],
-  .timeline-dot[data-step="3"] {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-  }
-
   .dot-inner {
-    width: 8vh; /* PROPORCIONAL - 8% de altura viewport */
-    height: 8vh; /* PROPORCIONAL - 8% de altura viewport */
+    width: 8vh;
+    height: 8vh;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -373,59 +335,50 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .dot-inner.education {
-    background: linear-gradient(135deg, #4facfe, #00f2fe); /* Azul claro para educación */
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
     box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
   }
 
   .dot-inner.work {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af); /* Azul oscuro para trabajo */
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
     box-shadow: 0 0 15px rgba(29, 78, 216, 0.3);
   }
 
   .dot-inner.current {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af); /* Azul oscuro para actual */
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
     box-shadow: 0 0 20px rgba(29, 78, 216, 0.4);
   }
 
   .timeline-dot.active .dot-inner {
-    transform: scale(1.15); /* Reducido de 1.2 a 1.15 para mejor proporción */
+    transform: scale(1.15);
     box-shadow: 0 0 30px rgba(79, 172, 254, 0.8);
     border-color: rgba(79, 172, 254, 1);
   }
 
   .dot-logo {
-    width: 6.5vh; /* PROPORCIONAL - ocupa ~81% del círculo (6.5/8) */
-    height: 6.5vh; /* PROPORCIONAL - ocupa ~81% del círculo */
+    width: 6.5vh;
+    height: 6.5vh;
     object-fit: contain;
     border-radius: 50%;
     background: white;
-    padding: 0.3vh; /* PROPORCIONAL - padding pequeño */
+    padding: 0.3vh;
   }
 
-  /* ===== CONTENT AREA (DERECHA 82.5%) ===== */
   .timeline-content-area {
-    width: 82.5%; /* AUMENTADO de 80.5% a 82.5% para compensar el izquierdo más estrecho */
+    width: 82.5%;
     height: 100%;
     position: relative;
-    
-    /* Estilo de card como las demás */
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    
-    /* Scroll controlado - HÍBRIDO: Posiciones fijas + Touchpad compatible */
     overflow-y: auto;
-    scroll-behavior: auto; /* Auto para mejor respuesta inicial del touchpad */
-    scroll-snap-type: y mandatory; /* Restaurado - necesario para las 4 posiciones */
-    
-    /* Mejoras para touchpad */
-    touch-action: pan-y; /* Permite solo scroll vertical */
-    overscroll-behavior-y: contain; /* Evita scroll en elementos padre */
-    -webkit-overflow-scrolling: touch; /* Scroll nativo en iOS */
-    
-    /* Scrollbar personalizada */
+    scroll-behavior: auto;
+    scroll-snap-type: y mandatory;
+    touch-action: pan-y;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: rgba(79, 172, 254, 0.5) transparent;
   }
@@ -449,14 +402,14 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .timeline-step {
-    height: 100%; /* USA TODA LA ALTURA DEL CONTENEDOR */
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2vh; /* 2% de la altura del viewport - PROPORCIONAL */
-    scroll-snap-align: start; /* Restaurado - necesario para las 4 posiciones */
+    padding: 2vh;
+    scroll-snap-align: start;
     opacity: 0.6;
     transition: opacity 0.5s ease;
     overflow-y: hidden;
@@ -467,12 +420,11 @@ import indraGroup from '../assets/img/indra_group.jpg';
     opacity: 1;
   }
 
-  /* ===== STEP CARDS - PROPORCIONALES AL CONTENEDOR ===== */
   .step-card {
     width: 100%;
-    height: 100%; /* USA TODA LA ALTURA DISPONIBLE */
+    height: 100%;
     margin: 0;
-    padding: 1.5vh; /* PROPORCIONAL - 1.5% de altura viewport */
+    padding: 1.5vh;
     background: none;
     border: none;
     border-radius: 0;
@@ -480,33 +432,28 @@ import indraGroup from '../assets/img/indra_group.jpg';
     backdrop-filter: none;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* DISTRIBUIR UNIFORMEMENTE */
+    justify-content: space-between;
     overflow: hidden;
     box-sizing: border-box;
   }
 
-  .step-card::before {
-    display: none;
-  }
-
-  /* ===== CARD HEADER - PROPORCIONAL ===== */
   .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1vh; /* PROPORCIONAL - 1% de altura viewport */
-    padding: 0 1vw; /* PROPORCIONAL - 1% de ancho viewport */
+    margin-bottom: 1vh;
+    padding: 0 1vw;
     flex-shrink: 0;
     width: 100%;
-    height: 6vh; /* REDUCIDO de 8vh a 6vh para mejor ajuste */
+    height: 6vh;
   }
 
   .date-badge {
     background: linear-gradient(135deg, #4facfe, #00f2fe);
     color: #000;
-    font-size: 2.2vh; /* AUMENTADO: de 1.8vh a 2.2vh */
+    font-size: 2.2vh;
     font-weight: 700;
-    padding: 1vh 2vw; /* PROPORCIONAL */
+    padding: 1vh 2vw;
     border-radius: 14px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -514,12 +461,12 @@ import indraGroup from '../assets/img/indra_group.jpg';
 
   .institution-logos {
     display: flex;
-    gap: 1vw; /* PROPORCIONAL */
+    gap: 1vw;
   }
 
   .institution-logo {
-    width: 6vh; /* AUMENTADO: de 5vh a 6vh */
-    height: 6vh; /* AUMENTADO: de 5vh a 6vh */
+    width: 6vh;
+    height: 6vh;
     object-fit: contain;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.9);
@@ -531,20 +478,17 @@ import indraGroup from '../assets/img/indra_group.jpg';
     transform: scale(1.1);
   }
 
-  /* ===== CARD CONTENT - TOTALMENTE PROPORCIONAL ===== */
   .card-content {
-    padding: 0 1vw; /* PROPORCIONAL */
-    flex: 1; /* TOMA TODO EL ESPACIO DISPONIBLE */
+    padding: 0 1vw;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* CAMBIO: Alinear desde arriba para permitir scroll natural */
+    justify-content: flex-start;
     min-height: 0;
     width: 100%;
-    gap: 1vh; /* PROPORCIONAL - 1% de altura viewport */
-    overflow-y: auto; /* PERMITIR SCROLL VERTICAL */
+    gap: 1vh;
+    overflow-y: auto;
     overflow-x: hidden;
-    
-    /* Estilo del scrollbar */
     scrollbar-width: thin;
     scrollbar-color: rgba(79, 172, 254, 0.3) transparent;
   }
@@ -566,14 +510,13 @@ import indraGroup from '../assets/img/indra_group.jpg';
     background: rgba(79, 172, 254, 0.5);
   }
 
-  /* ===== CONTENEDOR IMAGEN + TEXTO ===== */
   .step-image-container {
     margin: 1vh 0;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     flex-shrink: 0;
-    height: 30vh; /* AUMENTADO: de 26vh a 30vh para más altura */
+    height: 30vh;
     display: flex;
     gap: 1vh;
     padding: 1vh;
@@ -583,7 +526,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .image-section {
-    flex: 0 0 60%; /* AUMENTADO de 48% a 60% para más ancho */
+    flex: 0 0 60%;
     height: 100%;
     overflow: hidden;
     border-radius: 8px;
@@ -592,18 +535,17 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .image-text-section {
-    flex: 0 0 38%; /* REDUCIDO de 48% a 38% para compensar imagen más ancha */
-    background: transparent; /* ELIMINADO el fondo azul */
+    flex: 0 0 38%;
+    background: transparent;
     border-radius: 8px;
     padding: 1.5vh 2vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.0vh; /* AUMENTADO: de 1.7vh a 2.0vh */
+    font-size: 2.0vh;
     color: rgba(255, 255, 255, 0.95);
     line-height: 1.4;
     text-align: left;
-    /* ELIMINADOS: border y box-shadow del recuadro azul */
     font-weight: 500;
   }
 
@@ -628,8 +570,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   }
 
-  /* ELIMINADO el hover del recuadro azul del texto */
-
   /* Responsive para pantallas pequeñas */
   @media (max-width: 1024px) {
     .step-image-container {
@@ -653,67 +593,44 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .step-title {
-    font-size: 4.2vh; /* AUMENTADO: de 3.5vh a 4.2vh */
+    font-size: 4.2vh;
     font-weight: 800;
     color: #ffffff;
-    margin-bottom: 0.5vh; /* PROPORCIONAL */
+    margin-bottom: 0.5vh;
     line-height: 1.1;
     flex-shrink: 0;
   }
 
   .step-institution {
-    font-size: 2.8vh; /* AUMENTADO: de 2.2vh a 2.8vh */
+    font-size: 2.8vh;
     color: #4facfe;
     font-weight: 600;
-    margin-bottom: 0.5vh; /* PROPORCIONAL */
+    margin-bottom: 0.5vh;
     flex-shrink: 0;
   }
 
   .step-description {
-    font-size: 2.2vh; /* AUMENTADO: de 1.8vh a 2.2vh */
+    font-size: 2.2vh;
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.3;
-    margin-bottom: 1vh; /* PROPORCIONAL */
+    margin-bottom: 1vh;
     flex-shrink: 0;
   }
 
-  /* ESTILOS ORIGINALES DE .step-image COMENTADOS - AHORA USAMOS .step-image-container
-  .step-image {
-    margin: 1vh 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-    flex-shrink: 0;
-    height: 18vh;
-  }
-  */
-
-  .content-image {
-    width: 100%;
-    height: 100%; /* USA TODA LA ALTURA DEL CONTENEDOR */
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .step-card:hover .content-image {
-    transform: scale(1.05);
-  }
-
-  /* ===== ACHIEVEMENTS - PROPORCIONALES ===== */
   .step-achievements {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr)); /* PROPORCIONAL */
-    gap: 1vh; /* PROPORCIONAL - 1% de altura viewport */
-    margin-top: 1vh; /* PROPORCIONAL */
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    gap: 1vh;
+    margin-top: 1vh;
     flex-shrink: 0;
-    height: 10vh; /* REDUCIDO de 12vh a 10vh para mejor ajuste */
+    height: 10vh;
   }
 
   .achievement {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 1vh 1.5vw; /* PROPORCIONAL */
+    padding: 1vh 1.5vw;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -728,63 +645,74 @@ import indraGroup from '../assets/img/indra_group.jpg';
 
   .achievement-label {
     display: block;
-    font-size: 1.7vh; /* AUMENTADO: de 1.4vh a 1.7vh */
+    font-size: 1.7vh;
     color: rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.5vh; /* PROPORCIONAL */
+    margin-bottom: 0.5vh;
   }
 
   .achievement-value {
     display: block;
-    font-size: 2.2vh; /* AUMENTADO: de 1.8vh a 2.2vh */
+    font-size: 2.2vh;
     color: #ffffff;
     font-weight: 600;
     line-height: 1.2;
   }
 
-  /* ===== RESPONSIVE - SISTEMA SIMPLIFICADO ===== */
   @media (max-width: 1200px) {
     .timeline-header {
-      margin-bottom: 2.5rem; /* Reducir ligeramente el espacio */
+      margin-bottom: 2.5rem;
       padding: 1.5rem 1rem;
     }
     
-    /* Ajustar círculos para pantallas medianas */
     .dot-inner {
       width: 7vh;
       height: 7vh;
     }
     
     .dot-logo {
-      width: 5.6vh; /* ~80% del círculo */
+      width: 5.6vh;
       height: 5.6vh;
     }
   }
 
   @media (max-width: 1024px) {
     .timeline-header {
-      margin-bottom: 2rem; /* Más compacto en laptops */
+      margin-bottom: 2rem;
       padding: 1.5rem 0.8rem;
     }
     
-    /* Ajustar elementos para laptops */
-    .step-image {
-      height: 16vh;
+    .step-image-container {
+      flex-direction: column;
+      height: auto;
+      gap: 1vh;
+      padding: 1vh;
+    }
+    
+    .image-section {
+      flex: none;
+      height: 20vh;
+    }
+    
+    .image-text-section {
+      flex: none;
+      padding: 1.5vh;
+      font-size: 1.5vh;
+      min-height: 8vh;
     }
     
     .step-achievements {
       height: 9vh;
     }
     
-    /* Círculos más pequeños en laptops */
     .dot-inner {
       width: 6vh;
       height: 6vh;
     }
     
     .dot-logo {
-      width: 4.8vh; /* ~80% del círculo */
+      width: 4.8vh;
       height: 4.8vh;
     }
   }
@@ -795,7 +723,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
     }
     
     .timeline-header {
-      margin-bottom: 1.5rem; /* Más compacto en tablets */
+      margin-bottom: 1.5rem;
       padding: 1rem 0.5rem;
     }
     
@@ -821,30 +749,23 @@ import indraGroup from '../assets/img/indra_group.jpg';
       flex: 1;
     }
     
-    /* Elementos optimizados para móvil */
-    .step-image {
-      height: 14vh;
-    }
-    
     .step-achievements {
       height: 8vh;
     }
     
-    /* Círculos más pequeños en móvil */
     .dot-inner {
       width: 5vh;
       height: 5vh;
     }
     
     .dot-logo {
-      width: 4vh; /* ~80% del círculo */
+      width: 4vh;
       height: 4vh;
     }
   }
 </style>
 
 <script>
-  // Declaraciones de tipos para anime.js
   interface AnimeInstance {
     (params: any): any;
     timeline: (params: any) => any;
@@ -853,14 +774,12 @@ import indraGroup from '../assets/img/indra_group.jpg';
 
   declare const anime: AnimeInstance;
 
-  // Importar anime.js desde CDN
   const script = document.createElement('script');
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js';
   script.onload = initializeTimeline;
   document.head.appendChild(script);
 
   function initializeTimeline(): void {
-    // Verificar que anime esté disponible
     if (typeof anime === 'undefined') {
       console.error('anime.js no está cargado');
       return;
@@ -876,7 +795,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
     let currentActiveStep = 0;
     const totalSteps = timelineSteps.length;
 
-    // Animación inicial del header
     anime.timeline({
       easing: 'easeOutExpo',
       duration: 1000
@@ -894,7 +812,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
       delay: 100
     }, '-=800');
 
-    // Animación inicial de los dots
     anime({
       targets: '.timeline-dot',
       opacity: [0, 1],
@@ -904,17 +821,14 @@ import indraGroup from '../assets/img/indra_group.jpg';
       easing: 'easeOutElastic(1, .8)'
     });
 
-    // Función para activar un step específico
     function activateStep(stepIndex: number): void {
       if (stepIndex === currentActiveStep) return;
 
-      // Desactivar step anterior
       const prevStep = timelineSteps[currentActiveStep];
       const prevDot = timelineDots[currentActiveStep];
       if (prevStep) prevStep.classList.remove('active');
       if (prevDot) prevDot.classList.remove('active');
 
-      // Activar nuevo step
       currentActiveStep = stepIndex;
       const currentStep = timelineSteps[stepIndex];
       const currentDot = timelineDots[stepIndex];
@@ -923,7 +837,6 @@ import indraGroup from '../assets/img/indra_group.jpg';
       if (currentDot) {
         currentDot.classList.add('active');
         
-        // Animar el dot
         const dotInner = currentDot.querySelector('.dot-inner') as HTMLElement;
         if (dotInner) {
           anime({
@@ -935,8 +848,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
         }
       }
 
-      // Animar la línea de progreso basada en flexbox
-      const progressHeight = ((stepIndex + 1) / totalSteps) * 100; // Porcentaje de la altura total disponible
+      const progressHeight = ((stepIndex + 1) / totalSteps) * 100;
       anime({
         targets: timelineProgress,
         height: `${progressHeight}%`,
@@ -945,21 +857,19 @@ import indraGroup from '../assets/img/indra_group.jpg';
       });
     }
 
-    // Sistema SIMPLE: cada scroll = máximo 1 posición
     if (contentArea) {
-      let isMoving = false; // Prevenir movimientos múltiples
-      let scrollAccumulator = 0; // NUEVO: Acumulador para controlar sensibilidad
-      const scrollThreshold = 150; // NUEVO: Umbral mínimo para cambiar de step (aumentado)
+      let isMoving = false;
+      let scrollAccumulator = 0;
+      const scrollThreshold = 150;
       
-      // Función simple para cambiar posición
       const goToStep = (stepIndex: number) => {
-        if (isMoving) return; // Bloquear si ya se está moviendo
+        if (isMoving) return;
         
         const targetStep = Math.max(0, Math.min(totalSteps - 1, stepIndex));
-        if (targetStep === currentActiveStep) return; // Ya estamos ahí
+        if (targetStep === currentActiveStep) return;
         
         isMoving = true;
-        scrollAccumulator = 0; // Reset del acumulador
+        scrollAccumulator = 0;
         const scrollAmount = contentArea.clientHeight;
         
         contentArea.scrollTo({
@@ -969,36 +879,27 @@ import indraGroup from '../assets/img/indra_group.jpg';
         
         activateStep(targetStep);
         
-        // Desbloquear después de 800ms (aumentado para menos sensibilidad)
         setTimeout(() => {
           isMoving = false;
         }, 800);
       };
       
-      // Manejo MEJORADO de wheel - con acumulador para controlar sensibilidad
       const handleWheel = (e: WheelEvent) => {
         e.preventDefault();
         
-        // Si ya se está moviendo, ignorar
         if (isMoving) return;
         
-        // Acumular el deltaY
         scrollAccumulator += Math.abs(e.deltaY);
         
-        // Solo cambiar si se supera el umbral
         if (scrollAccumulator >= scrollThreshold) {
-          // Determinación de dirección
           if (e.deltaY > 0) {
-            // Scroll hacia abajo = siguiente posición
             goToStep(currentActiveStep + 1);
           } else if (e.deltaY < 0) {
-            // Scroll hacia arriba = posición anterior
             goToStep(currentActiveStep - 1);
           }
-          scrollAccumulator = 0; // Reset después de cambiar
+          scrollAccumulator = 0;
         }
         
-        // Reset del acumulador después de 300ms sin scroll
         setTimeout(() => {
           if (!isMoving) {
             scrollAccumulator = 0;
@@ -1006,10 +907,8 @@ import indraGroup from '../assets/img/indra_group.jpg';
         }, 300);
       };
       
-      // Event listeners simples
       contentArea.addEventListener('wheel', handleWheel, { passive: false });
 
-      // Navegación por teclado SIMPLE
       contentArea.addEventListener('keydown', (e) => {
         switch(e.key) {
           case 'ArrowDown':
@@ -1033,21 +932,16 @@ import indraGroup from '../assets/img/indra_group.jpg';
         }
       });
 
-      // Hacer el área focusable
       contentArea.setAttribute('tabindex', '0');
     }
 
-    // Inicialización
     setTimeout(() => {
-      // Activar el primer step y posicionarlo correctamente
       activateStep(0);
       
-      // Asegurar que todas las steps sean visibles inicialmente
       timelineSteps.forEach(step => {
         (step as HTMLElement).style.opacity = '1';
       });
 
-      // Asegurar que empezamos desde el principio
       if (contentArea) {
         contentArea.scrollTo({ top: 0, behavior: 'instant' });
       }
