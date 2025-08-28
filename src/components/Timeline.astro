@@ -17,17 +17,18 @@ import indraGroup from '../assets/img/indra_group.jpg';
 ---
 
 <section id="timeline" class="timeline-section">
-  <div class="timeline-container">
-    <!-- Header de la sección -->
-    <div class="timeline-header">
-      <h2 class="section-title">
-        <span class="text-gradient">My Journey</span>
-      </h2>
-      <p class="section-subtitle">
-        Professional and academic milestones that shaped my career
-      </p>
-    </div>
+  <!-- Header de la sección FUERA del contenedor flexbox -->
+  <div class="timeline-header">
+    <h2 class="section-title">
+      <span class="text-gradient">My Journey</span>
+    </h2>
+    <p class="section-subtitle">
+      Professional and academic milestones that shaped my career
+    </p>
+  </div>
 
+  <!-- Container del contenido DEBAJO del header -->
+  <div class="timeline-container">
     <!-- Timeline Layout -->
     <div class="timeline-layout">
       
@@ -209,18 +210,18 @@ import indraGroup from '../assets/img/indra_group.jpg';
     padding: 2rem 1rem;
     position: relative;
     overflow: hidden;
-    /* VOLVER AL SISTEMA SIMPLE - sin flexbox complejo */
-    /* Sin fondo - mantener el fondo original con estrellas */
+    /* Optimizaciones para touchpad */
+    touch-action: pan-y; /* Solo permite scroll vertical */
+    -webkit-font-smoothing: antialiased; /* Mejor renderizado durante scroll */
   }
 
   .timeline-container {
     max-width: 1400px;
-    height: calc(100vh - 200px); /* ALTURA FIJA SIMPLE */
-    margin: 0 auto; /* CENTRADO HORIZONTAL */
+    height: calc(100vh - 200px); 
+    margin: 0 auto;
     padding: 1rem;
     position: relative;
-    display: flex;
-    gap: 2rem;
+    /* Removido display: flex y gap que causaban el problema */
   }
 
   /* ===== HEADER INDEPENDIENTE ===== */
@@ -394,10 +395,15 @@ import indraGroup from '../assets/img/indra_group.jpg';
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     
-    /* Scroll controlado */
+    /* Scroll controlado - HÍBRIDO: Posiciones fijas + Touchpad compatible */
     overflow-y: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+    scroll-behavior: auto; /* Auto para mejor respuesta inicial del touchpad */
+    scroll-snap-type: y mandatory; /* Restaurado - necesario para las 4 posiciones */
+    
+    /* Mejoras para touchpad */
+    touch-action: pan-y; /* Permite solo scroll vertical */
+    overscroll-behavior-y: contain; /* Evita scroll en elementos padre */
+    -webkit-overflow-scrolling: touch; /* Scroll nativo en iOS */
     
     /* Scrollbar personalizada */
     scrollbar-width: thin;
@@ -430,7 +436,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
     align-items: center;
     justify-content: flex-start;
     padding: 2vh; /* 2% de la altura del viewport - PROPORCIONAL */
-    scroll-snap-align: start;
+    scroll-snap-align: start; /* Restaurado - necesario para las 4 posiciones */
     opacity: 0.6;
     transition: opacity 0.5s ease;
     overflow-y: hidden;
@@ -776,115 +782,84 @@ import indraGroup from '../assets/img/indra_group.jpg';
       });
     }
 
-    // Función para determinar qué step está visible
-    function updateActiveStep(): void {
-      if (!contentArea) return;
-
-      const scrollTop = contentArea.scrollTop;
-      const containerHeight = contentArea.clientHeight;
-      
-      // Calcular qué step está más visible (más simple y controlado)
-      const stepIndex = Math.round(scrollTop / containerHeight);
-      const clampedIndex = Math.max(0, Math.min(totalSteps - 1, stepIndex));
-      
-      activateStep(clampedIndex);
-    }
-
-    // Event listener para scroll en el área de contenido (más controlado)
+    // Sistema SIMPLE: cada scroll = máximo 1 posición
     if (contentArea) {
-      let scrollTimeout: number | null = null;
-      let isScrolling = false;
+      let isMoving = false; // Prevenir movimientos múltiples
       
-      contentArea.addEventListener('scroll', () => {
-        if (scrollTimeout) {
-          clearTimeout(scrollTimeout);
-        }
+      // Función simple para cambiar posición
+      const goToStep = (stepIndex: number) => {
+        if (isMoving) return; // Bloquear si ya se está moviendo
         
-        isScrolling = true;
+        const targetStep = Math.max(0, Math.min(totalSteps - 1, stepIndex));
+        if (targetStep === currentActiveStep) return; // Ya estamos ahí
         
-        scrollTimeout = window.setTimeout(() => {
-          updateActiveStep();
-          isScrolling = false;
-        }, 50); // Reducir debounce para mejor respuesta
-      });
-
-      // Scroll controlado con rueda del ratón (más suave y sin bloqueos)
-      contentArea.addEventListener('wheel', (e) => {
-        // Solo prevenir si no estamos en scroll libre
-        if (!isScrolling) {
-          e.preventDefault();
-          
-          const delta = e.deltaY;
-          const scrollAmount = contentArea.clientHeight;
-          
-          // Reducir threshold para mejor respuesta
-          if (Math.abs(delta) > 50) {
-            if (delta > 0 && currentActiveStep < totalSteps - 1) {
-              // Scroll hacia abajo
-              contentArea.scrollTo({
-                top: (currentActiveStep + 1) * scrollAmount,
-                behavior: 'smooth'
-              });
-            } else if (delta < 0 && currentActiveStep > 0) {
-              // Scroll hacia arriba
-              contentArea.scrollTo({
-                top: (currentActiveStep - 1) * scrollAmount,
-                behavior: 'smooth'
-              });
-            }
-          }
-        }
-      }, { passive: false });
-
-      // Permitir scroll libre con teclas
-      contentArea.addEventListener('keydown', (e) => {
+        isMoving = true;
         const scrollAmount = contentArea.clientHeight;
         
+        contentArea.scrollTo({
+          top: targetStep * scrollAmount,
+          behavior: 'smooth'
+        });
+        
+        activateStep(targetStep);
+        
+        // Desbloquear después de 500ms
+        setTimeout(() => {
+          isMoving = false;
+        }, 500);
+      };
+      
+      // Manejo SIMPLE de wheel - sin acumuladores
+      const handleWheel = (e: WheelEvent) => {
+        e.preventDefault();
+        
+        // Si ya se está moviendo, ignorar
+        if (isMoving) return;
+        
+        // Determinación simple: arriba o abajo
+        if (e.deltaY > 0) {
+          // Scroll hacia abajo = siguiente posición
+          goToStep(currentActiveStep + 1);
+        } else if (e.deltaY < 0) {
+          // Scroll hacia arriba = posición anterior
+          goToStep(currentActiveStep - 1);
+        }
+      };
+      
+      // Event listeners simples
+      contentArea.addEventListener('wheel', handleWheel, { passive: false });
+
+      // Navegación por teclado SIMPLE
+      contentArea.addEventListener('keydown', (e) => {
         switch(e.key) {
           case 'ArrowDown':
           case 'PageDown':
             e.preventDefault();
-            if (currentActiveStep < totalSteps - 1) {
-              contentArea.scrollTo({
-                top: (currentActiveStep + 1) * scrollAmount,
-                behavior: 'smooth'
-              });
-            }
+            goToStep(currentActiveStep + 1);
             break;
           case 'ArrowUp':
           case 'PageUp':
             e.preventDefault();
-            if (currentActiveStep > 0) {
-              contentArea.scrollTo({
-                top: (currentActiveStep - 1) * scrollAmount,
-                behavior: 'smooth'
-              });
-            }
+            goToStep(currentActiveStep - 1);
             break;
           case 'Home':
             e.preventDefault();
-            contentArea.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
+            goToStep(0);
             break;
           case 'End':
             e.preventDefault();
-            contentArea.scrollTo({
-              top: (totalSteps - 1) * scrollAmount,
-              behavior: 'smooth'
-            });
+            goToStep(totalSteps - 1);
             break;
         }
       });
 
-      // Hacer el área focusable para el teclado
+      // Hacer el área focusable
       contentArea.setAttribute('tabindex', '0');
     }
 
     // Inicialización
     setTimeout(() => {
-      // Activar el primer step
+      // Activar el primer step y posicionarlo correctamente
       activateStep(0);
       
       // Asegurar que todas las steps sean visibles inicialmente
@@ -897,8 +872,5 @@ import indraGroup from '../assets/img/indra_group.jpg';
         contentArea.scrollTo({ top: 0, behavior: 'instant' });
       }
     }, 1500);
-
-    // Navigation con teclado (solo cuando el área de contenido está en foco)
-    // Ya incluido en el event listener principal arriba
   }
 </script>
