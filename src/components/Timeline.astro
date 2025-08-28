@@ -266,9 +266,9 @@ import indraGroup from '../assets/img/indra_group.jpg';
     position: relative;
   }
 
-  /* ===== TIMELINE SIDE (IZQUIERDA 20%) ===== */
+  /* ===== TIMELINE SIDE (IZQUIERDA 15%) ===== */
   .timeline-line-container {
-    width: 20%;
+    width: 15%; /* REDUCIDO de 20% a 15% */
     height: 100%;
     position: relative;
     display: flex;
@@ -289,20 +289,20 @@ import indraGroup from '../assets/img/indra_group.jpg';
   .timeline-line-base {
     position: absolute;
     left: 50%;
-    top: calc(2rem + 40px);  /* Padding + radio del primer círculo = centro del primer círculo */
-    width: 4px;
-    height: calc(100% - 4rem - 80px);  /* Altura total - padding - diámetro completo de círculos */
+    top: calc(2rem + 4vh);  /* Padding + radio del primer círculo (4vh) */
+    width: 3px; /* Reducido de 4px a 3px para mejor proporción */
+    height: calc(100% - 4rem - 8vh);  /* Altura total - padding - diámetro completo de círculos (8vh) */
     background: rgba(79, 172, 254, 0.2);
     transform: translateX(-50%);
     z-index: 1;
-    border-radius: 2px;
+    border-radius: 1.5px;
   }
 
   .timeline-line-progress {
     position: absolute;
     left: 50%;
-    top: calc(2rem + 40px);  /* Igual que la línea base */
-    width: 4px;
+    top: calc(2rem + 4vh);  /* Igual que la línea base */
+    width: 3px; /* Reducido de 4px a 3px para mejor proporción */
     height: 0%;
     background: linear-gradient(180deg, 
       #4facfe 0%, 
@@ -312,7 +312,7 @@ import indraGroup from '../assets/img/indra_group.jpg';
     transform: translateX(-50%);
     z-index: 2;
     transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 2px;
+    border-radius: 1.5px;
   }
 
   /* CÍRCULOS DISTRIBUIDOS UNIFORMEMENTE */
@@ -339,13 +339,13 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .dot-inner {
-    width: 80px;
-    height: 80px;
+    width: 8vh; /* PROPORCIONAL - 8% de altura viewport */
+    height: 8vh; /* PROPORCIONAL - 8% de altura viewport */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -353,38 +353,38 @@ import indraGroup from '../assets/img/indra_group.jpg';
   }
 
   .dot-inner.education {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    background: linear-gradient(135deg, #4facfe, #00f2fe); /* Azul claro para educación */
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
   }
 
   .dot-inner.work {
-    background: linear-gradient(135deg, #059669, #047857);
-    box-shadow: 0 0 20px rgba(5, 150, 105, 0.3);
+    background: linear-gradient(135deg, #1d4ed8, #1e40af); /* Azul oscuro para trabajo */
+    box-shadow: 0 0 15px rgba(29, 78, 216, 0.3);
   }
 
   .dot-inner.current {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    box-shadow: 0 0 25px rgba(79, 172, 254, 0.4);
+    background: linear-gradient(135deg, #1d4ed8, #1e40af); /* Azul oscuro para actual */
+    box-shadow: 0 0 20px rgba(29, 78, 216, 0.4);
   }
 
   .timeline-dot.active .dot-inner {
-    transform: scale(1.2);
-    box-shadow: 0 0 40px rgba(79, 172, 254, 0.8);
+    transform: scale(1.15); /* Reducido de 1.2 a 1.15 para mejor proporción */
+    box-shadow: 0 0 30px rgba(79, 172, 254, 0.8);
     border-color: rgba(79, 172, 254, 1);
   }
 
   .dot-logo {
-    width: 50px;
-    height: 50px;
+    width: 6.5vh; /* PROPORCIONAL - ocupa ~81% del círculo (6.5/8) */
+    height: 6.5vh; /* PROPORCIONAL - ocupa ~81% del círculo */
     object-fit: contain;
     border-radius: 50%;
     background: white;
-    padding: 3px;
+    padding: 0.3vh; /* PROPORCIONAL - padding pequeño */
   }
 
-  /* ===== CONTENT AREA (DERECHA 80%) ===== */
+  /* ===== CONTENT AREA (DERECHA 85%) ===== */
   .timeline-content-area {
-    width: 80%;
+    width: 85%; /* AUMENTADO de 80% a 85% */
     height: 100%;
     position: relative;
     
@@ -641,6 +641,17 @@ import indraGroup from '../assets/img/indra_group.jpg';
       margin-bottom: 2.5rem; /* Reducir ligeramente el espacio */
       padding: 1.5rem 1rem;
     }
+    
+    /* Ajustar círculos para pantallas medianas */
+    .dot-inner {
+      width: 7vh;
+      height: 7vh;
+    }
+    
+    .dot-logo {
+      width: 5.6vh; /* ~80% del círculo */
+      height: 5.6vh;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -656,6 +667,17 @@ import indraGroup from '../assets/img/indra_group.jpg';
     
     .step-achievements {
       height: 9vh;
+    }
+    
+    /* Círculos más pequeños en laptops */
+    .dot-inner {
+      width: 6vh;
+      height: 6vh;
+    }
+    
+    .dot-logo {
+      width: 4.8vh; /* ~80% del círculo */
+      height: 4.8vh;
     }
   }
 
@@ -698,6 +720,17 @@ import indraGroup from '../assets/img/indra_group.jpg';
     
     .step-achievements {
       height: 8vh;
+    }
+    
+    /* Círculos más pequeños en móvil */
+    .dot-inner {
+      width: 5vh;
+      height: 5vh;
+    }
+    
+    .dot-logo {
+      width: 4vh; /* ~80% del círculo */
+      height: 4vh;
     }
   }
 </style>
