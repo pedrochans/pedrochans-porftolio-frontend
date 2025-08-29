@@ -277,11 +277,27 @@ import itxLogo from '../assets/img/itx_logo.png';
     align-items: center;
     justify-content: space-between;
     padding: 2rem 0.8rem;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, 
+      rgba(79, 172, 254, 0.1) 0%, 
+      rgba(0, 242, 254, 0.05) 50%, 
+      rgba(255, 107, 107, 0.1) 100%);
+    border: 1px solid rgba(79, 172, 254, 0.3);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.2);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+  }
+
+  .timeline-line-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(79, 172, 254, 0.05) 50%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
   }
 
   .timeline-line-base {
@@ -368,11 +384,31 @@ import itxLogo from '../assets/img/itx_logo.png';
     width: 82.5%;
     height: 100%;
     position: relative;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, 
+      rgba(79, 172, 254, 0.1) 0%, 
+      rgba(0, 242, 254, 0.05) 50%, 
+      rgba(255, 107, 107, 0.1) 100%);
+    border: 1px solid rgba(79, 172, 254, 0.3);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.2);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+  }
+
+  .timeline-content-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(79, 172, 254, 0.05) 50%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .timeline-content-area {
     overflow-y: auto;
     scroll-behavior: auto;
     scroll-snap-type: y mandatory;
@@ -381,6 +417,11 @@ import itxLogo from '../assets/img/itx_logo.png';
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: rgba(79, 172, 254, 0.5) transparent;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
   }
 
   .timeline-content-area::-webkit-scrollbar {
@@ -414,6 +455,8 @@ import itxLogo from '../assets/img/itx_logo.png';
     transition: opacity 0.5s ease;
     overflow-y: hidden;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
   }
 
   .timeline-step.active {
@@ -425,7 +468,7 @@ import itxLogo from '../assets/img/itx_logo.png';
     height: 100%;
     margin: 0;
     padding: 1.5vh;
-    background: none;
+    background: transparent;
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -435,6 +478,13 @@ import itxLogo from '../assets/img/itx_logo.png';
     justify-content: space-between;
     overflow: hidden;
     box-sizing: border-box;
+    position: relative;
+  }
+
+  .step-card:hover {
+    transform: none;
+    border-color: none;
+    box-shadow: none;
   }
 
   .card-header {
@@ -523,7 +573,7 @@ import itxLogo from '../assets/img/itx_logo.png';
     padding: 1vh;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(79, 172, 254, 0.3);
   }
 
   .image-section {
@@ -544,10 +594,10 @@ import itxLogo from '../assets/img/itx_logo.png';
     align-items: center;
     justify-content: center;
     font-size: 2.0vh;
-    color: rgba(255, 255, 255, 0.95);
-    line-height: 1.4;
+    color: #c0c0c0;
+    line-height: 1.8;
     text-align: left;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .image-text-section p {
@@ -589,6 +639,9 @@ import itxLogo from '../assets/img/itx_logo.png';
       flex: none;
       padding: 1.5vh;
       font-size: 1.5vh;
+      color: #c0c0c0;
+      line-height: 1.8;
+      font-weight: 400;
       min-height: 8vh;
     }
   }
@@ -600,12 +653,16 @@ import itxLogo from '../assets/img/itx_logo.png';
     margin-bottom: 0.5vh;
     line-height: 1.1;
     flex-shrink: 0;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .step-institution {
     font-size: 2.8vh;
     color: #4facfe;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 0.5vh;
     flex-shrink: 0;
   }
@@ -628,20 +685,26 @@ import itxLogo from '../assets/img/itx_logo.png';
   }
 
   .achievement {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, 
+      rgba(79, 172, 254, 0.1) 0%, 
+      rgba(0, 242, 254, 0.05) 50%, 
+      rgba(255, 107, 107, 0.1) 100%);
+    border: 1px solid rgba(79, 172, 254, 0.3);
     border-radius: 8px;
     padding: 1vh 1.5vw;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.1);
   }
 
   .achievement:hover {
     background: rgba(79, 172, 254, 0.08);
-    border-color: rgba(79, 172, 254, 0.3);
+    border-color: rgba(79, 172, 254, 0.5);
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.2);
   }
 
   .achievement-label {
@@ -651,14 +714,17 @@ import itxLogo from '../assets/img/itx_logo.png';
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.5vh;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   }
 
   .achievement-value {
     display: block;
     font-size: 2.2vh;
-    color: #ffffff;
-    font-weight: 600;
+    color: #c0c0c0;
+    font-weight: 500;
     line-height: 1.2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   }
 
   @media (max-width: 1200px) {
@@ -712,6 +778,9 @@ import itxLogo from '../assets/img/itx_logo.png';
       height: 33%;
       padding: 1.5vh;
       font-size: 1.5vh;
+      color: #c0c0c0;
+      line-height: 1.8;
+      font-weight: 400;
     }
     
     .step-achievements {
@@ -773,6 +842,9 @@ import itxLogo from '../assets/img/itx_logo.png';
     .image-text-section {
       height: 38%;
       font-size: 1.3vh;
+      color: #c0c0c0;
+      line-height: 1.8;
+      font-weight: 400;
       padding: 1vh;
     }
     
