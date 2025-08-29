@@ -516,7 +516,8 @@ import itxLogo from '../assets/img/itx_logo.png';
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     flex-shrink: 0;
-    height: 30vh;
+    /* Altura más moderada y proporcionada */
+    height: 40vh; /* Altura fija más razonable */
     display: flex;
     gap: 1vh;
     padding: 1vh;
@@ -666,6 +667,10 @@ import itxLogo from '../assets/img/itx_logo.png';
       padding: 1.5rem 1rem;
     }
     
+    .step-image-container {
+      height: 36vh; /* Altura optimizada para pantallas medianas */
+    }
+    
     .dot-inner {
       width: 7vh;
       height: 7vh;
@@ -677,6 +682,13 @@ import itxLogo from '../assets/img/itx_logo.png';
     }
   }
 
+  /* Media query específica para laptops (1024px - 1100px) */
+  @media (max-width: 1100px) and (min-width: 1024px) {
+    .step-image-container {
+      height: 38vh; /* Altura específica para laptops 1024x858 */
+    }
+  }
+
   @media (max-width: 1024px) {
     .timeline-header {
       margin-bottom: 2rem;
@@ -685,21 +697,21 @@ import itxLogo from '../assets/img/itx_logo.png';
     
     .step-image-container {
       flex-direction: column;
-      height: auto;
+      height: 32vh; /* Altura ajustada para tablets */
       gap: 1vh;
       padding: 1vh;
     }
     
     .image-section {
       flex: none;
-      height: 20vh;
+      height: 65%;
     }
     
     .image-text-section {
       flex: none;
+      height: 33%;
       padding: 1.5vh;
       font-size: 1.5vh;
-      min-height: 8vh;
     }
     
     .step-achievements {
@@ -747,6 +759,21 @@ import itxLogo from '../assets/img/itx_logo.png';
     .timeline-content-area {
       width: 100%;
       flex: 1;
+    }
+    
+    .step-image-container {
+      flex-direction: column;
+      height: 24vh; /* Altura moderada para móviles */
+    }
+    
+    .image-section {
+      height: 60%;
+    }
+    
+    .image-text-section {
+      height: 38%;
+      font-size: 1.3vh;
+      padding: 1vh;
     }
     
     .step-achievements {
