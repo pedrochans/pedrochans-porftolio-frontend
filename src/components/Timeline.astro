@@ -235,28 +235,28 @@ import itxLogo from '../assets/img/itx_logo.png';
     max-width: 1400px;
     margin: 0 auto 2rem auto;
     padding: 2rem 1rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
   }
 
   .section-title {
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: 3.5rem;
     font-weight: 800;
-    margin-bottom: 0.5rem;
+    margin-bottom: 20px;
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0;
-    transform: translateY(50px);
+    text-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
   }
 
   .section-subtitle {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    color: #b0b0b0;
     max-width: 600px;
     margin: 0 auto;
-    line-height: 1.4;
-    opacity: 0;
-    transform: translateY(30px);
+    line-height: 1.6;
   }
 
   .timeline-layout {
