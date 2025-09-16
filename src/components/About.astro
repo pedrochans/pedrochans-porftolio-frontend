@@ -440,14 +440,28 @@ import profile3 from '../assets/img/profile_3.jpg';
     }
   }
 
+  /* Media query para tablets pequeños - layout 2x2 */
+  @media (max-width: 768px) and (min-width: 481px) {
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 25px;
+      justify-items: center;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
   @media (max-width: 480px) {
     .about-card {
       padding: 30px;
     }
 
     .about-highlights {
-      flex-direction: column;
-      gap: 15px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px 20px;
+      justify-items: center;
     }
 
     .profile-carousel {

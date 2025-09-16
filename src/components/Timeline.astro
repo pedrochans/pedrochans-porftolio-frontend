@@ -74,7 +74,8 @@ import itxLogo from '../assets/img/itx_logo.png';
                   <Image src={facultadeMatematicas} alt="Facultad de Matemáticas" class="content-image" width={1200} height={900} format="webp" quality={100} loading="eager" />
                 </div>
                 <div class="image-text-section">
-                  <p>The Mathematics degree program develops strong analytical and problem-solving skills through the study of pure and applied mathematical concepts. Students explore calculus, algebra, statistics, and mathematical modeling, preparing them for careers in finance, technology, research, education, and data science</p>
+                  <p class="text-full">The Mathematics degree program develops strong analytical and problem-solving skills through the study of pure and applied mathematical concepts. Students explore calculus, algebra, statistics, and mathematical modeling, preparing them for careers in finance, technology, research, education, and data science</p>
+                  <p class="text-mobile">Strong analytical and problem-solving skills through pure and applied mathematics. Focus on calculus, algebra, statistics, and mathematical modeling.</p>
                 </div>
               </div>
               
@@ -110,7 +111,8 @@ import itxLogo from '../assets/img/itx_logo.png';
                   <Image src={ucmImage} alt="UCM Campus" class="content-image" width={1200} height={900} format="webp" quality={100} loading="eager" />
                 </div>
                 <div class="image-text-section">
-                  <p>Advanced specialization in Big Data technologies and Data Science methodologies. Focused on machine learning algorithms, distributed computing, and statistical analysis with real-world applications in recommendation systems.</p>
+                  <p class="text-full">Advanced specialization in Big Data technologies and Data Science methodologies. Focused on machine learning algorithms, distributed computing, and statistical analysis with real-world applications in recommendation systems.</p>
+                  <p class="text-mobile">Specialization in Big Data and Data Science. Machine learning, distributed computing, and statistical analysis.</p>
                 </div>
               </div>
               
@@ -148,7 +150,8 @@ import itxLogo from '../assets/img/itx_logo.png';
                   <Image src={indraOffice} alt="Indra Office" class="content-image" width={1200} height={900} format="webp" quality={100} loading="eager" />
                 </div>
                 <div class="image-text-section">
-                  <p>Business Intelligence and financial reporting, with proven expertise in developing and migrating reporting solutions across multiple platforms. Skilled in PowerBI, SSRS, and SQL with hands-on experience managing data migrations between DB2, Oracle, and Snowflake databases.</p>
+                  <p class="text-full">Business Intelligence and financial reporting, with proven expertise in developing and migrating reporting solutions across multiple platforms. Skilled in PowerBI, SSRS, and SQL with hands-on experience managing data migrations between DB2, Oracle, and Snowflake databases.</p>
+                  <p class="text-mobile">Business Intelligence and financial reporting. PowerBI, SSRS, SQL with data migrations across DB2, Oracle, and Snowflake.</p>
                 </div>
               </div>
               
@@ -186,7 +189,8 @@ import itxLogo from '../assets/img/itx_logo.png';
                   <Image src={itxOffice} alt="Inditex Office" class="content-image" width={1200} height={900} format="webp" quality={100} loading="eager" />
                 </div>
                 <div class="image-text-section">
-                  <p>MAGI-C project for Inditex, developing gross margin calculations and stock valuations from multiple corporate perspectives. Specialized in building complex SQL procedures in Snowflake for data processing and orchestration, while creating integrated Power BI solutions and maintaining direct client relationships for problem resolution.</p>
+                  <p class="text-full">MAGI-C project for Inditex, developing gross margin calculations and stock valuations from multiple corporate perspectives. Specialized in building complex SQL procedures in Snowflake for data processing and orchestration, while creating integrated Power BI solutions and maintaining direct client relationships for problem resolution.</p>
+                  <p class="text-mobile">MAGI-C project for Inditex: gross margin calculations and stock valuations. Complex SQL procedures in Snowflake and Power BI solutions.</p>
                 </div>
               </div>
               
@@ -592,6 +596,14 @@ import itxLogo from '../assets/img/itx_logo.png';
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
+  .text-mobile {
+    display: none; /* Oculto por defecto en escritorio */
+  }
+  
+  .text-full {
+    display: block; /* Visible por defecto en escritorio */
+  }
+
   .content-image {
     width: 100%;
     height: 100%;
@@ -791,8 +803,18 @@ import itxLogo from '../assets/img/itx_logo.png';
     }
     
     .timeline-header {
-      margin-bottom: 1.5rem;
-      padding: 1rem 0.5rem;
+      margin-bottom: 1rem;
+      padding: 0.5rem 0.5rem;
+    }
+    
+    .section-title {
+      font-size: 2.2rem !important;
+      margin-bottom: 8px !important;
+    }
+    
+    .section-subtitle {
+      font-size: 0.9rem !important;
+      margin-bottom: 0 !important;
     }
     
     .timeline-container {
@@ -817,26 +839,86 @@ import itxLogo from '../assets/img/itx_logo.png';
       flex: 1;
     }
     
+    .step-card {
+      padding: 0.8vh !important;
+    }
+    
+    .card-header {
+      height: 4vh !important;
+      margin-bottom: 0.5vh !important;
+    }
+    
+    .date-badge {
+      font-size: 1.4vh !important;
+      padding: 0.5vh 1.5vw !important;
+    }
+    
+    .institution-logo {
+      width: 4vh !important;
+      height: 4vh !important;
+    }
+    
+    .step-title {
+      font-size: 3.6vh !important;
+      margin-bottom: 0.4vh !important;
+    }
+    
+    .step-institution {
+      font-size: 2.6vh !important;
+      margin-bottom: 0.4vh !important;
+    }
+    
     .step-image-container {
       flex-direction: column;
-      height: 24vh; /* Altura moderada para móviles */
+      height: 35vh !important; /* Aumentado mucho más para llenar el espacio */
+      margin: 0.8vh 0 !important;
+      padding: 1vh !important;
     }
     
     .image-section {
-      height: 60%;
+      height: 65% !important;
     }
     
     .image-text-section {
-      height: 38%;
-      font-size: 1.3vh;
+      height: 33% !important;
+      font-size: 1.8vh !important; /* Texto mucho más grande */
       color: #c0c0c0;
-      line-height: 1.8;
+      line-height: 1.6 !important;
       font-weight: 400;
-      padding: 1vh;
+      padding: 1.2vh !important;
+    }
+    
+    .text-mobile {
+      display: block !important;
+    }
+    
+    .text-full {
+      display: none !important;
     }
     
     .step-achievements {
-      height: 8vh;
+      height: 6vh !important;
+      gap: 0.5vh !important;
+      margin-top: 0.5vh !important;
+    }
+    
+    .achievement {
+      padding: 0.5vh 1vw !important;
+    }
+    
+    .achievement-label {
+      font-size: 1.1vh !important;
+      margin-bottom: 0.2vh !important;
+    }
+    
+    .achievement-value {
+      font-size: 1.4vh !important;
+    }
+    
+    .card-content {
+      padding: 0 0.5vw !important;
+      gap: 0.5vh !important;
+      overflow-y: hidden !important; /* Eliminar scroll interno */
     }
     
     .dot-inner {
@@ -847,6 +929,61 @@ import itxLogo from '../assets/img/itx_logo.png';
     .dot-logo {
       width: 4vh;
       height: 4vh;
+    }
+  }
+  
+  /* Media query para pantallas muy pequeñas - optimización extrema */
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 2rem !important;
+      margin-bottom: 6px !important;
+    }
+    
+    .section-subtitle {
+      font-size: 0.8rem !important;
+    }
+    
+    .timeline-header {
+      margin-bottom: 0.8rem !important;
+      padding: 0.3rem !important;
+    }
+    
+    .step-image-container {
+      height: 32vh !important; /* Aumentado también para pantallas muy pequeñas */
+    }
+    
+    .step-title {
+      font-size: 3.2vh !important;
+    }
+    
+    .step-institution {
+      font-size: 2.4vh !important;
+    }
+    
+    .image-text-section {
+      font-size: 1.6vh !important; /* Texto más grande */
+      line-height: 1.5 !important;
+      padding: 1vh !important;
+    }
+    
+    .text-mobile {
+      display: block !important;
+    }
+    
+    .text-full {
+      display: none !important;
+    }
+    
+    .step-achievements {
+      height: 5vh !important;
+    }
+    
+    .achievement-label {
+      font-size: 1vh !important;
+    }
+    
+    .achievement-value {
+      font-size: 1.2vh !important;
     }
   }
 </style>
