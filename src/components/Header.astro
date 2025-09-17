@@ -28,8 +28,9 @@ import profileImage from '../assets/img/profile.jpg';
           <div class="social-icons">
             
             <a href="mailto:chans_99@yahoo.es" class="social-icon email" aria-label="Email">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8 8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57V12c0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47.65.89 1.77 1.47 2.96 1.47 1.97 0 3.5-1.53 3.5-3.57V12c0-5.52-4.48-10-10-10zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
               </svg>
             </a>
             
@@ -86,7 +87,7 @@ import profileImage from '../assets/img/profile.jpg';
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 1001;
     background: rgba(12, 20, 39, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
@@ -179,7 +180,7 @@ import profileImage from '../assets/img/profile.jpg';
   }
 
   .social-icon.email:hover {
-    color: #3b82f6;
+    color: #4facfe;
   }
 
   .brand-link {
@@ -270,7 +271,7 @@ import profileImage from '../assets/img/profile.jpg';
     }
 
     .profile-section {
-      gap: 0.5rem;
+      gap: 0.8rem;
       height: 40px;
     }
 
@@ -284,27 +285,30 @@ import profileImage from '../assets/img/profile.jpg';
     }
 
     .social-icon {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
     }
 
     .social-icon svg {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
     }
 
     .nav-menu {
       position: absolute;
       top: 100%;
-      left: 0;
-      width: 100%;
+      left: 50%;
+      right: 1rem;
+      width: auto;
       background: rgba(12, 20, 39, 0.98);
       backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border-color);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
       transform: translateY(-100%);
       opacity: 0;
       visibility: hidden;
       transition: var(--transition-smooth);
+      margin-top: 0.5rem;
     }
 
     .nav-menu.active {
@@ -316,17 +320,55 @@ import profileImage from '../assets/img/profile.jpg';
     .nav-list {
       flex-direction: column;
       gap: 0;
-      padding: 1rem 0;
+      padding: 0.5rem 0;
+      align-items: flex-end;
+      width: 100%;
     }
 
     .nav-item {
       width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .nav-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-item:first-child .nav-link {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .nav-item:last-child .nav-link {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
     }
 
     .nav-link {
       display: block;
       padding: 1rem 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 1.1rem;
+      text-align: right;
+      width: auto;
+      margin-left: auto;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+      text-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
     }
 
     .nav-link::after {
@@ -335,14 +377,17 @@ import profileImage from '../assets/img/profile.jpg';
 
     .nav-toggle.active .nav-toggle-line:nth-child(1) {
       transform: rotate(45deg) translate(6px, 6px);
+      opacity: 1;
     }
 
     .nav-toggle.active .nav-toggle-line:nth-child(2) {
       opacity: 0;
+      transform: scale(0);
     }
 
     .nav-toggle.active .nav-toggle-line:nth-child(3) {
       transform: rotate(-45deg) translate(6px, -6px);
+      opacity: 1;
     }
   }
 
