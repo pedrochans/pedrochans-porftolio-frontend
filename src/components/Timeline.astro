@@ -14,17 +14,14 @@ import itxLogo from '../assets/img/itx_logo.png';
 ---
 
 <section id="timeline" class="timeline-section">
-  <div class="timeline-header">
-    <h2 class="section-title">
-      <span class="text-gradient">My Journey</span>
-    </h2>
-    <p class="section-subtitle">
-      Professional and academic milestones that shaped my career
-    </p>
-  </div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">My Journey</h2>
+      <p class="section-subtitle">Professional and academic milestones that shaped my career</p>
+    </div>
 
-  <div class="timeline-container">
-    <div class="timeline-layout">
+    <div class="timeline-container">
+      <div class="timeline-layout">
       <div class="timeline-line-container">
         <div class="timeline-line-base"></div>
         
@@ -189,7 +186,7 @@ import itxLogo from '../assets/img/itx_logo.png';
                   <Image src={itxOffice} alt="Inditex Office" class="content-image" width={1200} height={900} format="webp" quality={100} loading="eager" />
                 </div>
                 <div class="image-text-section">
-                  <p class="text-full">MAGI-C project for Inditex, developing gross margin calculations and stock valuations from multiple corporate perspectives. Specialized in building complex SQL procedures in Snowflake for data processing and orchestration, while creating integrated Power BI solutions and maintaining direct client relationships for problem resolution.</p>
+                  <p class="text-full">MAGI-C project for Inditex, developing gross margin calculations and stock valuations from multiple corporate perspectives. Building complex SQL procedures in Snowflake for data processing and orchestration, while creating Power BI solutions and maintaining direct client relationships.</p>
                   <p class="text-mobile">MAGI-C project for Inditex: gross margin calculations and stock valuations. Complex SQL procedures in Snowflake and Power BI solutions.</p>
                 </div>
               </div>
@@ -210,35 +207,28 @@ import itxLogo from '../assets/img/itx_logo.png';
 
       </div>
     </div>
+    </div>
   </div>
 </section>
 
 <style>
   .timeline-section {
-    min-height: 100vh;
-    padding: 2rem 1rem;
+    padding: 120px 0;
     position: relative;
     overflow: hidden;
-    touch-action: pan-y;
-    -webkit-font-smoothing: antialiased;
   }
 
-  .timeline-container {
-    max-width: 1400px;
-    height: calc(100vh - 120px);
+  .container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0 20px;
     position: relative;
+    z-index: 1;
   }
 
-  .timeline-header {
-    position: relative;
+  .section-header {
     text-align: center;
-    z-index: 100;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto 2rem auto;
-    padding: 2rem 1rem;
+    margin-bottom: 80px;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out 0.2s forwards;
@@ -261,6 +251,14 @@ import itxLogo from '../assets/img/itx_logo.png';
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
+  }
+
+  .timeline-container {
+    max-width: 1400px;
+    height: calc(100vh - 120px);
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
   }
 
   .timeline-layout {
@@ -799,22 +797,11 @@ import itxLogo from '../assets/img/itx_logo.png';
 
   @media (max-width: 768px) {
     .timeline-section {
-      padding: 1.5rem 0.8rem;
-    }
-    
-    .timeline-header {
-      margin-bottom: 1rem;
-      padding: 0.5rem 0.5rem;
+      padding: 80px 0;
     }
     
     .section-title {
-      font-size: 2.2rem !important;
-      margin-bottom: 8px !important;
-    }
-    
-    .section-subtitle {
-      font-size: 0.9rem !important;
-      margin-bottom: 0 !important;
+      font-size: 2.5rem;
     }
     
     .timeline-container {
@@ -984,6 +971,17 @@ import itxLogo from '../assets/img/itx_logo.png';
     
     .achievement-value {
       font-size: 1.2vh !important;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>
