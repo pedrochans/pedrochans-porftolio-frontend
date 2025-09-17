@@ -281,8 +281,8 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
   }
 
   .courses-section {
-    margin-bottom: 3rem;
-    margin-top: 5rem;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
   }
 
   .languages-section {
@@ -946,7 +946,7 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
 
   .learning-title {
     font-size: 1.4rem;
-    color: var(--text-primary);
+    color: #ffffff;
     font-weight: 700;
     margin: 0 0 0.8rem 0;
     line-height: 1.3;
@@ -954,7 +954,7 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
   }
 
   .learning-provider {
-    color: var(--accent-primary);
+    color: #4facfe;
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0 0 0.8rem 0;
@@ -1006,28 +1006,14 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     border-color: rgba(59, 130, 246, 0.5);
   }
 
-  /* Efectos especiales para certificación premium - cambiar a azul */
+  /* Efectos especiales para certificación premium - color uniforme */
   .learning-card.premium .learning-title {
-    background: linear-gradient(135deg, 
-      #3b82f6 0%, 
-      #1d4ed8 50%, 
-      #1e40af 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
   }
 
-  /* Efectos para certificaciones de idiomas - cambiar a azul */
+  /* Efectos para certificaciones de idiomas - color uniforme */
   .learning-card.language .learning-title {
-    background: linear-gradient(135deg, 
-      #3b82f6 0%, 
-      #1d4ed8 50%, 
-      #1e40af 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
   }
 
   /* ===== ANIMACIONES ===== */
@@ -1169,39 +1155,41 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     .languages-grid {
       grid-template-columns: 1fr;
       grid-template-rows: auto;
-      gap: 1.5rem;
+      gap: 1rem;
       max-width: 100%;
     }
 
     .learning-card {
-      padding: 2rem 1.5rem;
-      border-radius: 16px;
-      min-height: 180px;
+      padding: 1.5rem 1rem;
+      border-radius: 12px;
+      min-height: 120px;
     }
 
     .learning-header {
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
 
     .learning-logo-container {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
     }
 
     .learning-logo {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
     }
 
     .learning-title {
-      font-size: 1.2rem;
-      line-height: 1.4;
+      font-size: 1rem;
+      line-height: 1.3;
+      margin: 0 0 0.5rem 0;
     }
 
     .learning-provider {
-      font-size: 1rem;
+      font-size: 0.85rem;
+      margin: 0 0 0.5rem 0;
     }
 
     .learning-date {
@@ -1209,8 +1197,9 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     }
 
     .skill-tag {
-      font-size: 0.75rem;
-      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 8px;
     }
 
     .learning-id {
@@ -1236,7 +1225,8 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     }
 
     .subsection-title {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
   }
 
