@@ -21,7 +21,8 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
   <div class="certifications-container">
     <div class="certifications-header">
       <h2 class="section-title">
-        <span class="text-gradient">Certifications & Learning</span>
+        <span class="text-gradient desktop-title">Certifications & Learning</span>
+        <span class="text-gradient mobile-title">Certifications</span>
       </h2>
       <p class="section-subtitle">
         Professional certifications and continuous learning journey
@@ -37,24 +38,28 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
           <div class="cert-image-wrapper" data-cert="snowpro" data-url="https://achieve.snowflake.com/3567cd21-7bd0-4185-a8c4-93a74911df60">
             <Image src={snowProCore} alt="SnowPro Core Certification" class="cert-image" width={300} height={300} format="png" quality={100} loading="lazy" />
           </div>
+          <div class="cert-code-mobile">COF-C02</div>
         </div>
 
         <div class="cert-container">
           <div class="cert-image-wrapper" data-cert="azure" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/F44E777D5B6793A4?sharingId">
             <Image src={az900} alt="Azure Fundamentals Certification" class="cert-image" width={300} height={300} format="png" quality={100} loading="lazy" />
           </div>
+          <div class="cert-code-mobile">AZ-900</div>
         </div>
 
         <div class="cert-container">
           <div class="cert-image-wrapper" data-cert="powerbi" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/F44E777D5B6793A4?sharingId">
             <Image src={pl300} alt="Power BI Data Analyst Associate Certification" class="cert-image" width={300} height={300} format="png" quality={100} loading="lazy" />
           </div>
+          <div class="cert-code-mobile">PL-300</div>
         </div>
 
         <div class="cert-container">
           <div class="cert-image-wrapper" data-cert="fabric" data-url="https://learn.microsoft.com/api/credentials/share/es-es/ChansFanegoPedro-7409/230585922EFBFBA?sharingId">
             <Image src={dp600} alt="Microsoft Fabric Analytics Engineer Associate Certification" class="cert-image" width={300} height={300} format="png" quality={100} loading="lazy" />
           </div>
+          <div class="cert-code-mobile">DP-600</div>
         </div>
       </div>
 
@@ -253,6 +258,15 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     text-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
   }
 
+  /* Títulos responsive */
+  .desktop-title {
+    display: inline;
+  }
+
+  .mobile-title {
+    display: none;
+  }
+
   .section-subtitle {
     font-size: 1.2rem;
     color: #b0b0b0;
@@ -314,8 +328,23 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
   .medals-row .cert-container {
     flex: 1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     perspective: 1500px;
+  }
+
+  /* Códigos de certificación para móvil */
+  .cert-code-mobile {
+    display: none;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #4facfe;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(79, 172, 254, 0.4);
   }
 
   .cert-image-wrapper {
@@ -1024,20 +1053,64 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
       border-radius: 16px;
     }
 
+    .desktop-title {
+      display: none;
+    }
+
+    .mobile-title {
+      display: inline;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+    }
+
     .medals-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2rem;
+      justify-items: center;
+      align-items: center;
+      margin: 2rem 0;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .medals-row .cert-container {
+      flex: none;
+      width: 100%;
+      display: flex;
       flex-direction: column;
-      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cert-code-mobile {
+      display: block;
+    }
+
+    .cert-image-wrapper {
+      transition: none !important;
+      transform: none !important;
+    }
+
+    .cert-image-wrapper:hover {
+      transform: none !important;
+    }
+
+    .cert-image-wrapper.active {
+      transform: none !important;
     }
 
     .cert-image {
-      width: 150px;
-      max-height: 150px;
+      width: 120px;
+      height: 120px;
     }
 
     .certification-info-card {
-      padding: 0;
-      margin-top: 2rem;
-      height: 320px;
+      display: none;
     }
 
     .cert_info-content {
@@ -1196,6 +1269,9 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Detectar si es dispositivo móvil
+    const isMobile = window.innerWidth <= 768;
+    
     // Configurar animaciones de elementos
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -1220,7 +1296,7 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
       observer.observe(element);
     });
 
-    // Sistema de cambio dinámico de información de certificaciones
+    // Sistema de cambio dinámico de información de certificaciones (solo desktop)
     const certWrappers = document.querySelectorAll('.cert-image-wrapper[data-cert]');
     const certContents = document.querySelectorAll('.cert-info-content');
     let currentActive = 'snowpro'; // Certificación activa por defecto
@@ -1256,8 +1332,10 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
       currentActive = certType;
     };
 
-    // Inicializar primera certificación
-    showCertInfo('snowpro');
+    // Inicializar primera certificación (solo desktop)
+    if (!isMobile) {
+      showCertInfo('snowpro');
+    }
 
     // ===== FUNCIONALIDAD DE CLICK EN MEDALLONES DE CERTIFICACIONES =====
     const setupClickableCertifications = () => {
@@ -1337,16 +1415,18 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
           htmlElement.addEventListener('click', clickHandler, true);
           htmlElement.addEventListener('click', clickHandler, false);
           
-          // Efectos de hover mejorados
-          htmlElement.addEventListener('mouseenter', () => {
-            console.log(`🔍 Hover en medallón ${certType}`);
-            htmlElement.style.cursor = 'pointer';
-            htmlElement.style.filter = 'brightness(1.2) drop-shadow(0 0 15px rgba(59, 130, 246, 0.4))';
-          });
+          // Efectos de hover mejorados (solo en desktop)
+          if (!isMobile) {
+            htmlElement.addEventListener('mouseenter', () => {
+              console.log(`🔍 Hover en medallón ${certType}`);
+              htmlElement.style.cursor = 'pointer';
+              htmlElement.style.filter = 'brightness(1.2) drop-shadow(0 0 15px rgba(59, 130, 246, 0.4))';
+            });
 
-          htmlElement.addEventListener('mouseleave', () => {
-            htmlElement.style.filter = '';
-          });
+            htmlElement.addEventListener('mouseleave', () => {
+              htmlElement.style.filter = '';
+            });
+          }
           
           console.log(`✅ Click listeners añadidos al medallón ${certType}`);
         } else {
@@ -1464,62 +1544,64 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     // Ejecutar configuración de learning cards clickeables
     setupClickableLearningCards();
 
-    // Event listeners para las imágenes de certificación
-    certWrappers.forEach((wrapper) => {
-      const wrapperElement = wrapper as HTMLElement;
-      const certType = wrapperElement.getAttribute('data-cert');
-      
-      if (!certType) return;
+    // Event listeners para las imágenes de certificación (solo desktop)
+    if (!isMobile) {
+      certWrappers.forEach((wrapper) => {
+        const wrapperElement = wrapper as HTMLElement;
+        const certType = wrapperElement.getAttribute('data-cert');
+        
+        if (!certType) return;
 
-      // Hover para cambiar información
-      wrapperElement.addEventListener('mouseenter', () => {
-        showCertInfo(certType);
+        // Hover para cambiar información
+        wrapperElement.addEventListener('mouseenter', () => {
+          showCertInfo(certType);
+        });
+        
+        // Efecto 3D de seguimiento del ratón
+        wrapperElement.addEventListener('mousemove', (e) => {
+          const rect = wrapperElement.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;
+          
+          // Calcular rotación basada en posición del ratón
+          const deltaX = (mouseX - centerX) / (rect.width / 2);
+          const deltaY = (mouseY - centerY) / (rect.height / 2);
+          
+          // Limitar rotación a ±18 grados (más marcado que antes)
+          const maxRotation = 25;
+          const rotateX = Math.max(-maxRotation, Math.min(maxRotation, deltaY * maxRotation));
+          const rotateY = Math.max(-maxRotation, Math.min(maxRotation, -deltaX * maxRotation));
+          
+          // Aplicar transformación con perspectiva 3D más intensa
+          const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1.1;
+          const baseY = wrapperElement.classList.contains('active') ? -8 : -5;
+          
+          wrapperElement.style.transform = `
+            scale(${baseScale}) 
+            translateY(${baseY}px) 
+            perspective(800px) 
+            rotateX(${rotateX}deg) 
+            rotateY(${rotateY}deg)
+          `;
+        });
+        
+        // Resetear transformación al salir
+        wrapperElement.addEventListener('mouseleave', () => {
+          const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1;
+          const baseY = wrapperElement.classList.contains('active') ? -8 : 0;
+          
+          wrapperElement.style.transform = `
+            scale(${baseScale}) 
+            translateY(${baseY}px) 
+            perspective(1000px) 
+            rotateX(0deg) 
+            rotateY(0deg)
+          `;
+        });
       });
-      
-      // Efecto 3D de seguimiento del ratón
-      wrapperElement.addEventListener('mousemove', (e) => {
-        const rect = wrapperElement.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        
-        // Calcular rotación basada en posición del ratón
-        const deltaX = (mouseX - centerX) / (rect.width / 2);
-        const deltaY = (mouseY - centerY) / (rect.height / 2);
-        
-        // Limitar rotación a ±18 grados (más marcado que antes)
-        const maxRotation = 25;
-        const rotateX = Math.max(-maxRotation, Math.min(maxRotation, deltaY * maxRotation));
-        const rotateY = Math.max(-maxRotation, Math.min(maxRotation, -deltaX * maxRotation));
-        
-        // Aplicar transformación con perspectiva 3D más intensa
-        const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1.1;
-        const baseY = wrapperElement.classList.contains('active') ? -8 : -5;
-        
-        wrapperElement.style.transform = `
-          scale(${baseScale}) 
-          translateY(${baseY}px) 
-          perspective(800px) 
-          rotateX(${rotateX}deg) 
-          rotateY(${rotateY}deg)
-        `;
-      });
-      
-      // Resetear transformación al salir
-      wrapperElement.addEventListener('mouseleave', () => {
-        const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1;
-        const baseY = wrapperElement.classList.contains('active') ? -8 : 0;
-        
-        wrapperElement.style.transform = `
-          scale(${baseScale}) 
-          translateY(${baseY}px) 
-          perspective(1000px) 
-          rotateX(0deg) 
-          rotateY(0deg)
-        `;
-      });
-    });
+    }
   });
 </script>
