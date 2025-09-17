@@ -145,7 +145,7 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
               <Image src={stanfordLogo} alt="Stanford University" class="learning-logo" width={60} height={60} format="webp" quality={90} loading="lazy" />
             </div>
             <div class="learning-content">
-              <h4 class="learning-title">Course on Machine Learning</h4>
+              <h4 class="learning-title">Course on Machine Learning by <a href="https://www.linkedin.com/in/andrewyng/" target="_blank" rel="noopener noreferrer" class="instructor-link">Andrew Ng</a></h4>
               <p class="learning-provider">Stanford University</p>
               <div class="learning-skills">
                 <span class="skill-tag">Machine Learning</span>
@@ -947,6 +947,19 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     margin: 0 0 0.8rem 0;
     line-height: 1.3;
     letter-spacing: -0.01em;
+  }
+
+  .instructor-link {
+    color: #4facfe;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .instructor-link:hover {
+    color: #00f2fe;
+    border-bottom-color: #00f2fe;
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
   }
 
   .learning-provider {
