@@ -18,19 +18,15 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
 ---
 
 <section id="certifications" class="certifications">
-  <div class="certifications-container">
-    <div class="certifications-header">
-      <h2 class="section-title">
-        <span class="text-gradient desktop-title">Certifications & Learning</span>
-        <span class="text-gradient mobile-title">Certifications</span>
-      </h2>
-      <p class="section-subtitle">
-        Professional certifications and continuous learning journey
-      </p>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-subtitle">Professional certifications and continuous learning journey</p>
     </div>
 
-    <!-- Sección de Certificaciones -->
-    <div class="certifications-section">
+    <div class="certifications-container">
+      <!-- Sección de Certificaciones -->
+      <div class="certifications-section">
       
       <!-- Medallas en línea horizontal -->
       <div class="medals-row" data-aos="fade-up" data-aos-delay="200">
@@ -213,35 +209,28 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
         </div>
       </div>
     </div>
+    </div>
   </div>
 </section>
 
 <style>
   .certifications {
-    min-height: 100vh;
-    padding: 5rem 2rem;
+    padding: 120px 0;
     position: relative;
+    overflow: hidden;
   }
 
-  .certifications-container {
-    max-width: 1400px;
+  .container {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
     position: relative;
-    background: linear-gradient(135deg, 
-      rgba(12, 20, 39, 0.95) 0%, 
-      rgba(30, 41, 59, 0.95) 50%, 
-      rgba(12, 20, 39, 0.95) 100%
-    );
-    backdrop-filter: blur(20px);
-    border-radius: 24px;
-    padding: 4rem 3rem 2rem 3rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    z-index: 1;
   }
 
-  .certifications-header {
+  .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 80px;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out 0.2s forwards;
@@ -258,21 +247,28 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
     text-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
   }
 
-  /* Títulos responsive */
-  .desktop-title {
-    display: inline;
-  }
-
-  .mobile-title {
-    display: none;
-  }
-
   .section-subtitle {
     font-size: 1.2rem;
     color: #b0b0b0;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
+  }
+
+  .certifications-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    background: linear-gradient(135deg, 
+      rgba(12, 20, 39, 0.95) 0%, 
+      rgba(30, 41, 59, 0.95) 50%, 
+      rgba(12, 20, 39, 0.95) 100%
+    );
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 4rem 3rem 2rem 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
   .certifications-section,
@@ -1031,20 +1027,7 @@ import cambridgeLogo from '../assets/img/cambridge_logo.png';
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .certifications {
-      padding: 2rem 1rem;
-    }
-
-    .certifications-container {
-      padding: 2rem 1.5rem;
-      border-radius: 16px;
-    }
-
-    .desktop-title {
-      display: none;
-    }
-
-    .mobile-title {
-      display: inline;
+      padding: 80px 0;
     }
 
     .section-title {
