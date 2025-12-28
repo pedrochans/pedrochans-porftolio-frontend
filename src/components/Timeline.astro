@@ -24,6 +24,7 @@ import itxLogo from '../assets/img/itx_logo.png';
       <div class="timeline-layout">
       <div class="timeline-line-container">
         <div class="timeline-line-base"></div>
+        <div class="timeline-line-progress"></div>
         
         <div class="timeline-dot" data-step="0" data-year="2017-2021">
           <div class="dot-inner education">
@@ -322,6 +323,16 @@ import itxLogo from '../assets/img/itx_logo.png';
     align-items: center;
     justify-content: center;
     opacity: 1;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .timeline-dot:hover {
+    transform: scale(1.05);
+  }
+
+  .timeline-dot:hover .dot-inner {
+    box-shadow: 0 0 25px rgba(79, 172, 254, 0.6);
   }
 
   .dot-inner {
@@ -356,6 +367,71 @@ import itxLogo from '../assets/img/itx_logo.png';
   .timeline-dot.active .dot-inner {
     box-shadow: 0 0 30px rgba(79, 172, 254, 0.8);
     border-color: rgba(79, 172, 254, 1);
+    transform: scale(1.15);
+  }
+
+  /* Anillo indicador de progreso animado */
+  .timeline-dot::before {
+    content: '';
+    position: absolute;
+    width: calc(8vh + 16px);
+    height: calc(8vh + 16px);
+    border-radius: 50%;
+    border: 2px solid transparent;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .timeline-dot.active::before {
+    opacity: 1;
+    border-color: rgba(79, 172, 254, 0.6);
+    animation: pulse-ring 2s ease-in-out infinite;
+  }
+
+  /* Segundo anillo para efecto de pulso */
+  .timeline-dot::after {
+    content: '';
+    position: absolute;
+    width: calc(8vh + 24px);
+    height: calc(8vh + 24px);
+    border-radius: 50%;
+    border: 1px solid transparent;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .timeline-dot.active::after {
+    opacity: 1;
+    border-color: rgba(79, 172, 254, 0.3);
+    animation: pulse-ring 2s ease-in-out infinite 0.5s;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.3;
+    }
+  }
+
+  /* Línea de progreso que conecta los dots */
+  .timeline-line-progress {
+    position: absolute;
+    left: 50%;
+    top: calc(2rem + 6vh);
+    width: 3px;
+    height: 0;
+    background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
+    transform: translateX(-50%);
+    z-index: 2;
+    border-radius: 2px;
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
   }
 
   .dot-logo {
@@ -403,7 +479,7 @@ import itxLogo from '../assets/img/itx_logo.png';
     overscroll-behavior-y: contain;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(79, 172, 254, 0.5) transparent;
+    scrollbar-color: rgba(79, 172, 254, 0.4) transparent;
   }
 
   @keyframes shimmer {
@@ -411,22 +487,30 @@ import itxLogo from '../assets/img/itx_logo.png';
     50% { opacity: 1; }
   }
 
+  /* Scrollbar moderna y minimalista */
   .timeline-content-area::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   .timeline-content-area::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    background: transparent;
+    margin: 10px 0;
   }
 
   .timeline-content-area::-webkit-scrollbar-thumb {
-    background: rgba(79, 172, 254, 0.5);
-    border-radius: 4px;
+    background: linear-gradient(180deg, 
+      rgba(79, 172, 254, 0.6) 0%, 
+      rgba(0, 242, 254, 0.4) 100%);
+    border-radius: 10px;
+    border: 1px solid rgba(79, 172, 254, 0.2);
+    box-shadow: 0 0 8px rgba(79, 172, 254, 0.3);
   }
 
   .timeline-content-area::-webkit-scrollbar-thumb:hover {
-    background: rgba(79, 172, 254, 0.8);
+    background: linear-gradient(180deg, 
+      rgba(79, 172, 254, 0.8) 0%, 
+      rgba(0, 242, 254, 0.6) 100%);
+    box-shadow: 0 0 12px rgba(79, 172, 254, 0.5);
   }
 
   .timeline-step {
@@ -521,41 +605,20 @@ import itxLogo from '../assets/img/itx_logo.png';
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     min-height: 0;
     width: 100%;
-    gap: 1vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(79, 172, 254, 0.3) transparent;
-  }
-  
-  .card-content::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  .card-content::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  .card-content::-webkit-scrollbar-thumb {
-    background: rgba(79, 172, 254, 0.3);
-    border-radius: 3px;
-  }
-  
-  .card-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(79, 172, 254, 0.5);
+    gap: 0.5vh;
+    overflow: hidden; /* Sin scroll interno */
   }
 
   .step-image-container {
-    margin: 1vh 0;
+    margin: 0.5vh 0;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    flex-shrink: 0;
-    /* Altura más moderada y proporcionada */
-    height: 40vh; /* Altura fija más razonable */
+    flex: 1; /* Flexible para adaptarse al espacio disponible */
+    min-height: 0; /* Permite que flex reduzca el tamaño */
     display: flex;
     gap: 1vh;
     padding: 1vh;
@@ -577,13 +640,13 @@ import itxLogo from '../assets/img/itx_logo.png';
     flex: 0 0 38%;
     background: transparent;
     border-radius: 8px;
-    padding: 1.5vh 2vh;
+    padding: 1vh 1.5vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.9vh;
+    font-size: 2.6vh;
     color: #ffffff;
-    line-height: 1.8;
+    line-height: 1.6;
     text-align: left;
     font-weight: 400;
   }
@@ -595,11 +658,11 @@ import itxLogo from '../assets/img/itx_logo.png';
   }
 
   .text-mobile {
-    display: none; /* Oculto por defecto en escritorio */
+    display: none !important; /* Oculto por defecto en escritorio */
   }
   
   .text-full {
-    display: block; /* Visible por defecto en escritorio */
+    display: block !important; /* Visible por defecto en escritorio */
   }
 
   .content-image {
@@ -644,10 +707,10 @@ import itxLogo from '../assets/img/itx_logo.png';
   }
 
   .step-title {
-    font-size: 4.2vh;
+    font-size: 3.8vh;
     font-weight: 800;
     color: #ffffff;
-    margin-bottom: 0.5vh;
+    margin-bottom: 0.3vh;
     line-height: 1.1;
     flex-shrink: 0;
     background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
@@ -657,10 +720,10 @@ import itxLogo from '../assets/img/itx_logo.png';
   }
 
   .step-institution {
-    font-size: 2.8vh;
+    font-size: 2.4vh;
     color: #4facfe;
     font-weight: 500;
-    margin-bottom: 0.5vh;
+    margin-bottom: 0.3vh;
     flex-shrink: 0;
   }
 
@@ -675,10 +738,11 @@ import itxLogo from '../assets/img/itx_logo.png';
   .step-achievements {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
-    gap: 1vh;
-    margin-top: 1vh;
+    gap: 0.8vh;
+    margin-top: auto; /* Empuja al fondo */
     flex-shrink: 0;
-    height: 10vh;
+    min-height: 8vh;
+    max-height: 10vh;
   }
 
   .achievement {
@@ -730,10 +794,6 @@ import itxLogo from '../assets/img/itx_logo.png';
       padding: 1.5rem 1rem;
     }
     
-    .step-image-container {
-      height: 36vh; /* Altura optimizada para pantallas medianas */
-    }
-    
     .dot-inner {
       width: 7vh;
       height: 7vh;
@@ -743,12 +803,39 @@ import itxLogo from '../assets/img/itx_logo.png';
       width: 5.6vh;
       height: 5.6vh;
     }
+
+    .timeline-dot::before {
+      width: calc(7vh + 14px);
+      height: calc(7vh + 14px);
+    }
+
+    .timeline-dot::after {
+      width: calc(7vh + 20px);
+      height: calc(7vh + 20px);
+    }
   }
 
-  /* Media query específica para laptops (1024px - 1100px) */
-  @media (max-width: 1100px) and (min-width: 1024px) {
-    .step-image-container {
-      height: 38vh; /* Altura específica para laptops 1024x858 */
+  /* Media query específica para laptops (1024px - 1440px) */
+  @media (max-width: 1440px) and (min-width: 1025px) {
+    .step-title {
+      font-size: 3.2vh;
+    }
+
+    .step-institution {
+      font-size: 2vh;
+    }
+
+    .image-text-section {
+      font-size: 2.2vh;
+      padding: 1vh 1.2vh;
+    }
+
+    .achievement-label {
+      font-size: 1.3vh;
+    }
+
+    .achievement-value {
+      font-size: 1.8vh;
     }
   }
 
@@ -760,28 +847,27 @@ import itxLogo from '../assets/img/itx_logo.png';
     
     .step-image-container {
       flex-direction: column;
-      height: 32vh; /* Altura ajustada para tablets */
       gap: 1vh;
       padding: 1vh;
     }
     
     .image-section {
-      flex: none;
-      height: 65%;
+      flex: 2;
+      min-height: 0;
     }
     
     .image-text-section {
-      flex: none;
-      height: 33%;
-      padding: 1.5vh;
-      font-size: 1.5vh;
+      flex: 1;
+      padding: 1.2vh;
+      font-size: 1.8vh;
       color: #ffffff;
-      line-height: 1.8;
+      line-height: 1.5;
       font-weight: 400;
     }
     
     .step-achievements {
-      height: 9vh;
+      min-height: 7vh;
+      max-height: 9vh;
     }
     
     .dot-inner {
@@ -792,6 +878,16 @@ import itxLogo from '../assets/img/itx_logo.png';
     .dot-logo {
       width: 4.8vh;
       height: 4.8vh;
+    }
+
+    .timeline-dot::before {
+      width: calc(6vh + 12px);
+      height: calc(6vh + 12px);
+    }
+
+    .timeline-dot::after {
+      width: calc(6vh + 18px);
+      height: calc(6vh + 18px);
     }
   }
 
@@ -861,22 +957,24 @@ import itxLogo from '../assets/img/itx_logo.png';
     
     .step-image-container {
       flex-direction: column;
-      height: 35vh !important; /* Aumentado mucho más para llenar el espacio */
+      flex: 1 !important;
+      min-height: 0 !important;
       margin: 0.8vh 0 !important;
       padding: 1vh !important;
     }
     
     .image-section {
-      height: 65% !important;
+      flex: 2 !important;
+      min-height: 0 !important;
     }
     
     .image-text-section {
-      height: 33% !important;
-      font-size: 1.8vh !important; /* Texto mucho más grande */
+      flex: 1 !important;
+      font-size: 2vh !important;
       color: #ffffff;
-      line-height: 1.6 !important;
+      line-height: 1.5 !important;
       font-weight: 400;
-      padding: 1.2vh !important;
+      padding: 1vh !important;
     }
     
     .text-mobile {
@@ -888,9 +986,10 @@ import itxLogo from '../assets/img/itx_logo.png';
     }
     
     .step-achievements {
-      height: 6vh !important;
+      min-height: 5vh !important;
+      max-height: 7vh !important;
       gap: 0.5vh !important;
-      margin-top: 0.5vh !important;
+      margin-top: auto !important;
     }
     
     .achievement {
@@ -940,7 +1039,8 @@ import itxLogo from '../assets/img/itx_logo.png';
     }
     
     .step-image-container {
-      height: 32vh !important; /* Aumentado también para pantallas muy pequeñas */
+      flex: 1 !important;
+      min-height: 0 !important;
     }
     
     .step-title {
@@ -952,9 +1052,9 @@ import itxLogo from '../assets/img/itx_logo.png';
     }
     
     .image-text-section {
-      font-size: 1.6vh !important; /* Texto más grande */
-      line-height: 1.5 !important;
-      padding: 1vh !important;
+      font-size: 1.8vh !important;
+      line-height: 1.4 !important;
+      padding: 0.8vh !important;
     }
     
     .text-mobile {
@@ -1061,6 +1161,37 @@ import itxLogo from '../assets/img/itx_logo.png';
       if (currentDot) {
         currentDot.classList.add('active');
       }
+
+      // Actualizar línea de progreso
+      updateProgressLine(stepIndex);
+    }
+
+    // Función para actualizar la línea de progreso
+    function updateProgressLine(stepIndex: number): void {
+      const progressLine = document.querySelector('.timeline-line-progress') as HTMLElement;
+      const dots = document.querySelectorAll('.timeline-dot');
+      
+      if (!progressLine || dots.length < 2) return;
+
+      // Si estamos en el primer paso, la línea debe tener altura 0
+      if (stepIndex === 0) {
+        progressLine.style.height = '0px';
+        return;
+      }
+
+      // Obtener las posiciones reales de los dots
+      const firstDot = dots[0] as HTMLElement;
+      const targetDot = dots[stepIndex] as HTMLElement;
+      
+      if (!firstDot || !targetDot) return;
+
+      // Calcular la distancia entre el centro del primer dot y el centro del dot actual
+      const firstDotRect = firstDot.getBoundingClientRect();
+      const targetDotRect = targetDot.getBoundingClientRect();
+      
+      const progressHeight = targetDotRect.top - firstDotRect.top;
+      
+      progressLine.style.height = `${Math.max(0, progressHeight)}px`;
     }
 
     if (contentArea) {
@@ -1089,6 +1220,14 @@ import itxLogo from '../assets/img/itx_logo.png';
           isMoving = false;
         }, 800);
       };
+
+      // Hacer los dots clickeables para navegar directamente
+      timelineDots.forEach((dot, index) => {
+        (dot as HTMLElement).style.cursor = 'pointer';
+        dot.addEventListener('click', () => {
+          goToStep(index);
+        });
+      });
       
       const handleWheel = (e: WheelEvent) => {
         e.preventDefault();
