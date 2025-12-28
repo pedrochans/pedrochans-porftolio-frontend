@@ -271,6 +271,7 @@ import microsoftLogo from '../assets/img/microsoft_logo.png';
     border-radius: 12px;
     overflow: hidden;
     display: inline-block;
+    transform: scale(1.1); /* Tamaño grande por defecto */
   }
 
   /* ===== ESTILOS PARA MEDALLONES CLICKEABLES ===== */
@@ -323,7 +324,7 @@ import microsoftLogo from '../assets/img/microsoft_logo.png';
   }
 
   .cert-image-wrapper.active {
-    transform: scale(1.15) translateY(-8px);
+    transform: scale(1.1) translateY(-8px);
   }
 
   .cert-image-wrapper:hover .cert-image {
@@ -1518,7 +1519,7 @@ import microsoftLogo from '../assets/img/microsoft_logo.png';
           const rotateY = Math.max(-maxRotation, Math.min(maxRotation, -deltaX * maxRotation));
           
           // Aplicar transformación con perspectiva 3D más intensa
-          const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1.1;
+          const baseScale = 1.1; // Tamaño constante
           const baseY = wrapperElement.classList.contains('active') ? -8 : -5;
           
           wrapperElement.style.transform = `
@@ -1532,7 +1533,7 @@ import microsoftLogo from '../assets/img/microsoft_logo.png';
         
         // Resetear transformación al salir
         wrapperElement.addEventListener('mouseleave', () => {
-          const baseScale = wrapperElement.classList.contains('active') ? 1.15 : 1;
+          const baseScale = 1.1; // Tamaño constante
           const baseY = wrapperElement.classList.contains('active') ? -8 : 0;
           
           wrapperElement.style.transform = `
