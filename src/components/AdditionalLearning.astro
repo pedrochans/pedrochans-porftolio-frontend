@@ -1,0 +1,481 @@
+---
+// Componente de Aprendizaje Adicional - Cursos e Idiomas
+import { Image } from 'astro:assets';
+
+// Importar logos de aprendizaje
+import stanfordLogo from '../assets/img/stanford_logo.png';
+import uscLogo from '../assets/img/USC_logo.png';
+import xuntaLogo from '../assets/img/xunta_galicia_logo.png';
+import cambridgeLogo from '../assets/img/cambridge_logo.png';
+---
+
+<section id="additional-learning" class="additional-learning-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Additional Learning</h2>
+      <p class="section-subtitle">Continuous education and language proficiency</p>
+    </div>
+
+    <!-- Sección de Cursos -->
+    <div class="courses-subsection">
+      <h3 class="subsection-title">
+        <span class="text-gradient">Courses</span>
+      </h3>
+      
+      <div class="learning-grid">
+        <!-- Course on Machine Learning - Stanford -->
+        <div class="learning-card premium" data-aos="fade-up" data-aos-delay="200" data-url="https://www.coursera.org/account/accomplishments/verify/R55VSN2PEMW9">
+          <div class="learning-header">
+            <div class="learning-logo-container">
+              <Image src={stanfordLogo} alt="Stanford University" class="learning-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+            </div>
+            <div class="learning-content">
+              <h4 class="learning-title">Machine Learning by <a href="https://www.linkedin.com/in/andrewyng/" target="_blank" rel="noopener noreferrer" class="instructor-link">Andrew Ng</a></h4>
+              <p class="learning-provider">Stanford University</p>
+              <div class="learning-skills">
+                <span class="skill-tag">Machine Learning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LaTeX Course - USC -->
+        <div class="learning-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="learning-header">
+            <div class="learning-logo-container">
+              <Image src={uscLogo} alt="USC" class="learning-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+            </div>
+            <div class="learning-content">
+              <h4 class="learning-title">LaTeX Text Composition and Editing</h4>
+              <p class="learning-provider">University of Santiago de Compostela</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Idiomas -->
+    <div class="languages-subsection">
+      <h3 class="subsection-title">
+        <span class="text-gradient">Languages</span>
+      </h3>
+      
+      <div class="learning-grid">
+        <!-- CELGA 4 - Xunta de Galicia -->
+        <div class="learning-card language" data-aos="fade-up" data-aos-delay="400">
+          <div class="learning-header">
+            <div class="learning-logo-container">
+              <Image src={xuntaLogo} alt="Xunta de Galicia" class="learning-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+            </div>
+            <div class="learning-content">
+              <h4 class="learning-title">CELGA 4</h4>
+              <p class="learning-provider">Government of Galicia</p>
+              <div class="learning-skills">
+                <span class="skill-tag language-tag">Galician</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- B2 First - Cambridge English -->
+        <div class="learning-card language" data-aos="fade-up" data-aos-delay="500">
+          <div class="learning-header">
+            <div class="learning-logo-container">
+              <Image src={cambridgeLogo} alt="Cambridge English" class="learning-logo" width={50} height={50} format="webp" quality={90} loading="lazy" />
+            </div>
+            <div class="learning-content">
+              <h4 class="learning-title">B2 First</h4>
+              <p class="learning-provider">Cambridge English</p>
+              <div class="learning-skills">
+                <span class="skill-tag language-tag">English</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .additional-learning-section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+
+  .section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .courses-subsection,
+  .languages-subsection {
+    margin-bottom: 60px;
+  }
+
+  .subsection-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .subsection-title .text-gradient {
+    color: #4facfe;
+  }
+
+  .learning-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .learning-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.8rem 1.5rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .learning-card[data-url] {
+    cursor: pointer;
+  }
+
+  .learning-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .learning-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(79, 172, 254, 0.2);
+    border-color: rgba(79, 172, 254, 0.5);
+  }
+
+  .learning-card:hover::before {
+    opacity: 1;
+  }
+
+  .learning-card[data-url]:hover {
+    cursor: pointer;
+    filter: brightness(1.05);
+  }
+
+  .learning-card[data-url]:active {
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  .learning-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  .learning-logo-container {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .learning-card:hover .learning-logo-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(79, 172, 254, 0.3);
+    transform: scale(1.05);
+  }
+
+  .learning-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: brightness(1.1);
+    transition: all 0.3s ease;
+  }
+
+  .learning-card:hover .learning-logo {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+  }
+
+  .learning-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .learning-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin: 0 0 0.6rem 0;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .instructor-link {
+    color: #4facfe;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .instructor-link:hover {
+    color: #00f2fe;
+    border-bottom-color: #00f2fe;
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+  }
+
+  .learning-provider {
+    color: #4facfe;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.6rem 0;
+    letter-spacing: 0.01em;
+  }
+
+  .learning-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+  }
+
+  .skill-tag {
+    background: rgba(79, 172, 254, 0.1);
+    border: 1px solid rgba(79, 172, 254, 0.3);
+    color: #4facfe;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 10px;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+  }
+
+  .skill-tag.language-tag {
+    background: rgba(79, 172, 254, 0.1);
+    border-color: rgba(79, 172, 254, 0.3);
+    color: #4facfe;
+  }
+
+  .learning-card:hover .skill-tag {
+    background: rgba(79, 172, 254, 0.2);
+    border-color: rgba(79, 172, 254, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .learning-card:hover .skill-tag.language-tag {
+    background: rgba(79, 172, 254, 0.2);
+    border-color: rgba(79, 172, 254, 0.5);
+  }
+
+  /* Animaciones */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .additional-learning-section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+    }
+
+    .subsection-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .learning-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .learning-card {
+      padding: 1.2rem 1rem;
+      border-radius: 12px;
+    }
+
+    .learning-header {
+      gap: 1rem;
+    }
+
+    .learning-logo-container {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+    }
+
+    .learning-logo {
+      width: 32px;
+      height: 32px;
+    }
+
+    .learning-title {
+      font-size: 1rem;
+      line-height: 1.3;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .learning-provider {
+      font-size: 0.85rem;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .skill-tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 8px;
+    }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .learning-card,
+    .section-title,
+    .section-subtitle {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Configurar animaciones de elementos
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target as HTMLElement;
+          const delay = element.getAttribute('data-aos-delay') || '0';
+          
+          setTimeout(() => {
+            element.style.animation = 'fadeInUp 0.8s ease-out forwards';
+          }, parseInt(delay));
+          
+          observer.unobserve(element);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    // Observar todos los elementos con animación
+    const animatedElements = document.querySelectorAll('[data-aos]');
+    animatedElements.forEach((element) => {
+      observer.observe(element);
+    });
+
+    // Funcionalidad de click en learning cards
+    const setupClickableLearningCards = () => {
+      const clickableLearning = document.querySelectorAll('.learning-card[data-url]');
+      
+      clickableLearning.forEach((element) => {
+        const htmlElement = element as HTMLElement;
+        const url = htmlElement.getAttribute('data-url');
+        
+        if (url) {
+          htmlElement.style.cursor = 'pointer';
+          
+          const clickHandler = (e: Event) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            try {
+              const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+              
+              if (!newWindow || newWindow.closed) {
+                const tempLink = document.createElement('a');
+                tempLink.href = url;
+                tempLink.target = '_blank';
+                tempLink.rel = 'noopener noreferrer';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+              }
+            } catch (error) {
+              window.location.href = url;
+            }
+          };
+          
+          htmlElement.addEventListener('click', clickHandler);
+        }
+      });
+    };
+
+    setupClickableLearningCards();
+  });
+</script>
